@@ -1,14 +1,14 @@
 <?php
 class probehunter {
-	var $class = "probehunter";
-	var $type = 999999;
-	var $l_probe_type;
-	var $l_probe_description;
-	var $l_stationary;
-	var $l_roaming;
+	public $class = "probehunter";
+	public $type = 999999;
+	public $l_probe_type;
+	public $l_probe_description;
+	public $l_stationary;
+	public $l_roaming;
 
 	// fill language variables
-	function probehunter()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -64,7 +64,7 @@ class probehunter {
 		}
 	}
 
-	var $tag = "LOG5_PROBE_HUNTER_PROBE";
+	public $tag = "LOG5_PROBE_HUNTER_PROBE";
 
 	function log_switch_data()
 	{

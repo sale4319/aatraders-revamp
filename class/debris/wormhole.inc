@@ -1,17 +1,17 @@
 <?php
 class wormhole {
-	var $classname = "wormhole";
-	var $success = "350";	// Random value range
-	var $trigger = "175";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
-	var $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
-	var $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
-	var $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
+	public $classname = "wormhole";
+	public $success = "350";	// Random value range
+	public $trigger = "175";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
+	public $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
+	public $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
+	public $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
 
 	// language variables
-	var $l_debris_wormhole;
+	public $l_debris_wormhole;
 
 	// fill language variables
-	function wormhole()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -21,7 +21,7 @@ class wormhole {
 			break;
 
 			case "french":
-				$this->l_debris_wormhole = "Un objet a créé un trou de ver en réagissant à votre approche. Vous vous retrouvez au secteur [sector].";
+				$this->l_debris_wormhole = "Un objet a cr un trou de ver en ragissant  votre approche. Vous vous retrouvez au secteur [sector].";
 			break;
 
 			case "german":
@@ -29,7 +29,7 @@ class wormhole {
 			break;
 
 			case "italian":
-				$this->l_debris_wormhole = "Hai trovato un artefatto che si è attivato non appena ti sei avvicinato. Questo ha creato un wormhole che ti ha trasportato nel settore [sector].";
+				$this->l_debris_wormhole = "Hai trovato un artefatto che si  attivato non appena ti sei avvicinato. Questo ha creato un wormhole che ti ha trasportato nel settore [sector].";
 			break;
 
 			case "russian":

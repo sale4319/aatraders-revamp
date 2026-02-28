@@ -1,9 +1,9 @@
 <?php
 class decrease_birthrate {
-	var $id = "3";
-	var $singlepass = 1;
+	public $id = "3";
+	public $singlepass = 1;
 
-	function decrease_birthrate()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)

@@ -1,16 +1,16 @@
 <?php
 class backdoor
 {
-	var $class = "backdoor";
-	var $pieces = 15;
-	var $min_cloak = 300; // Cloak value of each artifact piece
-	var $max_cloak = 375; // Maximum Cloak value of each artifact piece
-	var $scoremax = 0; // Any player with a score over this value will not be able to see the artifact. Set to 0 for everyone to see.
-	var $schedinfo;
-	var $delayedprocess = 1; // If the completed artifact can be processed at a different time after completion.  Player can execute the artifact from the Artifact List selection.  Set to 1 for delayed processing.
-	var $maximum_in_galaxy = 2; // The maximum number of artifacts of this class in the galaxy.  Multiply this number by $pieces to get the total number of pieces in the galaxy.
+	public $class = "backdoor";
+	public $pieces = 15;
+	public $min_cloak = 300; // Cloak value of each artifact piece
+	public $max_cloak = 375; // Maximum Cloak value of each artifact piece
+	public $scoremax = 0; // Any player with a score over this value will not be able to see the artifact. Set to 0 for everyone to see.
+	public $schedinfo;
+	public $delayedprocess = 1; // If the completed artifact can be processed at a different time after completion.  Player can execute the artifact from the Artifact List selection.  Set to 1 for delayed processing.
+	public $maximum_in_galaxy = 2; // The maximum number of artifacts of this class in the galaxy.  Multiply this number by $pieces to get the total number of pieces in the galaxy.
 
-	function backdoor()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)

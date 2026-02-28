@@ -1,9 +1,9 @@
 <?php
 class destroy_credits {
-	var $id = "2";
-	var $singlepass = 1;
+	public $id = "2";
+	public $singlepass = 1;
 
-	function destroy_credits()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)

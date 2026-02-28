@@ -1,10 +1,10 @@
 <?php
 class birth_increaser {
-	var $id = "4";
-	var $dig_birthinc_max="0.00003"; // Max birthrate increase percentage production dignitaries will make
-	var $max_digs = 5;
+	public $id = "4";
+	public $dig_birthinc_max="0.00003"; // Max birthrate increase percentage production dignitaries will make
+	public $max_digs = 5;
 
-	function birth_increaser()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)

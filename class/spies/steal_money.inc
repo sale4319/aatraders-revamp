@@ -1,9 +1,9 @@
 <?php
 class steal_money {
-	var $id = "6";
-	var $singlepass = 0;
+	public $id = "6";
+	public $singlepass = 0;
 
-	function steal_money()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)

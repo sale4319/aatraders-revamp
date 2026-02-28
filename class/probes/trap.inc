@@ -1,18 +1,18 @@
 <?php
 class trap {
-	var $class = "trap";
-	var $type = 4;
-	var $l_probe_type;
-	var $probe_cost = 1000000;
-	var $l_probe_target;
-	var $l_probe_shipclass;
-	var $l_probe_description;
-	var $l_probe_info;
-	var $l_probe_imtitle;
-	var $l_probe_imbody;
+	public $class = "trap";
+	public $type = 4;
+	public $l_probe_type;
+	public $probe_cost = 1000000;
+	public $l_probe_target;
+	public $l_probe_shipclass;
+	public $l_probe_description;
+	public $l_probe_info;
+	public $l_probe_imtitle;
+	public $l_probe_imbody;
 
 	// fill language variables
-	function trap()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -89,7 +89,7 @@ class trap {
 		}
 	}
 
-	var $tag = "LOG5_PROBE_TRAP";
+	public $tag = "LOG5_PROBE_TRAP";
 
 	function log_switch_data()
 	{

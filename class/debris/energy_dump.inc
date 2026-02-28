@@ -1,18 +1,18 @@
 <?php
 class energy_dump {
-	var $classname = "energy_dump";
-	var $success = "200";	// Random value range
-	var $trigger = "100";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
-	var $destroyship_debris = "1";	// Set to 1 is this debris can be created when a ship is destroyed
-	var $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
-	var $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
+	public $classname = "energy_dump";
+	public $success = "200";	// Random value range
+	public $trigger = "100";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
+	public $destroyship_debris = "1";	// Set to 1 is this debris can be created when a ship is destroyed
+	public $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
+	public $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
 
 	// language variables
-	var $l_debris_addenergy;
-	var $l_debris_removeenergy;
+	public $l_debris_addenergy;
+	public $l_debris_removeenergy;
 
 	// fill language variables
-	function energy_dump()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -23,18 +23,18 @@ class energy_dump {
 			break;
 
 			case "french":
-				$this->l_debris_addenergy = "Vous avez trouvé des contenants d'énergie portatifs. Ils peuvent vous assurer une seule accélération temporaire de [amount] points d'énergie.";
-				$this->l_debris_removeenergy = "Vous avez malencontreusement ramené un dissipateur d'énergie qui s'est activé dès qu'il a détecté la gravité artificielle. Vous avez perdu [amount] points d'énergie.";
+				$this->l_debris_addenergy = "Vous avez trouv des contenants d'nergie portatifs. Ils peuvent vous assurer une seule acclration temporaire de [amount] points d'nergie.";
+				$this->l_debris_removeenergy = "Vous avez malencontreusement ramen un dissipateur d'nergie qui s'est activ ds qu'il a dtect la gravit artificielle. Vous avez perdu [amount] points d'nergie.";
 			break;
 
 			case "german":
 				$this->l_debris_addenergy = "Sie haben tragbare Energie gefunden. Ihr Fund bringt Ihnen einen einmaligen Energieschub von [amount].";
-				$this->l_debris_removeenergy = "Sie haben eine Energie-Quelle an Bord gebracht, die Ihnen, als Sie das künstliche Schwerkraftfeld aktivierten [amount] Einheiten Energie abgezogen hat.";
+				$this->l_debris_removeenergy = "Sie haben eine Energie-Quelle an Bord gebracht, die Ihnen, als Sie das knstliche Schwerkraftfeld aktivierten [amount] Einheiten Energie abgezogen hat.";
 			break;
 
 			case "italian":
-				$this->l_debris_addenergy = "Hai scoperto un modulo portatile di immagazzinamento dell'energia, che ti fornisce una carica aggiuntiva di [amount] unità di energia, utilizzabile una volta sola.";
-				$this->l_debris_removeenergy = "Hai portato a bordo un condotto d'energia che si è attivato appena subiti gli effetti della gravità artificiale, sottraendo [amount] unità di energia.";
+				$this->l_debris_addenergy = "Hai scoperto un modulo portatile di immagazzinamento dell'energia, che ti fornisce una carica aggiuntiva di [amount] unit di energia, utilizzabile una volta sola.";
+				$this->l_debris_removeenergy = "Hai portato a bordo un condotto d'energia che si  attivato appena subiti gli effetti della gravit artificiale, sottraendo [amount] unit di energia.";
 			break;
 
 			case "russian":

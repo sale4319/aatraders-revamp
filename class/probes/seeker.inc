@@ -1,13 +1,13 @@
 <?php
 class seeker {
-	var $class = "seeker";
-	var $type = 6;
-	var $l_probe_type;
-	var $l_probe_target;
-	var $l_probe_description;
+	public $class = "seeker";
+	public $type = 6;
+	public $l_probe_type;
+	public $l_probe_target;
+	public $l_probe_description;
 
 	// fill language variables
-	function seeker()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -56,7 +56,7 @@ class seeker {
 		}
 	}
 
-	var $tag = "LOG5_PROBE_SEEKER";
+	public $tag = "LOG5_PROBE_SEEKER";
 
 	function log_switch_data()
 	{

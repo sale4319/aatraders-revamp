@@ -1,16 +1,16 @@
 <?php
 class solrecovery
 {
-	var $class = "solrecovery";
-	var $pieces = 1;
-	var $min_cloak = 0; // Cloak value of each artifact piece
-	var $max_cloak = 0; // Maximum Cloak value of each artifact piece
-	var $scoremax = 100000; // Any player with a score over this value will not be able to see the artifact. Set to 0 for everyone to see.
-	var $schedinfo;
-	var $delayedprocess = 1; // If the completed artifact can be processed at a different time after completion.  Player can execute the artifact from the Artifact List selection.  Set to 1 for delayed processing.
-	var $maximum_in_galaxy = 40; // The maximum number of artifacts of this class in the galaxy.  Multiply this number by $pieces to get the total number of pieces in the galaxy.
+	public $class = "solrecovery";
+	public $pieces = 1;
+	public $min_cloak = 0; // Cloak value of each artifact piece
+	public $max_cloak = 0; // Maximum Cloak value of each artifact piece
+	public $scoremax = 100000; // Any player with a score over this value will not be able to see the artifact. Set to 0 for everyone to see.
+	public $schedinfo;
+	public $delayedprocess = 1; // If the completed artifact can be processed at a different time after completion.  Player can execute the artifact from the Artifact List selection.  Set to 1 for delayed processing.
+	public $maximum_in_galaxy = 40; // The maximum number of artifacts of this class in the galaxy.  Multiply this number by $pieces to get the total number of pieces in the galaxy.
 
-	function solrecovery()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)

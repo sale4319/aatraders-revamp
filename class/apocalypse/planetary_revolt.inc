@@ -1,11 +1,11 @@
-<?
+<?php
 // Planetary Revolt
 
 class planetary_revolt {
 
-	var $tag = "LOG3_PLANET_REVOLT";
+	public $tag = "LOG3_PLANET_REVOLT";
 
-	function planetary_revolt()
+	function __construct()
 	{
 	}
 
@@ -42,7 +42,7 @@ class planetary_revolt {
 		$log_language_data["french"]["title"] = "Planetary Revolt";
 		$log_language_data["french"]["text"] = "Too many people on your planet [name] in sector [sector] and they have revolted!!! Damages: [credits]% credits lost, [colonists]% colonists killed, [organics]% organics destroyed, [goods]% goods destroyed, [ore]% ore destroyed, [torps]% torps destroyed, [fighters]% fighters destroyed and [energy]% energy lost.";
 		$log_language_data["german"]["title"] = "Planetarische Revolution";
-		$log_language_data["german"]["text"] = "Es gibt zu viele Leute auf ihrem Planeten [name] im Sektor [sector] deshalb gibt es eine Revolution!! Schaden: [credits]% Credits verloren, [colonists]% Colonisten getötet, [organics]% des organischen Materials vernichtet, [goods]% der Güter zerstört, [ore]% des Erzes vernichtet, [torps]% Torps zerstört, [fighters]% Jäger zerstört und [energy]% an Energie verloren.";
+		$log_language_data["german"]["text"] = "Es gibt zu viele Leute auf ihrem Planeten [name] im Sektor [sector] deshalb gibt es eine Revolution!! Schaden: [credits]% Credits verloren, [colonists]% Colonisten gettet, [organics]% des organischen Materials vernichtet, [goods]% der Gter zerstrt, [ore]% des Erzes vernichtet, [torps]% Torps zerstrt, [fighters]% Jger zerstrt und [energy]% an Energie verloren.";
 		$log_language_data["italian"]["title"] = "Rivolta planetaria!";
 		$log_language_data["italian"]["text"] = "Troppe persone sul tuo pianeta [name] nel settore [sector] e si sono rivoltati!! Danni: [credits]% dei crediti persi, [colonists]% dei coloni uccisi, [organics]% degli organici distrutti, [goods]% dei prodotti distrutti, [ore]% del metallo distrutto, [torps]% dei siluri esplosi, [fighters]% dei droni inutilizzabili e [energy]% dell'energia andata persa.";
 		$log_language_data["russian"]["title"] = "Planetary Revolt";

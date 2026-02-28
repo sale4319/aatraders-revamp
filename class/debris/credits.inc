@@ -1,19 +1,19 @@
 <?php
 class credits {
-	var $classname = "credits";
-	var $success = "250";	// Random value range
-	var $trigger = "125";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
-	var $destroyship_debris = "1";	// Set to 1 is this debris can be created when a ship is destroyed
-	var $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
-	var $maximum_amount = "50000000";	// Set to maximum amount that can be stored in a debris item
-	var $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
+	public $classname = "credits";
+	public $success = "250";	// Random value range
+	public $trigger = "125";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
+	public $destroyship_debris = "1";	// Set to 1 is this debris can be created when a ship is destroyed
+	public $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
+	public $maximum_amount = "50000000";	// Set to maximum amount that can be stored in a debris item
+	public $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
 
 	// language variables
-	var $l_debris_addcredits;
-	var $l_debris_removecredits;
+	public $l_debris_addcredits;
+	public $l_debris_removecredits;
 
 	// fill language variables
-	function credits()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -24,12 +24,12 @@ class credits {
 			break;
 
 			case "french":
-				$this->l_debris_addcredits = "La chance vous dévoile une banque de pirates cachée! Elle contient [amount] crédits.";
-				$this->l_debris_removecredits = "Les débris étaient réellement un vaisseau pirate caché... Ils vous ont volé [amount] crédits.";
+				$this->l_debris_addcredits = "La chance vous dvoile une banque de pirates cache! Elle contient [amount] crdits.";
+				$this->l_debris_removecredits = "Les dbris taient rellement un vaisseau pirate cach... Ils vous ont vol [amount] crdits.";
 			break;
 
 			case "german":
-				$this->l_debris_addcredits = "Sie sind zufällig auf ein Piraten-Konto auf der Bank gestossen, welches Ihnen [amount] Credits einbringt.";
+				$this->l_debris_addcredits = "Sie sind zufllig auf ein Piraten-Konto auf der Bank gestossen, welches Ihnen [amount] Credits einbringt.";
 				$this->l_debris_removecredits = "Der Schutt war in Wirklichkeit ein verstecktes Piratenschiff. Sie haben [amount] Credits gestohlen.";
 			break;
 

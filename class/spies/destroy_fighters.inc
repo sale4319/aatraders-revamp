@@ -1,9 +1,9 @@
 <?php
 class destroy_fighters {
-	var $id = "4";
-	var $singlepass = 0;
+	public $id = "4";
+	public $singlepass = 0;
 
-	function destroy_fighters()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -21,7 +21,7 @@ class destroy_fighters {
 			break;
 
 			case "german":
-				$this->classname = "Jäger zu zerstören";
+				$this->classname = "Jger zu zerstren";
 				$this->description = "Spy will randomly destroy large numbers of fighters stored on the planet.";
 				$this->success = "Spy Job Successfully Changed.";
 			break;

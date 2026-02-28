@@ -1,17 +1,17 @@
 <?php
 class basedplanet
 {
-	var $class = "basedplanet";
-	var $pieces = 3;
-	var $min_cloak = 0; // Cloak value of each artifact piece
-	var $max_cloak = 150; // Maximum Cloak value of each artifact piece
-	var $scoremax = 400000; // Any player with a score over this value will not be able to see the artifact. Set to 0 for everyone to see.
-	var $schedinfo;
-	var $delayedprocess = 1; // If the completed artifact can be processed at a different time after completion.  Player can execute the artifact from the Artifact List selection.  Set to 1 for delayed processing.
-	var $maximum_in_galaxy = 5; // The maximum number of artifacts of this class in the galaxy.  Multiply this number by $pieces to get the total number of pieces in the galaxy.
-	var $limitpercentage = 70; // The percentage of the maximum colonists allowed on a newly based planet to place on this planet.
+	public $class = "basedplanet";
+	public $pieces = 3;
+	public $min_cloak = 0; // Cloak value of each artifact piece
+	public $max_cloak = 150; // Maximum Cloak value of each artifact piece
+	public $scoremax = 400000; // Any player with a score over this value will not be able to see the artifact. Set to 0 for everyone to see.
+	public $schedinfo;
+	public $delayedprocess = 1; // If the completed artifact can be processed at a different time after completion.  Player can execute the artifact from the Artifact List selection.  Set to 1 for delayed processing.
+	public $maximum_in_galaxy = 5; // The maximum number of artifacts of this class in the galaxy.  Multiply this number by $pieces to get the total number of pieces in the galaxy.
+	public $limitpercentage = 70; // The percentage of the maximum colonists allowed on a newly based planet to place on this planet.
 
-	function basedplanet()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -39,8 +39,8 @@ class basedplanet
 				$this->singular = "piece";
 				$this->plural = "pieces";
 				$this->toomanyplanets = "There are too many planets in this sector.";
-				$this->l_gns_forbid = "La création d'une planète dans ce secteur n'est pas permise.";
-				$this->l_gns_bforbid = "Les bases dans se secteur interferent avec la torpille genesis. La création d'une planète est impossible.";
+				$this->l_gns_forbid = "La cration d'une plante dans ce secteur n'est pas permise.";
+				$this->l_gns_bforbid = "Les bases dans se secteur interferent avec la torpille genesis. La cration d'une plante est impossible.";
 				$this->title = "<font size=\"4\" color=\"lime\"><b>Create Based Planet Artifact</b></font>";
 				$this->question = "Do you wish to create a planet in this sector?";
 				$this->submit = "Answer Question";
@@ -55,7 +55,7 @@ class basedplanet
 				$this->plural = "pieces";
 				$this->toomanyplanets = "There are too many planets in this sector.";
 				$this->l_gns_forbid = "Das Erstellen eines Planeten in diesem Sektor ist nicht gestattet.";
-				$this->l_gns_bforbid = "Die Basen in diesem Sektor stören sich mit Ihrem Genesis device. Der Planet konnte nicht erstellt werden.";
+				$this->l_gns_bforbid = "Die Basen in diesem Sektor stren sich mit Ihrem Genesis device. Der Planet konnte nicht erstellt werden.";
 				$this->title = "<font size=\"4\" color=\"lime\"><b>Create Based Planet Artifact</b></font>";
 				$this->question = "Do you wish to create a planet in this sector?";
 				$this->submit = "Answer Question";
@@ -69,8 +69,8 @@ class basedplanet
 				$this->singular = "piece";
 				$this->plural = "pieces";
 				$this->toomanyplanets = "There are too many planets in this sector.";
-				$this->l_gns_forbid = "Non è permesso creare pianeti in questo settore.";
-				$this->l_gns_bforbid = "Le basi di questo settore interferiscono con il tuo dispositivo Genesis. La creazione di pianeti non è possibile.";
+				$this->l_gns_forbid = "Non  permesso creare pianeti in questo settore.";
+				$this->l_gns_bforbid = "Le basi di questo settore interferiscono con il tuo dispositivo Genesis. La creazione di pianeti non  possibile.";
 				$this->title = "<font size=\"4\" color=\"lime\"><b>Create Based Planet Artifact</b></font>";
 				$this->question = "Do you wish to create a planet in this sector?";
 				$this->submit = "Answer Question";
@@ -84,8 +84,8 @@ class basedplanet
 				$this->singular = "piece";
 				$this->plural = "pieces";
 				$this->toomanyplanets = "There are too many planets in this sector.";
-				$this->l_gns_forbid = "Ïîðîæäåíèå íîâûõ ïëàíåò â ýòîì ñåêòîð çàïðåùåíî.";
-				$this->l_gns_bforbid = "Áàçû â ýòîì ñåêòîðå ïðåïÿòñòâóþò ñîçäàíèþ ïëàíåòû.";
+				$this->l_gns_forbid = "      .";
+				$this->l_gns_bforbid = "      .";
 				$this->title = "<font size=\"4\" color=\"lime\"><b>Create Based Planet Artifact</b></font>";
 				$this->question = "Do you wish to create a planet in this sector?";
 				$this->submit = "Answer Question";
@@ -99,8 +99,8 @@ class basedplanet
 				$this->singular = "piece";
 				$this->plural = "pieces";
 				$this->toomanyplanets = "There are too many planets in this sector.";
-				$this->l_gns_forbid = "Crear un planeta en este sector no está permitido.";
-				$this->l_gns_bforbid = "Las bases en este sector interfieren con tu dispositivo Génesis. No es posible la creación de planetas.";
+				$this->l_gns_forbid = "Crear un planeta en este sector no est permitido.";
+				$this->l_gns_bforbid = "Las bases en este sector interfieren con tu dispositivo Gnesis. No es posible la creacin de planetas.";
 				$this->title = "<font size=\"4\" color=\"lime\"><b>Create Based Planet Artifact</b></font>";
 				$this->question = "Do you wish to create a planet in this sector?";
 				$this->submit = "Answer Question";

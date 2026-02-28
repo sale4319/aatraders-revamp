@@ -1,16 +1,16 @@
 <?php
 class spyplanet
 {
-	var $class = "spyplanet";
-	var $pieces = 7;
-	var $min_cloak = 150; // Cloak value of each artifact piece
-	var $max_cloak = 250; // Maximum Cloak value of each artifact piece
-	var $scoremax = 0; // Any player with a score over this value will not be able to see the artifact. Set to 0 for everyone to see.
-	var $schedinfo;
-	var $delayedprocess = 1; // If the completed artifact can be processed at a different time after completion.  Player can execute the artifact from the Artifact List selection.  Set to 1 for delayed processing.
-	var $maximum_in_galaxy = 5; // The maximum number of artifacts of this class in the galaxy.  Multiply this number by $pieces to get the total number of pieces in the galaxy.
+	public $class = "spyplanet";
+	public $pieces = 7;
+	public $min_cloak = 150; // Cloak value of each artifact piece
+	public $max_cloak = 250; // Maximum Cloak value of each artifact piece
+	public $scoremax = 0; // Any player with a score over this value will not be able to see the artifact. Set to 0 for everyone to see.
+	public $schedinfo;
+	public $delayedprocess = 1; // If the completed artifact can be processed at a different time after completion.  Player can execute the artifact from the Artifact List selection.  Set to 1 for delayed processing.
+	public $maximum_in_galaxy = 5; // The maximum number of artifacts of this class in the galaxy.  Multiply this number by $pieces to get the total number of pieces in the galaxy.
 
-	function spyplanet()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -41,7 +41,7 @@ class spyplanet
 				$this->select = "Select a planet to place the spy";
 				$this->l_bountyscan = "Bounty";
 				$this->noplanet = "The selected planet cannot be found in this sector.";
-				$this->l_fedbounty = "<font color='red' size='4'><b>La Fйdйration n'a pas aprйcier que vous attaqiez ce vaissau. Elle a placйe une mise а prix sur vous.</b></font>";
+				$this->l_fedbounty = "<font color='red' size='4'><b>La Fdration n'a pas aprcier que vous attaqiez ce vaissau. Elle a place une mise  prix sur vous.</b></font>";
 				$this->placedspy = "A spy was successfully place on planet [planet].";
 			break;
 
@@ -56,7 +56,7 @@ class spyplanet
 				$this->select = "Select a planet to place the spy";
 				$this->l_bountyscan = "Bounty";
 				$this->noplanet = "The selected planet cannot be found in this sector.";
-				$this->l_fedbounty = "<font color='red' size='4'><b>Die Fцderation akzeptiert Attacken auf schwдchere Spieler nicht. Sie hat eine Prдmie auf Sie ausgesetzt.</b></font>";
+				$this->l_fedbounty = "<font color='red' size='4'><b>Die Fderation akzeptiert Attacken auf schwchere Spieler nicht. Sie hat eine Prmie auf Sie ausgesetzt.</b></font>";
 				$this->placedspy = "A spy was successfully place on planet [planet].";
 			break;
 
@@ -86,7 +86,7 @@ class spyplanet
 				$this->select = "Select a planet to place the spy";
 				$this->l_bountyscan = "Bounty";
 				$this->noplanet = "The selected planet cannot be found in this sector.";
-				$this->l_fedbounty = "<font color='red' size='4'><b>федерация запрещает атаковать корабли намного меньше вашего. За вашу голову назначена награда.</b></font>";
+				$this->l_fedbounty = "<font color='red' size='4'><b>      .     .</b></font>";
 				$this->placedspy = "A spy was successfully place on planet [planet].";
 			break;
 
@@ -101,7 +101,7 @@ class spyplanet
 				$this->select = "Select a planet to place the spy";
 				$this->l_bountyscan = "Bounty";
 				$this->noplanet = "The selected planet cannot be found in this sector.";
-				$this->l_fedbounty = "<font color='red' size='4'><b>La Federaciуn no aprueba el atacar naves mucho mбs pequeсas. Ha fijado una recompensa sobre ti.</b></font>";
+				$this->l_fedbounty = "<font color='red' size='4'><b>La Federacin no aprueba el atacar naves mucho ms pequeas. Ha fijado una recompensa sobre ti.</b></font>";
 				$this->placedspy = "A spy was successfully place on planet [planet].";
 			break;
 

@@ -1,17 +1,17 @@
 <?php
 class ship_credits {
-	var $classname = "ship_credits";
-	var $success = "0";	// Random value range
-	var $trigger = "0";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
-	var $destroyship_debris = "1";	// Set to 1 if this debris can be created when a ship is destroyed
-	var $autoadd_debris = "0"; // Set to 1 for the scheduler to auto add this debris,
-	var $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
+	public $classname = "ship_credits";
+	public $success = "0";	// Random value range
+	public $trigger = "0";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
+	public $destroyship_debris = "1";	// Set to 1 if this debris can be created when a ship is destroyed
+	public $autoadd_debris = "0"; // Set to 1 for the scheduler to auto add this debris,
+	public $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
 
 	// language variables
-	var $l_debris_addcredits;
+	public $l_debris_addcredits;
 
 	// fill language variables
-	function ship_credits()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -21,11 +21,11 @@ class ship_credits {
 			break;
 
 			case "french":
-				$this->l_debris_addcredits = "La chance vous fait trouver une banque de pirates cachée! Elle contient [amount] crédits.";
+				$this->l_debris_addcredits = "La chance vous fait trouver une banque de pirates cache! Elle contient [amount] crdits.";
 			break;
 
 			case "german":
-				$this->l_debris_addcredits = "Sie sind zufällig auf ein Piraten-Konto auf der Bank gestossen, welches Ihnen [amount] Credits einbringt.";
+				$this->l_debris_addcredits = "Sie sind zufllig auf ein Piraten-Konto auf der Bank gestossen, welches Ihnen [amount] Credits einbringt.";
 			break;
 
 			case "italian":

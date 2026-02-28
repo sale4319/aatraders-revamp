@@ -1,18 +1,18 @@
 <?php
 class armor {
-	var $classname = "armor";
-	var $success = "150";	// Random value range
-	var $trigger = "75";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
-	var $destroyship_debris = "1";	// Set to 1 is this debris can be created when a ship is destroyed
-	var $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
-	var $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
+	public $classname = "armor";
+	public $success = "150";	// Random value range
+	public $trigger = "75";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
+	public $destroyship_debris = "1";	// Set to 1 is this debris can be created when a ship is destroyed
+	public $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
+	public $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
 
 	// language variables
-	var $l_debris_addarmor;
-	var $l_debris_removearmor;
+	public $l_debris_addarmor;
+	public $l_debris_removearmor;
 
 	// fill language variables
-	function armor()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -23,17 +23,17 @@ class armor {
 			break;
 
 			case "french":
-				$this->l_debris_addarmor = "Vous trouvez un vaisseau à la dérive, qui comporte encore [amount] unités pouvant être  ajoutées à l'armure de votre vaisseau.";
-				$this->l_debris_removearmor = "L'approche des débris cause une explosion thermonucléaire qui effectue [amount] points de dommage à l'armure de votre vaisseau.";
+				$this->l_debris_addarmor = "Vous trouvez un vaisseau  la drive, qui comporte encore [amount] units pouvant tre  ajoutes  l'armure de votre vaisseau.";
+				$this->l_debris_removearmor = "L'approche des dbris cause une explosion thermonuclaire qui effectue [amount] points de dommage  l'armure de votre vaisseau.";
 			break;
 
 			case "german":
-				$this->l_debris_addarmor = "Sie haben ein verlassenes Schiff mit [amount] Einheiten Ausrüstung entdeckt, die Sie Ihrem Schiff hinzufügen können.";
-				$this->l_debris_removearmor = "Als Sie sich dem Schutt näherten ist es in einem thermonuklearen Feuerball explodiert. Der Schiffausrüstung wurden [amount] Einheiten abgezogen.";
+				$this->l_debris_addarmor = "Sie haben ein verlassenes Schiff mit [amount] Einheiten Ausrstung entdeckt, die Sie Ihrem Schiff hinzufgen knnen.";
+				$this->l_debris_removearmor = "Als Sie sich dem Schutt nherten ist es in einem thermonuklearen Feuerball explodiert. Der Schiffausrstung wurden [amount] Einheiten abgezogen.";
 			break;
 
 			case "italian":
-				$this->l_debris_addarmor = "Hai trovato un relitto di nave, contenente [amount] unità di armatura che puoi aggiungere ala tua nave.";
+				$this->l_debris_addarmor = "Hai trovato un relitto di nave, contenente [amount] unit di armatura che puoi aggiungere ala tua nave.";
 				$this->l_debris_removearmor = "Come ti avvicini ai rottami questi esplodono a causa di una carica termonucleare, distruggendo [amount] dei tuoi punti armatura.";
 			break;
 

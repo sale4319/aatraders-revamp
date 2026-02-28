@@ -1,17 +1,17 @@
 <?php
 class maxcloak
 {
-	var $class = "maxcloak";
-	var $pieces = 10;
-	var $min_cloak = 200; // Cloak value of each artifact piece
-	var $max_cloak = 250; // Maximum Cloak value of each artifact piece
-	var $scoremax = 0; // Any player with a score over this value will not be able to see the artifact. Set to 0 for everyone to see.
-	var $schedinfo;
-	var $delayedprocess = 1; // If the completed artifact can be processed at a different time after completion.  Player can execute the artifact from the Artifact List selection.  Set to 1 for delayed processing.
-	var $maximum_in_galaxy = 3; // The maximum number of artifacts of this class in the galaxy.  Multiply this number by $pieces to get the total number of pieces in the galaxy.
-	var $cloak_limit = 400;  // The max allowed value to upgrade cloak
+	public $class = "maxcloak";
+	public $pieces = 10;
+	public $min_cloak = 200; // Cloak value of each artifact piece
+	public $max_cloak = 250; // Maximum Cloak value of each artifact piece
+	public $scoremax = 0; // Any player with a score over this value will not be able to see the artifact. Set to 0 for everyone to see.
+	public $schedinfo;
+	public $delayedprocess = 1; // If the completed artifact can be processed at a different time after completion.  Player can execute the artifact from the Artifact List selection.  Set to 1 for delayed processing.
+	public $maximum_in_galaxy = 3; // The maximum number of artifacts of this class in the galaxy.  Multiply this number by $pieces to get the total number of pieces in the galaxy.
+	public $cloak_limit = 400;  // The max allowed value to upgrade cloak
 
-	function maxcloak()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)

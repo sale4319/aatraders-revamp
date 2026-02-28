@@ -1,9 +1,9 @@
 <?php
 class destroy_torpedoes {
-	var $id = "5";
-	var $singlepass = 0;
+	public $id = "5";
+	public $singlepass = 0;
 
-	function destroy_torpedoes()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -21,7 +21,7 @@ class destroy_torpedoes {
 			break;
 
 			case "german":
-				$this->classname = "Torpedos zu zerstören";
+				$this->classname = "Torpedos zu zerstren";
 				$this->description = "Spy destroys large numbers of planetary torpedoes.";
 				$this->success = "Spy Job Successfully Changed.";
 			break;

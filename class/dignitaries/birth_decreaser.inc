@@ -1,11 +1,11 @@
 <?php
 class birth_decreaser {
-	var $id = "3";
-	var $colonist_lower_limit = 100000; //This is the lowest Birthrate reducer digs will drop a planets population.
-	var $dig_birthdec_max="0.00005"; // Max birthrate reduction percentage production dignitaries will make
-	var $max_digs = 5;
+	public $id = "3";
+	public $colonist_lower_limit = 100000; //This is the lowest Birthrate reducer digs will drop a planets population.
+	public $dig_birthdec_max="0.00005"; // Max birthrate reduction percentage production dignitaries will make
+	public $max_digs = 5;
 
-	function birth_decreaser()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -27,7 +27,7 @@ class birth_decreaser {
 			break;
 
 			case "german":
-				$this->classname = "Geburtenraten abschwächen";
+				$this->classname = "Geburtenraten abschwchen";
 				$this->description = "Dignitary dispenses mandatory contraception to the population to reduce the planetary birth rate.";
 				$this->toomany = "Maximum number of " . $this->classname . " Dignitaries reached for this planet.";
 				$this->toofewcolonists = "Planet has too few colonists for a Birthrate Decreaser.";

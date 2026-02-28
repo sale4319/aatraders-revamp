@@ -1,19 +1,19 @@
 <?php
 class turns {
-	var $classname = "turns";
-	var $success = "80";	// Random value range
-	var $trigger = "40";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
-	var $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
-	var $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
-	var $maximum_amount = "450";	// Set to maximum amount that can be stored in a debris item
-	var $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
+	public $classname = "turns";
+	public $success = "80";	// Random value range
+	public $trigger = "40";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
+	public $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
+	public $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
+	public $maximum_amount = "450";	// Set to maximum amount that can be stored in a debris item
+	public $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
 
 	// language variables
-	var $l_debris_addturns;
-	var $l_debris_removeturns;
+	public $l_debris_addturns;
+	public $l_debris_removeturns;
 
 	// fill language variables
-	function turns()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -24,13 +24,13 @@ class turns {
 			break;
 
 			case "french":
-				$this->l_debris_addturns = "Vous trouvez des modules accélérateurs qui vous donnent [amount] tours de plus.";
-				$this->l_debris_removeturns = "Les débris étaient piégés! Votre vaisseau subit d'importants dommages électriques qui prennent [amount] tours avant d'être réparés.";
+				$this->l_debris_addturns = "Vous trouvez des modules acclrateurs qui vous donnent [amount] tours de plus.";
+				$this->l_debris_removeturns = "Les dbris taient pigs! Votre vaisseau subit d'importants dommages lectriques qui prennent [amount] tours avant d'tre rpars.";
 			break;
 
 			case "german":
 				$this->l_debris_addturns = "Sie haben eine Extre-Boost-Modul gefunden, dass Ihnen [amount] Turns einbringt.";
-				$this->l_debris_removeturns = "Der Schutt wurde anfängerhaft eingefangen und hat massiven Schaden in der Elektrik hervorgerufen, der Sie [amount] Turns für die Reparatur kostet.";
+				$this->l_debris_removeturns = "Der Schutt wurde anfngerhaft eingefangen und hat massiven Schaden in der Elektrik hervorgerufen, der Sie [amount] Turns fr die Reparatur kostet.";
 			break;
 
 			case "italian":

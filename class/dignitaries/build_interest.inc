@@ -1,10 +1,10 @@
 <?php
 class build_interest {
-	var $id = "2";
-	var $dig_interest_max = 0.000005; //Max interest percentage interest dignitaries will make
-	var $max_digs = 1;
+	public $id = "2";
+	public $dig_interest_max = 0.000005; //Max interest percentage interest dignitaries will make
+	public $max_digs = 1;
 
-	function build_interest()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)

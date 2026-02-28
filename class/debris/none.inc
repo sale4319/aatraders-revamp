@@ -1,17 +1,17 @@
 <?php
 class none {
-	var $classname = "none";
-	var $success = "5";	// Random value range
-	var $trigger = "2";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
-	var $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
-	var $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
-	var $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
+	public $classname = "none";
+	public $success = "5";	// Random value range
+	public $trigger = "2";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
+	public $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
+	public $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
+	public $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
 
 	// language variables
-	var $l_debris_nothing;
+	public $l_debris_nothing;
 
 	// fill language variables
-	function none()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -21,7 +21,7 @@ class none {
 			break;
 
 			case "french":
-				$this->l_debris_nothing = "Vos ingénieurs décident qu'il s'agit de simples détritus.";
+				$this->l_debris_nothing = "Vos ingnieurs dcident qu'il s'agit de simples dtritus.";
 			break;
 
 			case "german":

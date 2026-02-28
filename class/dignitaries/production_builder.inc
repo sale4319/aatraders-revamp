@@ -1,10 +1,10 @@
 <?php
 class production_builder {
-	var $id = "1";
-	var $dig_prod_max="0.000007"; // Max production percentage production dignitaries will make
-	var $max_digs = 1;
+	public $id = "1";
+	public $dig_prod_max="0.000007"; // Max production percentage production dignitaries will make
+	public $max_digs = 1;
 
-	function production_builder()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)

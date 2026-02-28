@@ -1,13 +1,13 @@
 <?php
 class warp {
-	var $class = "warp";
-	var $type = 2;
-	var $l_probe_type;
-	var $l_probe_target;
-	var $l_probe_description;
+	public $class = "warp";
+	public $type = 2;
+	public $l_probe_type;
+	public $l_probe_target;
+	public $l_probe_description;
 
 	// fill language variables
-	function warp()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -70,7 +70,7 @@ class warp {
 		}
 	}
 
-	var $tag = "LOG5_PROBE_WARP";
+	public $tag = "LOG5_PROBE_WARP";
 
 	function log_switch_data()
 	{

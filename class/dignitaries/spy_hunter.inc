@@ -1,10 +1,10 @@
 <?php
 class spy_hunter {
-	var $id = "5";
-	var $dig_spyhunter_max="0.00100"; // Max spy hunter effectiveness percentage production dignitaries will make
-	var $max_digs = 5;
+	public $id = "5";
+	public $dig_spyhunter_max="0.00100"; // Max spy hunter effectiveness percentage production dignitaries will make
+	public $max_digs = 5;
 
-	function spy_hunter()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)

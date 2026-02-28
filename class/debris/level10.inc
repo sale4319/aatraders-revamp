@@ -1,18 +1,18 @@
 <?php
 class level10 {
-	var $classname = "level10";
-	var $success = "400";	// Random value range
-	var $trigger = "200";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
-	var $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
-	var $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
-	var $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
+	public $classname = "level10";
+	public $success = "400";	// Random value range
+	public $trigger = "200";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
+	public $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
+	public $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
+	public $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
 
 	// language variables
-	var $l_debris_upgradelevel;
-	var $l_debris_degradelevel;
+	public $l_debris_upgradelevel;
+	public $l_debris_degradelevel;
 
 	// fill language variables
-	function level10()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -23,13 +23,13 @@ class level10 {
 			break;
 
 			case "french":
-				$this->l_debris_upgradelevel = "Vous avez trouvé un ensemble de mise à jour qui améliorera la technologie [tech] de [levels] niveaux.";
-				$this->l_debris_degradelevel = "Vous avez trouvé un contenant de nanorobots anti-[tech] qui parviennent à détruire [levels] niveaux avant que vous les éliminiez.";
+				$this->l_debris_upgradelevel = "Vous avez trouv un ensemble de mise  jour qui amliorera la technologie [tech] de [levels] niveaux.";
+				$this->l_debris_degradelevel = "Vous avez trouv un contenant de nanorobots anti-[tech] qui parviennent  dtruire [levels] niveaux avant que vous les liminiez.";
 			break;
 
 			case "german":
-				$this->l_debris_upgradelevel = "Sie haben ein Nachrüstungsbündel gefunden welches den [tech] um [levels] Levels erhöht.";
-				$this->l_debris_degradelevel = "Sie haben einen Nanit-Cluster gefunden, der Sie attackiert hat und [levels] [tech] tech zerstörte, bevor Sie ihn aufhalten konnten.";
+				$this->l_debris_upgradelevel = "Sie haben ein Nachrstungsbndel gefunden welches den [tech] um [levels] Levels erhht.";
+				$this->l_debris_degradelevel = "Sie haben einen Nanit-Cluster gefunden, der Sie attackiert hat und [levels] [tech] tech zerstrte, bevor Sie ihn aufhalten konnten.";
 			break;
 
 			case "italian":

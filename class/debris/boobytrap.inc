@@ -2,19 +2,19 @@
 include ("globals/player_ship_destroyed.inc");
 
 class boobytrap {
-	var $classname = "boobytrap";
-	var $success = "1600";	// Random value range
-	var $trigger = "800";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
-	var $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
-	var $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
-	var $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
+	public $classname = "boobytrap";
+	public $success = "1600";	// Random value range
+	public $trigger = "800";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
+	public $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
+	public $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
+	public $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
 
 	// language variables
-	var $l_debris_zeroship;
-	var $l_debris_destroyship;
+	public $l_debris_zeroship;
+	public $l_debris_destroyship;
 
 	// fill language variables
-	function boobytrap()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)

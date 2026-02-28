@@ -1,18 +1,18 @@
 <?php
 class fighters {
-	var $classname = "fighters";
-	var $success = "100";	// Random value range
-	var $trigger = "50";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
-	var $destroyship_debris = "1";	// Set to 1 is this debris can be created when a ship is destroyed
-	var $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
-	var $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
+	public $classname = "fighters";
+	public $success = "100";	// Random value range
+	public $trigger = "50";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
+	public $destroyship_debris = "1";	// Set to 1 is this debris can be created when a ship is destroyed
+	public $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
+	public $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
 
 	// language variables
-	var $l_debris_addfighters;
-	var $l_debris_removefighters;
+	public $l_debris_addfighters;
+	public $l_debris_removefighters;
 
 	// fill language variables
-	function fighters()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -23,13 +23,13 @@ class fighters {
 			break;
 
 			case "french":
-				$this->l_debris_addfighters = "Vous avez trouvé la carcasse d'un porte-vaisseau. Elle contient [amount] chasseurs utilisables.";
-				$this->l_debris_removefighters = "Le transport des débris instables dans votre hangar déclenche une explosion qui détruit [amount] chasseurs.";
+				$this->l_debris_addfighters = "Vous avez trouv la carcasse d'un porte-vaisseau. Elle contient [amount] chasseurs utilisables.";
+				$this->l_debris_removefighters = "Le transport des dbris instables dans votre hangar dclenche une explosion qui dtruit [amount] chasseurs.";
 			break;
 
 			case "german":
-				$this->l_debris_addfighters = "Sie haben den Koloss eines Trägerschiffes gefunden und es beinhaltet [amount] voll funktionsfähige Jäger.";
-				$this->l_debris_removefighters = "Während Sie den Schutt in Ihren Hangar befördern wird er unstabil. Er explodiert und zerstört [amount] Ihrer Jäger.";
+				$this->l_debris_addfighters = "Sie haben den Koloss eines Trgerschiffes gefunden und es beinhaltet [amount] voll funktionsfhige Jger.";
+				$this->l_debris_removefighters = "Whrend Sie den Schutt in Ihren Hangar befrdern wird er unstabil. Er explodiert und zerstrt [amount] Ihrer Jger.";
 			break;
 
 			case "italian":

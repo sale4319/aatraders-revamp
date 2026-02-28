@@ -1,13 +1,13 @@
 <?php
 class sgsearch {
-	var $class = "sgsearch";
-	var $type = 7;
-	var $l_probe_type;
-	var $l_probe_target;
-	var $l_probe_description;
+	public $class = "sgsearch";
+	public $type = 7;
+	public $l_probe_type;
+	public $l_probe_target;
+	public $l_probe_description;
 
 	// fill language variables
-	function sgsearch()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -49,7 +49,7 @@ class sgsearch {
 		}
 	}
 
-	var $tag = "LOG5_PROBE_SGSEARCH";
+	public $tag = "LOG5_PROBE_SGSEARCH";
 
 	function log_switch_data()
 	{

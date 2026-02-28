@@ -1,19 +1,19 @@
 <?php
 class sector_genesis {
-	var $classname = "sector_genesis";
-	var $success = "500";	// Random value range
-	var $trigger = "250";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
-	var $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
-	var $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
-	var $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
+	public $classname = "sector_genesis";
+	public $success = "500";	// Random value range
+	public $trigger = "250";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
+	public $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
+	public $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
+	public $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
 
 	// language variables
-	var $l_debris_addsg;
-	var $l_debris_removesg;
-	var $l_debris_nothing;
+	public $l_debris_addsg;
+	public $l_debris_removesg;
+	public $l_debris_nothing;
 
 	// fill language variables
-	function sector_genesis()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -25,14 +25,14 @@ class sector_genesis {
 			break;
 
 			case "french":
-				$this->l_debris_addsg = "Vous avez trouvé une torpille genesis fonctionnelle, bien que légèrement endommagée.";
-				$this->l_debris_removesg = "Des impulsions électromagnétiques sont soudainement émises par les débris. Une de vos torpilles genesis est détruite.";
-				$this->l_debris_nothing = "Vos ingénieurs décident qu'il s'agit de simples détritus.";
+				$this->l_debris_addsg = "Vous avez trouv une torpille genesis fonctionnelle, bien que lgrement endommage.";
+				$this->l_debris_removesg = "Des impulsions lectromagntiques sont soudainement mises par les dbris. Une de vos torpilles genesis est dtruite.";
+				$this->l_debris_nothing = "Vos ingnieurs dcident qu'il s'agit de simples dtritus.";
 			break;
 
 			case "german":
-				$this->l_debris_addsg = "Obwohl sichtbar beschädigt haben Sie ein brauchbares Sektor-Genesis-Gerät gefunden.";
-				$this->l_debris_removesg = "Ein elektormagnetsicher Puls vom Fund hat plötzlich eine Ihrer Sektor-Genesis-Geräte vernichtet.";
+				$this->l_debris_addsg = "Obwohl sichtbar beschdigt haben Sie ein brauchbares Sektor-Genesis-Gert gefunden.";
+				$this->l_debris_removesg = "Ein elektormagnetsicher Puls vom Fund hat pltzlich eine Ihrer Sektor-Genesis-Gerte vernichtet.";
 				$this->l_debris_nothing = "Ihre Ingenieure haben herausgefunden, dass es nur nutzloser Weltraumschrott ist.";
 			break;
 

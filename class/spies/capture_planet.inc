@@ -1,9 +1,9 @@
 <?php
 class capture_planet {
-	var $id = "0";
-	var $singlepass = 0;
+	public $id = "0";
+	public $singlepass = 0;
 
-	function capture_planet()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -21,7 +21,7 @@ class capture_planet {
 			break;
 
 			case "german":
-				$this->classname = "den Planeten zu übernehmen";
+				$this->classname = "den Planeten zu bernehmen";
 				$this->description = "Spy will foment unrest in the population causing them to revolt and change allegiance to you.";
 				$this->success = "Spy Job Successfully Changed.";
 			break;

@@ -1,18 +1,18 @@
 <?php
 class torpedoes {
-	var $classname = "torpedoes";
-	var $success = "90";	// Random value range
-	var $trigger = "45";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
-	var $destroyship_debris = "1";	// Set to 1 is this debris can be created when a ship is destroyed
-	var $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
-	var $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
+	public $classname = "torpedoes";
+	public $success = "90";	// Random value range
+	public $trigger = "45";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
+	public $destroyship_debris = "1";	// Set to 1 is this debris can be created when a ship is destroyed
+	public $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
+	public $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
 
 	// language variables
-	var $l_debris_addtorps;
-	var $l_debris_removetorps;
+	public $l_debris_addtorps;
+	public $l_debris_removetorps;
 
 	// fill language variables
-	function torpedoes()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -24,12 +24,12 @@ class torpedoes {
 
 			case "french":
 				$this->l_debris_addtorps = "Vous trouvez une caisse contenant [amount] torpilles.";
-				$this->l_debris_removetorps = "En vous approchant des débris, un graser à bombe attaque votre vaisseau et détruit [amount] torpilles.";
+				$this->l_debris_removetorps = "En vous approchant des dbris, un graser  bombe attaque votre vaisseau et dtruit [amount] torpilles.";
 			break;
 
 			case "german":
 				$this->l_debris_addtorps = "Sie haben eine Kiste mit [amount] Torps gefunden.";
-				$this->l_debris_removetorps = "Als Sie sich dem Schutt nähern ziel es auf Ihr Schiff und zündet eine Bombe, die [amount] Ihrer torps vernichtet.";
+				$this->l_debris_removetorps = "Als Sie sich dem Schutt nhern ziel es auf Ihr Schiff und zndet eine Bombe, die [amount] Ihrer torps vernichtet.";
 			break;
 
 			case "italian":

@@ -1,9 +1,9 @@
 <?php
 class sabotage_production {
-	var $id = "1";
-	var $singlepass = 1;
+	public $id = "1";
+	public $singlepass = 1;
 
-	function sabotage_production()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -39,7 +39,7 @@ class sabotage_production {
 			break;
 
 			case "spanish":
-				$this->classname = "Sabotear producción";
+				$this->classname = "Sabotear produccin";
 				$this->description = "Spy sabotages all planetary production except for credit production.";
 				$this->success = "Spy Job Successfully Changed.";
 			break;

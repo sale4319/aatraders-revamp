@@ -1,11 +1,11 @@
-<?
+<?php
 // Plasma Storm
 
 class plasma_storm {
 
-	var $tag = "LOG3_PLASMA_STORM";
+	public $tag = "LOG3_PLASMA_STORM";
 
-	function plasma_storm()
+	function __construct()
 	{
 	}
 
@@ -37,11 +37,11 @@ class plasma_storm {
 		$log_language_data["german"]["title"] = "Plasma-Sturm!";
 		$log_language_data["german"]["text"] = "Ihr Planet [name] im Sektor [sector] wurden von einem Plasmasturm getroffen. Alle gespeicherte Energie ging verloren.";
 		$log_language_data["italian"]["title"] = "Tempesta magnetica!";
-		$log_language_data["italian"]["text"] = "Il tuo pianeta [name] nel settore [sector] и stato colpito da una tempesta magnetica. Tutta l'energia immagazzinata и andata persa.";
-		$log_language_data["russian"]["title"] = "Плазменный шторм!";
-		$log_language_data["russian"]["text"] = "Ваша планета [name] в секторе [sector] попала в плазменный шторм. Все запасы энергии были уничтожены.";
-		$log_language_data["spanish"]["title"] = "ЎTormenta de Plasma!";
-		$log_language_data["spanish"]["text"] = "Tu planeta [name] en el sector [sector] ha sido golpeado por una tormenta de plasma. Toda la energнa almacenada se ha perdido.";
+		$log_language_data["italian"]["text"] = "Il tuo pianeta [name] nel settore [sector]  stato colpito da una tempesta magnetica. Tutta l'energia immagazzinata  andata persa.";
+		$log_language_data["russian"]["title"] = " !";
+		$log_language_data["russian"]["text"] = "  [name]   [sector]    .     .";
+		$log_language_data["spanish"]["title"] = "Tormenta de Plasma!";
+		$log_language_data["spanish"]["text"] = "Tu planeta [name] en el sector [sector] ha sido golpeado por una tormenta de plasma. Toda la energa almacenada se ha perdido.";
 		$log_language_data["english"]["title"] = "Plasma Storm!";
 		$log_language_data["english"]["text"] = "Your planet [name] in sector [sector] has been hit by a Plasma Storm. All stored Energy has been lost.";
 		return $log_language_data;

@@ -1,18 +1,18 @@
 <?php
 class level_all10 {
-	var $classname = "level_all10";
-	var $success = "450";	// Random value range
-	var $trigger = "225";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
-	var $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
-	var $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
-	var $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
+	public $classname = "level_all10";
+	public $success = "450";	// Random value range
+	public $trigger = "225";	// Midpoint in random value range.  If random value from success range equals trigger then debris added
+	public $destroyship_debris = "0";	// Set to 1 is this debris can be created when a ship is destroyed
+	public $autoadd_debris = 1; // Set to 1 for the scheduler to auto add this debris,
+	public $enable = "1";	// 1 = debris enabled in the game, 0 = debris disabled in the game
 
 	// language variables
-	var $l_debris_upgradeall;
-	var $l_debris_degradeall;
+	public $l_debris_upgradeall;
+	public $l_debris_degradeall;
 
 	// fill language variables
-	function level_all10()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -23,13 +23,13 @@ class level_all10 {
 			break;
 
 			case "french":
-				$this->l_debris_upgradeall = "Vous trouvez un ensemble de mise à jour de qualité militaire. Il peut ajouter [level] niveaux à toutes vos technologies.";
-				$this->l_debris_degradeall = "Une gigantesque explosion d'antimatière se produit lorsque vous approchez des débris. Toute votre technologie est endommagée et réduite de [level] niveaux.";
+				$this->l_debris_upgradeall = "Vous trouvez un ensemble de mise  jour de qualit militaire. Il peut ajouter [level] niveaux  toutes vos technologies.";
+				$this->l_debris_degradeall = "Une gigantesque explosion d'antimatire se produit lorsque vous approchez des dbris. Toute votre technologie est endommage et rduite de [level] niveaux.";
 			break;
 
 			case "german":
-				$this->l_debris_upgradeall = "Sie haben ein militärisches Aufrüstpaket gefunden, dass alle Ihre Tech-Levels um [level] erhöht.";
-				$this->l_debris_degradeall = "Eine massive Antimaterie-Explosion während Sie den Fund bergen. All Ihre Tech-Levels wurden um [level] verbraucht.";
+				$this->l_debris_upgradeall = "Sie haben ein militrisches Aufrstpaket gefunden, dass alle Ihre Tech-Levels um [level] erhht.";
+				$this->l_debris_degradeall = "Eine massive Antimaterie-Explosion whrend Sie den Fund bergen. All Ihre Tech-Levels wurden um [level] verbraucht.";
 			break;
 
 			case "italian":

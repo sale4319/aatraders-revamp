@@ -1,10 +1,10 @@
-<?
+<?php
 class space_plague {
 
-	var $tag = "LOG3_SPACE_PLAGUE";
-	var $space_plague_kills= 50; //Maximum Percentage of colonists killed by space plague
+	public $tag = "LOG3_SPACE_PLAGUE";
+	public $space_plague_kills= 50; //Maximum Percentage of colonists killed by space plague
 
-	function space_plague()
+	function __construct()
 	{
 	}
 
@@ -34,12 +34,12 @@ class space_plague {
 		$log_language_data["french"]["title"] = "Kosmiline katk!";
 		$log_language_data["french"]["text"] = "Su planeeti [name] sektoris [sector] tabas kosmiline katk. [percentage] protsenti kolonistidest hukkus.";
 		$log_language_data["german"]["title"] = "Weltraum-Pest!";
-		$log_language_data["german"]["text"] = "Ihr Planet [name] im Sektor [sector] wurde von der Weltraumpest getroffen. [percentage] Prozent der Kolonisten wurden getцtet";
+		$log_language_data["german"]["text"] = "Ihr Planet [name] im Sektor [sector] wurde von der Weltraumpest getroffen. [percentage] Prozent der Kolonisten wurden gettet";
 		$log_language_data["italian"]["title"] = "Piaga Spaziale!";
-		$log_language_data["italian"]["text"] = "Il tuo pianeta [name] nel settore [sector] и stato colpito dalla Piaga Spaziale. Il [percentage] percento dei coloni и stato ucciso.";
-		$log_language_data["russian"]["title"] = "Космическая чума!";
-		$log_language_data["russian"]["text"] = "На вашей планете [name] в секторе [sector] разразилась космическая чума. [percentage] процентов населения погибло.";
-		$log_language_data["spanish"]["title"] = "ЎPlaga Espacial!";
+		$log_language_data["italian"]["text"] = "Il tuo pianeta [name] nel settore [sector]  stato colpito dalla Piaga Spaziale. Il [percentage] percento dei coloni  stato ucciso.";
+		$log_language_data["russian"]["title"] = " !";
+		$log_language_data["russian"]["text"] = "   [name]   [sector]   . [percentage]   .";
+		$log_language_data["spanish"]["title"] = "Plaga Espacial!";
 		$log_language_data["spanish"]["text"] = "Tu planeta [name] en el sector [sector] ha sido golpeado por una plaga espacial. El [percentage] por ciento de de los colonos fueron asesinados.";
 		$log_language_data["english"]["title"] = "Space Plague!";
 		$log_language_data["english"]["text"] = "Your planet [name] in sector [sector] has been hit by Space Plague. [percentage] percent of the colonists were killed.";

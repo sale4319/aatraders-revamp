@@ -1,12 +1,12 @@
 <?php
 class sentry {
-	var $class = "sentry";
-	var $type = 0;
-	var $l_probe_type;
-	var $l_probe_description;
+	public $class = "sentry";
+	public $type = 0;
+	public $l_probe_type;
+	public $l_probe_description;
 
 	// fill language variables
-	function sentry()
+	function __construct()
 	{
 		global $langdir;
 		switch ($langdir)
@@ -62,7 +62,7 @@ class sentry {
 		}
 	}
 
-	var $tag = "LOG5_PROBE_SENTRY";
+	public $tag = "LOG5_PROBE_SENTRY";
 
 	function log_switch_data()
 	{
