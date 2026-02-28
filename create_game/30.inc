@@ -657,7 +657,7 @@ if($file === false)
 }
 else
 {
-	$close_tag = "<?  return \$retvalue;
+	$close_tag = "<?php  return \$retvalue;
 }
 ?>";
 	fwrite($file, $close_tag); 

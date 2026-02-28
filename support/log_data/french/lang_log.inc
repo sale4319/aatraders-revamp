@@ -303,20 +303,12 @@ $l_log_title["LOG3_SPACE_PLAGUE"] = "Kosmiline katk!";
 $l_log_text["LOG3_SPACE_PLAGUE"] = "Su planeeti [name] sektoris [sector] tabas kosmiline katk. [percentage] protsenti kolonistidest hukkus.";
 ?>
 <?php
-$l_log_title["LOG3_PLASMA_STORM"] = "Plasmatorm!";
-$l_log_text["LOG3_PLASMA_STORM"] = "Su planeeti [name] sektoris [sector] tabas plasmatorm. Selle tagaj&auml;rjel h&auml;vis kogu varutud energia.";
-?>
-<?php
 $l_log_title["LOG3_PLANET_REVOLT"] = "Planetary Revolt";
 $l_log_text["LOG3_PLANET_REVOLT"] = "Too many people on your planet [name] in sector [sector] and they have revolted!!! Damages: [credits]% credits lost, [colonists]% colonists killed, [organics]% organics destroyed, [goods]% goods destroyed, [ore]% ore destroyed, [torps]% torps destroyed, [fighters]% fighters destroyed and [energy]% energy lost.";
 ?>
 <?php
-$l_log_title["LOG5_PROBE_WARP"] = "";
-$l_log_text["LOG5_PROBE_WARP"] = "";
-?>
-<?php
-$l_log_title["LOG5_PROBE_HUNTER"] = "";
-$l_log_text["LOG5_PROBE_HUNTER"] = "";
+$l_log_title["LOG3_PLASMA_STORM"] = "Plasmatorm!";
+$l_log_text["LOG3_PLASMA_STORM"] = "Su planeeti [name] sektoris [sector] tabas plasmatorm. Selle tagaj&auml;rjel h&auml;vis kogu varutud energia.";
 ?>
 <?php
 $l_log_title["LOG5_PROBE_SGSEARCH"] = "";
@@ -327,18 +319,26 @@ $l_log_title["LOG5_PROBE_SENTRY"] = "";
 $l_log_text["LOG5_PROBE_SENTRY"] = "";
 ?>
 <?php
-$l_log_title["LOG5_PROBE_SEEKER"] = "";
-$l_log_text["LOG5_PROBE_SEEKER"] = "";
+$l_log_title["LOG5_PROBE_HUNTER"] = "";
+$l_log_text["LOG5_PROBE_HUNTER"] = "";
 ?>
 <?php
-$l_log_title["LOG5_PROBE_REALSPACE"] = "";
-$l_log_text["LOG5_PROBE_REALSPACE"] = "";
+$l_log_title["LOG5_PROBE_TRAP"] = "";
+$l_log_text["LOG5_PROBE_TRAP"] = "";
+?>
+<?php
+$l_log_title["LOG5_PROBE_WARP"] = "";
+$l_log_text["LOG5_PROBE_WARP"] = "";
 ?>
 <?php
 $l_log_title["LOG5_PROBE_HUNTER_PROBE"] = "";
 $l_log_text["LOG5_PROBE_HUNTER_PROBE"] = "";
 ?>
 <?php
-$l_log_title["LOG5_PROBE_TRAP"] = "";
-$l_log_text["LOG5_PROBE_TRAP"] = "";
+$l_log_title["LOG5_PROBE_SEEKER"] = "";
+$l_log_text["LOG5_PROBE_SEEKER"] = "";
+?>
+<?php
+$l_log_title["LOG5_PROBE_REALSPACE"] = "";
+$l_log_text["LOG5_PROBE_REALSPACE"] = "";
 ?>

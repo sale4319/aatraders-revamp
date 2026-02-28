@@ -210,7 +210,7 @@ if($badsetup == 0)
 	}?>
 					</select><br><br>
 <?php
-	echo "Enter the admin password to begin: <input type=password name=admin_password size=20 maxlength=20>&nbsp;&nbsp;";
+	echo "Enter the admin password to begin: <input type=\"password\" name=\"admin_password\" size=\"30\" maxlength=\"50\">&nbsp;&nbsp;";
 	echo "<input type=hidden name=step value=10>";
 	echo "<input type=reset value=Reset>";
 }

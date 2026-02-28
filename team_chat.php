@@ -63,7 +63,7 @@ if($_SESSION['team_id']>0)
 <?php $chat->printChat();?>
 </body>
 </html>
-<?
+<?php
 }
 else
 {
@@ -73,6 +73,6 @@ else
 	window.close();
 //-->
 </script>
-<?
+<?php
 }
 ?> 

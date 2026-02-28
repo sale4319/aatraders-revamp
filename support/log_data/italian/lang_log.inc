@@ -304,20 +304,12 @@ $l_log_title["LOG3_SPACE_PLAGUE"] = "Piaga Spaziale!";
 $l_log_text["LOG3_SPACE_PLAGUE"] = "Il tuo pianeta [name] nel settore [sector] è stato colpito dalla Piaga Spaziale. Il [percentage] percento dei coloni è stato ucciso.";
 ?>
 <?php
-$l_log_title["LOG3_PLASMA_STORM"] = "Tempesta magnetica!";
-$l_log_text["LOG3_PLASMA_STORM"] = "Il tuo pianeta [name] nel settore [sector] è stato colpito da una tempesta magnetica. Tutta l'energia immagazzinata è andata persa.";
-?>
-<?php
 $l_log_title["LOG3_PLANET_REVOLT"] = "Rivolta planetaria!";
 $l_log_text["LOG3_PLANET_REVOLT"] = "Troppe persone sul tuo pianeta [name] nel settore [sector] e si sono rivoltati!! Danni: [credits]% dei crediti persi, [colonists]% dei coloni uccisi, [organics]% degli organici distrutti, [goods]% dei prodotti distrutti, [ore]% del metallo distrutto, [torps]% dei siluri esplosi, [fighters]% dei droni inutilizzabili e [energy]% dell'energia andata persa.";
 ?>
 <?php
-$l_log_title["LOG5_PROBE_WARP"] = "";
-$l_log_text["LOG5_PROBE_WARP"] = "";
-?>
-<?php
-$l_log_title["LOG5_PROBE_HUNTER"] = "";
-$l_log_text["LOG5_PROBE_HUNTER"] = "";
+$l_log_title["LOG3_PLASMA_STORM"] = "Tempesta magnetica!";
+$l_log_text["LOG3_PLASMA_STORM"] = "Il tuo pianeta [name] nel settore [sector] è stato colpito da una tempesta magnetica. Tutta l'energia immagazzinata è andata persa.";
 ?>
 <?php
 $l_log_title["LOG5_PROBE_SGSEARCH"] = "";
@@ -328,18 +320,26 @@ $l_log_title["LOG5_PROBE_SENTRY"] = "";
 $l_log_text["LOG5_PROBE_SENTRY"] = "";
 ?>
 <?php
-$l_log_title["LOG5_PROBE_SEEKER"] = "";
-$l_log_text["LOG5_PROBE_SEEKER"] = "";
+$l_log_title["LOG5_PROBE_HUNTER"] = "";
+$l_log_text["LOG5_PROBE_HUNTER"] = "";
 ?>
 <?php
-$l_log_title["LOG5_PROBE_REALSPACE"] = "";
-$l_log_text["LOG5_PROBE_REALSPACE"] = "";
+$l_log_title["LOG5_PROBE_TRAP"] = "";
+$l_log_text["LOG5_PROBE_TRAP"] = "";
+?>
+<?php
+$l_log_title["LOG5_PROBE_WARP"] = "";
+$l_log_text["LOG5_PROBE_WARP"] = "";
 ?>
 <?php
 $l_log_title["LOG5_PROBE_HUNTER_PROBE"] = "";
 $l_log_text["LOG5_PROBE_HUNTER_PROBE"] = "";
 ?>
 <?php
-$l_log_title["LOG5_PROBE_TRAP"] = "";
-$l_log_text["LOG5_PROBE_TRAP"] = "";
+$l_log_title["LOG5_PROBE_SEEKER"] = "";
+$l_log_text["LOG5_PROBE_SEEKER"] = "";
+?>
+<?php
+$l_log_title["LOG5_PROBE_REALSPACE"] = "";
+$l_log_text["LOG5_PROBE_REALSPACE"] = "";
 ?>

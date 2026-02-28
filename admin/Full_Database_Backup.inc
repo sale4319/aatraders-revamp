@@ -161,7 +161,7 @@ function get_def($dbname, $table)
 		$index[$kname][] = $row['Column_name'];
 		$result->MoveNext();
 	}
-	while(list($x, $columns) = @each($index))
+	foreach ($index as $x => $columns)
 	{
 		$def .= ",\n";
 		if($x == "PRIMARY")
@@ -267,7 +267,7 @@ function get_content($dbname, $table, $namelist) {
 ?>
 <tr>
 <td>
-<?
+<?php
 if($db_type == "mysql")
 {
 	if ($command=="BACKUP")
@@ -299,7 +299,7 @@ if($db_type == "mysql")
 
 		if($backup_encryption_type == 1)
 		{
-			$encrypt =& new encrypt( $ADODB_CRYPT_KEY );
+			$encrypt = new encrypt( $ADODB_CRYPT_KEY );
 		}
 
 		if($backup_encryption_type == 2)

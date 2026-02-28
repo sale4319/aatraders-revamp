@@ -98,14 +98,14 @@ if (!empty($content))
 
 				@set_time_limit(60);
 
-				$smtp =& new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
+				$smtp = new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
 				$smtp->setUsername($SMTP_User_Name);
 				$smtp->setPassword($SMTP_User_Password);
 
-				$swift =& new Swift($smtp);
+				$swift = new Swift($smtp);
 
 				//Create the message
-				$message =& new Swift_Message($subject, $content);
+				$message = new Swift_Message($subject, $content);
 				$e_response = $swift->send($message, $res->fields["email"], $SMTP_Email_Address);
 			}
 			if ($e_response > 0) 

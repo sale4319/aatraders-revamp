@@ -30,9 +30,9 @@ else
 echo "<tr onMouseover=\"ddrivetip('$title[1]', '$body[1]');\" onMouseout=\"hideddrivetip()\"><td>Number of Sectors &nbsp;</td><td><input type=text name=sektors size=5 maxlength=6 value=5000></td><td>[100-$max_sectors]</td></tr>";
 
 echo "<tr><td colspan=3><hr></td></tr>";
-echo "<tr onMouseover=\"ddrivetip('$title[2]', '$body[2]');\" onMouseout=\"hideddrivetip()\"><td>Alliance Password &nbsp;</td><td><input type=text name=alliance_password size=16 maxlength=16 value=$adminpass></td><td>&nbsp;</td></tr>";
-echo "<tr onMouseover=\"ddrivetip('$title[3]', '$body[3]');\" onMouseout=\"hideddrivetip()\"><td>Federation Password &nbsp;</td><td><input type=text name=federation_password size=16 maxlength=16 value=$adminpass></td><td>&nbsp;</td></tr>";
-echo "<tr onMouseover=\"ddrivetip('$title[4]', '$body[4]');\" onMouseout=\"hideddrivetip()\"><td>Independent Password &nbsp;</td><td><input type=text name=independent_password size=16 maxlength=16 value=$adminpass></td><td>&nbsp;</td></tr>";
+echo "<tr onMouseover=\"ddrivetip('$title[2]', '$body[2]');\" onMouseout=\"hideddrivetip()\"><td>Alliance Password &nbsp;</td><td><input type=text name=alliance_password size=30 maxlength=50 value=$adminpass></td><td>&nbsp;</td></tr>";
+echo "<tr onMouseover=\"ddrivetip('$title[3]', '$body[3]');\" onMouseout=\"hideddrivetip()\"><td>Federation Password &nbsp;</td><td><input type=text name=federation_password size=30 maxlength=50 value=$adminpass></td><td>&nbsp;</td></tr>";
+echo "<tr onMouseover=\"ddrivetip('$title[4]', '$body[4]');\" onMouseout=\"hideddrivetip()\"><td>Independent Password &nbsp;</td><td><input type=text name=independent_password size=30 maxlength=50 value=$adminpass></td><td>&nbsp;</td></tr>";
 
 echo "</table><br><br><table>";
 echo "<tr onMouseover=\"ddrivetip('$title[5]', '$body[5]');\" onMouseout=\"hideddrivetip()\"><td align=\"center\">Set the date you would like to schedule a game reset.	Set to all zeros for no reset date.<br><br>";

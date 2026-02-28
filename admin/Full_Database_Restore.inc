@@ -109,7 +109,7 @@ class encrypt
 ?>
 <tr>
 <td>
-<?
+<?php
 if($db_type == "mysql")
 {
 	if ($command=="RESTORE")
@@ -130,7 +130,7 @@ if($db_type == "mysql")
 
 		if($backup_encryption_type == 1)
 		{
-			$encrypt =& new encrypt( $ADODB_CRYPT_KEY );
+			$encrypt = new encrypt( $ADODB_CRYPT_KEY );
 		}
 
 		if($backup_encryption_type == 2)

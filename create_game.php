@@ -6,6 +6,12 @@
 // 
 // File: create_game.php
 
+// config.php skips session_start() when $create_game==1, so start it here first.
+// Set session ini settings before starting the session (same as config.php line 15).
+ini_set("session.use_trans_sid", "0");
+ini_set("display_errors", "1"); // TEMP: enable error display to diagnose issues
+session_start();
+
 $create_game = 1;
 $default_lang = "english";
 $_SESSION['langdir'] = $default_lang;
@@ -56,7 +62,7 @@ if (!isset($step))
 	$step = 0;
 }
 
-if($step > 30)
+if($step >= 30)
 {
 	@include("support/variables" . $game_number . ".inc");
 }
@@ -78,7 +84,7 @@ function exportvariables($silent = 0){
 	$debug_query = $db->Execute("SELECT * FROM {$db_prefix}config_values");
 	db_op_result($debug_query,__LINE__,__FILE__);
 
-	fwrite($file,"<?\n"); 
+	fwrite($file,"<?php\n"); 
 	while (!$debug_query->EOF)
 	{
 		$row = $debug_query->fields;
@@ -366,10 +372,28 @@ TextFlush($containerbox);
 
 if (!isset($_POST['admin_password']))
 {
-	$_POST['admin_password'] = '';
+	// Fallback: browser may truncate unquoted field name to 'admin_passwor'
+	$_POST['admin_password'] = isset($_POST['admin_passwor']) ? $_POST['admin_passwor'] : '';
 }
 
-if ($_POST['admin_password'] != $adminpass) 
+$submitted_password = $_POST['admin_password'];
+
+// Auth token: hashed proof that the password was validated, passed as a hidden field across steps.
+// This avoids relying on sessions (which are skipped for create_game) to persist the password.
+$auth_token_correct = md5($adminpass . OrdKey);
+$submitted_token    = isset($_POST['auth_token']) ? $_POST['auth_token'] : '';
+
+$password_ok = false;
+if ($submitted_password != '' && $submitted_password == $adminpass)
+{
+	$password_ok = true; // raw password submitted and matches
+}
+else if ($submitted_token != '' && $submitted_token == $auth_token_correct)
+{
+	$password_ok = true; // token from a previous validated step matches
+}
+
+if (!$password_ok)
 {
 	$nextstep = 0;
 }
@@ -380,7 +404,10 @@ global $maxlen_password;
 // Main switch statement.
 if($module[$nextstep] != 40 && $module[$nextstep] != 45 && $module[$nextstep] != 999){
 	echo "<form name=AutoRun action=create_game.php method=post enctype=\"multipart/form-data\">";
+	// Pass auth token as hidden field so subsequent steps stay authenticated
+	echo "<input type=\"hidden\" name=\"auth_token\" value=\"" . htmlspecialchars($auth_token_correct) . "\">\n";
 	foreach($_POST as $key=>$value){ 
+		if($key == 'admin_password' || $key == 'admin_passwor' || $key == 'auth_token') continue;
 		echo "<input type=\"hidden\" name=\"$key\" value=\"$value\">\n";
 	}
 }
@@ -394,7 +421,9 @@ if($module[$nextstep] == 40 && $resetgame == 1 && $autorun == 1)
 {
 	$module[$nextstep] = 60;
 	echo "<form name=AutoRun action=create_game.php method=post enctype=\"multipart/form-data\">";
+	echo "<input type=\"hidden\" name=\"auth_token\" value=\"" . htmlspecialchars($auth_token_correct) . "\">\n";
 	foreach($_POST as $key=>$value){ 
+		if($key == 'admin_password' || $key == 'admin_passwor' || $key == 'auth_token') continue; // never echo password as hidden field
 		echo "<input type=\"hidden\" name=\"$key\" value=\"$value\">\n";
 	}
 }

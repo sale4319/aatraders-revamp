@@ -1,4 +1,4 @@
-<?
+<?php
 function log_parse($entry)
 {
   global $l_log_title;

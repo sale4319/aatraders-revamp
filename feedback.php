@@ -96,14 +96,14 @@ else
 		}
 		else
 		{
-			$smtp =& new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
+			$smtp = new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
 			$smtp->setUsername($SMTP_User_Name);
 			$smtp->setPassword($SMTP_User_Password);
 
-			$swift =& new Swift($smtp);
+			$swift = new Swift($smtp);
 
 			//Create the message
-			$message =& new Swift_Message("AATRADE Email Injection attempt!", $message);
+			$message = new Swift_Message("AATRADE Email Injection attempt!", $message);
 			$e_response = $swift->send($message, $SMTP_Email_Address, $admin_mail);
 		}
 		AddELog($admin_mail,2,'N',$l_feedback_subj . $subject,$e_response);
@@ -114,14 +114,14 @@ else
 		}
 		else
 		{
-			$smtp =& new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
+			$smtp = new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
 			$smtp->setUsername($SMTP_User_Name);
 			$smtp->setPassword($SMTP_User_Password);
 
-			$swift =& new Swift($smtp);
+			$swift = new Swift($smtp);
 
 			//Create the message
-			$message =& new Swift_Message($l_feedback_subj, $msg);
+			$message = new Swift_Message($l_feedback_subj, $msg);
 			$e_response = $swift->send($message, $SMTP_Email_Address, $playerinfo['email']);
 		}
 		if ($e_response)

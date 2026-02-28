@@ -138,7 +138,7 @@ if ($playerfound)
 		db_op_result($debug_query,__LINE__,__FILE__);
 	}
 
-	$debug_query = $db->Execute("SELECT COUNT(ban_id) AS total FROM {$db_prefix}ip_bans WHERE '$ip' LIKE ban_mask OR '$playerinfo[ip_address]' LIKE ban_mask or email='$playerinfo[email]'");
+	$debug_query = $db->Execute("SELECT COUNT(ban_id) AS total FROM {$db_prefix}ip_bans WHERE (ban_mask != '' AND ('$ip' LIKE ban_mask OR '$playerinfo[ip_address]' LIKE ban_mask)) or (email != '' AND email='$playerinfo[email]')");
 	db_op_result($debug_query,__LINE__,__FILE__);
 
 	if ($debug_query->fields['total'] != 0)
@@ -367,14 +367,14 @@ else
 			require_once "backends/SwiftMailer/lib/Swift.php";
 			require_once "backends/SwiftMailer/lib/Swift/Connection/SMTP.php";
 
-			$smtp =& new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
+			$smtp = new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
 			$smtp->setUsername($SMTP_User_Name);
 			$smtp->setPassword($SMTP_User_Password);
 
-			$swift =& new Swift($smtp);
+			$swift = new Swift($smtp);
 
 			//Create the message
-			$message =& new Swift_Message("A Bad Login Attempt Detected", $msg);
+			$message = new Swift_Message("A Bad Login Attempt Detected", $msg);
 			$e_response = $swift->send($message, $playerinfo['email'], $SMTP_Email_Address);
 		}
 

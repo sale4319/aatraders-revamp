@@ -48,14 +48,14 @@ if (!$result->EOF)
 		require_once "backends/SwiftMailer/lib/Swift.php";
 		require_once "backends/SwiftMailer/lib/Swift/Connection/SMTP.php";
 
-		$smtp =& new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
+		$smtp = new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
 		$smtp->setUsername($SMTP_User_Name);
 		$smtp->setPassword($SMTP_User_Password);
 
-		$swift =& new Swift($smtp);
+		$swift = new Swift($smtp);
 
 		//Create the message
-		$message =& new Swift_Message($l_mail_topic, $msg);
+		$message = new Swift_Message($l_mail_topic, $msg);
 		$e_response = $swift->send($message, $mailplayer_info['email'], $SMTP_Email_Address);
 	}
 

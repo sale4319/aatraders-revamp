@@ -21,7 +21,7 @@ if (!isset($_SESSION['check_sessions']))
 }
 
 // DATABASE TYPES.
-$dbs = array('mysql' => 'MySQL');
+$dbs = array('mysqli' => 'MySQLi');
 
 function get_dirlist($dirPath)
 {
@@ -336,7 +336,7 @@ document.onmousemove=positiontip
 		$fs = fopen('config/config_master.php', 'w');
 
 		$data = '';
-		$data .= "<?\n";
+		$data .= "<?php\n";
 		$data .= "// $_game_name\n\n";
 		$data .= "// Automatically created configuration file. Do not change!\n";
 		$data .= "\nif (basename(\$_SERVER['PHP_SELF']) == \"config_master.php\")";

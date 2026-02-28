@@ -1,4 +1,4 @@
-<?
+<?php
 if (!function_exists('probe_detect'))
 {
 	function probe_detect( $probe_id )

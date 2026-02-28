@@ -103,14 +103,14 @@ if (filter_test($comments) or  filter_test($email))
 			require_once "backends/SwiftMailer/lib/Swift.php";
 			require_once "backends/SwiftMailer/lib/Swift/Connection/SMTP.php";
 
-			$smtp =& new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
+			$smtp = new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
 			$smtp->setUsername($SMTP_User_Name);
 			$smtp->setPassword($SMTP_User_Password);
 
-			$swift =& new Swift($smtp);
+			$swift = new Swift($smtp);
 
 			//Create the message
-			$message =& new Swift_Message("AATRADE Smtp Injection attempt!", $message);
+			$message = new Swift_Message("AATRADE Smtp Injection attempt!", $message);
 			$e_response = $swift->send($message, $SMTP_Email_Address, $admin_mail);
 		}
 	}
@@ -162,14 +162,14 @@ IPAddress: $remote_ip
 			require_once "backends/SwiftMailer/lib/Swift.php";
 			require_once "backends/SwiftMailer/lib/Swift/Connection/SMTP.php";
 
-			$smtp =& new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
+			$smtp = new Swift_Connection_SMTP($SMTP_Server_Address, $SMPT_Server_Port);
 			$smtp->setUsername($SMTP_User_Name);
 			$smtp->setPassword($SMTP_User_Password);
 
-			$swift =& new Swift($smtp);
+			$swift = new Swift($smtp);
 
 			//Create the message
-			$message =& new Swift_Message("AATRADERS Comment: $game_name", $message);
+			$message = new Swift_Message("AATRADERS Comment: $game_name", $message);
 			$e_response = $swift->send($message, $SMTP_Email_Address, $email);
 		}
 	}

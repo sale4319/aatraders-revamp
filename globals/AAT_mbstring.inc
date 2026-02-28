@@ -139,7 +139,7 @@ function AAT_ereg($pattern, $string, $regs='')
 	}
 	else
 	{
-		if ($length == '')
+		if ($regs == '')
 		{
 			return preg_match("/".$pattern."/", $string);
 		}
@@ -166,9 +166,9 @@ function AAT_eregi($pattern, $string, $regs='')
 	}
 	else
 	{
-		if ($length == '')
+		if ($regs == '')
 		{
-			return preg_match("/".$pattern."/u", $string);
+			return preg_match("/".$pattern."/", $string);
 		}
 		else
 		{
@@ -186,7 +186,7 @@ function AAT_ereg_replace($pattern, $replacement, $string)
 	}
 	else
 	{
-		return preg_replace("/".$pattern."/i", $replacement, $string);
+		return preg_replace("/".$pattern."/", $replacement, $string);
 	}
 }
 

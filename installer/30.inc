@@ -53,12 +53,14 @@
 
 	function validatestart()
 	{
-		if (document.forms[0].dbuname.value == "" && document.forms[0].dbhost.value != "localhost")
+		var host = document.forms[0].dbhost.value;
+		var isLocal = (host == "" || host == "localhost" || host == "127.0.0.1");
+		if (document.forms[0].dbuname.value == "" && !isLocal)
 		{
 			alert("Database username cannot be empty!");
 			return false;
 		}
-		if (document.forms[0].dbpass.value == "" && document.forms[0].dbhost.value != "localhost")
+		if (document.forms[0].dbpass.value == "" && !isLocal)
 		{
 			alert("Database password cannot be empty!");
 			return false;
@@ -114,17 +116,17 @@ function check_mysql_version () {
 
 	if($dbhost == "localhost")
 	{
-		$version = @mysql_get_client_info();
+		$version = @mysqli_get_client_info();
 		$versioncheck = AAT_ereg_replace("[^0-9.]","", $version);
 		$currentSplit = explode ('.', $versioncheck);
 	}
 	else
 	{
-		$link = mysql_connect($dbhost, $dbuname, $dbpass);
+		$link = mysqli_connect($dbhost, $dbuname, $dbpass);
 		if (!$link) {
-			die('Could not connect: ' . mysql_error());
+			die('Could not connect: ' . mysqli_connect_error());
 		}
-		$version = @mysql_get_server_info();
+		$version = @mysqli_get_server_info($link);
 		$versioncheck = AAT_ereg_replace("[^0-9.]","", $version);
 		$currentSplit = explode ('.', $versioncheck);
 	}
@@ -183,6 +185,7 @@ function md5_filecheck ($ini_file)
 	echo "<b>Scanning Game Files: </b><br>\n";
 	flush();
 	$lines = @file ($ini_file);
+	if (!is_array($lines)) $lines = array();
 	$good_md5 = true;
 	for($i = 0; $i < count($lines); $i++){
 		$variable = explode("=", trim($lines[$i]));
@@ -241,10 +244,11 @@ if($game_number == 0)
 }
 else
 {
-	$dbhost = "localhost";
-	$dbuname = '';
-	$dbpass = '';
-	$dbport = '';
+	// Pre-fill from master config so credentials are not blank for new games
+	$dbhost = !empty($ADODB_SESSION_CONNECT) ? $ADODB_SESSION_CONNECT : 'localhost';
+	$dbuname = !empty($ADODB_SESSION_USER) ? $ADODB_SESSION_USER : '';
+	$dbpass = !empty($ADODB_SESSION_PWD) ? $ADODB_SESSION_PWD : '';
+	$dbport = !empty($ADODB_SESSION_PORT) ? $ADODB_SESSION_PORT : '';
 }
 		echo "<tr><td ><font face=\"Verdana, Arial, Helvetica, sans-serif\" size=\"2\">Database username</font><br><font face=\"Verdana, Arial, Helvetica, sans-serif\" size=\"1\">This is the username for accessing the database.</font></td><td valign=\"middle\" ><input tabindex=3 type=text name=dbuname value=\"$dbuname\"></td></tr>";
 		echo "<tr><td ><font face=\"Verdana, Arial, Helvetica, sans-serif\" size=\"2\">Database password<br><font face=\"Verdana, Arial, Helvetica, sans-serif\" size=\"1\">This is the password for the database.</font></font></td><td valign=\"middle\" ><input tabindex=4 type=password name=dbpass value=\"$dbpass\"></td></tr>";
@@ -640,7 +644,7 @@ $rightside = "";
 			{
 				$v[2]  = isset($dbname) ? $dbname : '';
 			}
-			$v[1]  = isset($db_type) ? $db_type : 'mysql';
+			$v[1]  = isset($db_type) ? $db_type : 'mysqli';
 			$v[3]  = isset($dbuname) ? $dbuname : '';
 			$v[4]  = isset($dbpass) ? $dbpass : '';
 			$v[5]  = isset($dbhost) ? $dbhost : 'localhost';
@@ -671,7 +675,7 @@ $rightside = "";
 			$v[19]  = isset($game_name) ? $game_name : 'Enter the name of your game here';
 
 
-			echo "<form onSubmit=\"return checkform(this)\" action=\"installer.php\"  method=\"POST\" enctype=\"multipart/form-data\"  name=\"configure\" id=\"configure\">";
+			// No inner form needed — outer AutoRun form is used directly.
 ?>
 
 <table bgcolor="#000000" width="667" border="1" cellspacing="0" cellpadding="0" align="center">
@@ -684,7 +688,7 @@ $rightside = "";
             </td>
           </tr>
 		</table>
-<?			echo "<table width=\"100%\" border=\"1\" cellspacing=\"0\" cellpadding=\"3\" align=\"center\">\n";
+<?php			echo "<table width=\"100%\" border=\"1\" cellspacing=\"0\" cellpadding=\"3\" align=\"center\">\n";
 
 			echo "<tr><td ><font face=\"Verdana, Arial, Helvetica, sans-serif\" size=\"2\">Game Title<br><font face=\"Verdana, Arial, Helvetica, sans-serif\" size=\"1\">This is the title to use for the game.</font></font></td><td valign=\"middle\" nowrap><input tabindex=2 type=text name=_game_name value=\"$v[19]\"></td></tr>";
 			echo "<tr><td ><font face=\"Verdana, Arial, Helvetica, sans-serif\" size=\"2\">* Database type<br><font face=\"Verdana, Arial, Helvetica, sans-serif\" size=\"1\">The game works with MySQL.</font></td>";
@@ -718,12 +722,13 @@ $rightside = "";
 			echo "<input type=hidden name=\"step\" value=\"30\">";
 			echo "<input type=\"hidden\" name=\"game_number\" value=\"$game_number\">";
 			echo "<input type=hidden name=\"admin_password\" value=\"$admin_password\">";
+			echo "<input type=hidden name=\"master_password\" value=\"" . htmlspecialchars($master_password) . "\">";
 ?>
     <tr> 
       <td colspan="2"> 
         <div align="center"><font face="Verdana, Arial, Helvetica, sans-serif" size="2">
 		* = You should use the default settings. Don't change them unless you know what you are doing.<br><br>
-          <input tabindex=19 type="submit" name="Save Profile" value="Save Profile">
+          <input tabindex=19 type="submit" name="Save Profile" value="Save Profile" onclick="return checkform(document.forms[0])">
 		  </font>
         </div>
       </td>
@@ -732,7 +737,6 @@ $rightside = "";
 </td>
 </tr>
 </table>
-</form>
 <?php
 		}
 	}

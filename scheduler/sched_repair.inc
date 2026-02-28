@@ -14,7 +14,7 @@
 // is_loop - "Y" loop enlessly, "N" - execute the number of times indocated by spawn value
 // extra info - description of the schedule
 
-if($db_type == "mysql" and $db_mysql_type == "default"){
+if(in_array($db_type, ['mysql', 'mysqlt', 'mysqli']) and $db_mysql_type == "default"){
 
 	if($deoperror != 1)
 		TextFlush ("<b>Starting Database Repair Check</b><br><br>");

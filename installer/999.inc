@@ -6,11 +6,7 @@ if (!empty($_SERVER['HTTP_USER_AGENT']))
 {
 	$HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
 } 
-else if (!empty($HTTP_SERVER_VARS['HTTP_USER_AGENT'])) 
-{
-	$HTTP_USER_AGENT = $HTTP_SERVER_VARS['HTTP_USER_AGENT'];
-}
-else if (!isset($HTTP_USER_AGENT))
+else
 {
 	$HTTP_USER_AGENT = '';
 }

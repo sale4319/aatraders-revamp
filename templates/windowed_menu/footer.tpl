@@ -124,6 +124,8 @@
 {literal}
 <script language="javascript" type="text/javascript">
  var myi = {/literal}{$seconds_until_update}{literal};
+ var _stored_myi = parseInt(sessionStorage.getItem('aatimer') || '0');
+ if (_stored_myi > 0 && _stored_myi < myi) { myi = _stored_myi; }
  setTimeout("rmyx();",1000);
 
   function rmyx()
@@ -133,6 +135,7 @@
 	 {
 		 myi = {/literal}{$scheduler_ticks}{literal} * 60;
 	 }
+	sessionStorage.setItem('aatimer', myi);
 	document.getElementById("myx").innerHTML = myi;
 	setTimeout("rmyx();",1000);
    }

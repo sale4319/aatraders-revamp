@@ -58,6 +58,9 @@ require_once ("config/config_sched.php");
 
 scheduler_log("Scheduler Started","\n");
 
+if (!isset($template_object) || is_null($template_object)) {
+	$template_object = new stdClass();
+}
 $template_object->enable_gzip = 0;
 
 $langdir = $default_lang;

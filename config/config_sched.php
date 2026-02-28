@@ -16,18 +16,8 @@ error_reporting (E_ALL ^ E_NOTICE);
 
 include ("globals/AAT_mbstring.inc");
 
-if (get_magic_quotes_gpc())
-{
-	function strip_gpc_slashes(&$array)
-	{
-		if (!is_array ($array))
-			return;
-		foreach($array as $key => $val)
-			is_array( $array[$key] ) ? strip_gpc_slashes($array[$key]) : ($array[$key] = stripslashes ($array[$key]));
-	}
-	$gpc = array(&$_GET, &$_POST);
-	strip_gpc_slashes($gpc);
-}
+// get_magic_quotes_gpc() was deprecated in PHP 7.4 and removed in PHP 8.0.
+// Magic quotes are always off in PHP 7+, so this block is skipped.
 
 function decoder($data, $key = "aatrade") {
 	$result = '';
@@ -80,7 +70,7 @@ if(!empty($encoded) && $encoded != '')
 			$variable[1] = trim($variable[1]);
 
 			if($variable[0]){
-				$$variable[0] = $variable[1];
+				${$variable[0]} = $variable[1];
 			}
 		}
 		if($enable_pseudo_cron == 1 && @ini_get("allow_url_fopen") == 1)
@@ -122,12 +112,11 @@ if (!$result)
 	die ("Unable to connect to the database");
 }
 
-$version = @mysql_get_server_info();
+// Disable strict mode for MySQL 5.7+ compatibility
+$db->Execute("SET SESSION sql_mode = 'NO_ENGINE_SUBSTITUTION'");
+
+$version = @mysqli_get_server_info($db->connectionId);
 $versioncheck = AAT_ereg_replace("[^0-9.]","", $version);
-if (strnatcmp($versioncheck, '5.0.2') >= 0)
-{
-	$debug_query = $db->Execute("SET sql_mode = ''");
-}
 
 $mbstring_supported = 0;
 

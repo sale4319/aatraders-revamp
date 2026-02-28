@@ -44,7 +44,7 @@ elseif ($action == "closegame")
 	$debug_query = $db->Execute("SELECT * FROM {$db_prefix}config_values");
 	db_op_result($debug_query,__LINE__,__FILE__);
 
-	fwrite($file,"<?\n"); 
+	fwrite($file,"<?php\n"); 
 	while (!$debug_query->EOF && $debug_query)
 	{
 		$row = $debug_query->fields;

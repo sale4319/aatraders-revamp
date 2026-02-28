@@ -41,10 +41,10 @@ else
 	$template_object->assign("templatename", $templatename);
 }
 
-for (reset($_POST); list($commod_type) = each($_POST);)
-{  
+foreach ($_POST as $commod_type => $_post_unused)
+{
 	$totalplanets = 0;
-	for (reset($_POST[$commod_type]); list($key) = each($_POST[$commod_type]);)
+	foreach ($_POST[$commod_type] as $key => $_inner_unused)
 	{
 		$prodpercent = $_POST[$commod_type][$key];
 		if($prodpercent < 0)

@@ -27,16 +27,16 @@ function e_rand($min=false,$max=false){
 	}
 }
 
-if ($HTTP_GET_VARS['op'] == "") {
+if ($_GET['op'] == "") {
 	echo "<IMG SRC=\"./templates/default/images/casino/roulette/layout-clean.gif\"><br><br>\n";
 	echo "You stroll over to the Roulette Table.<br><br>";
 	echo "The dealer gives you a sideways glance. He mumbles so low you have a hard time hearing.<br><br>";
 	echo "The house limit is 500 credits per bet...<br><br>Place a minimum bet of 100 credits if you would like to play, otherwise ";
 	echo "get the hell away from my table you cheap idiot.<br><br>";
-	$HTTP_GET_VARS['op'] = "placebet";
+	$_GET['op'] = "placebet";
 }
 
-if ($HTTP_GET_VARS['op'] == "placebet") {
+if ($_GET['op'] == "placebet") {
 	echo "How much would you like to bet?<br>";
 	echo "<form action='roulette.php?op=mybet' method='POST'>
 		  <input name='mybet' id='mybet'>
@@ -47,8 +47,8 @@ if ($HTTP_GET_VARS['op'] == "placebet") {
 		  </script>";
 }
 
-if ($HTTP_GET_VARS['op'] == "mybet") {
-	$mybet=$HTTP_POST_VARS['mybet'];
+if ($_GET['op'] == "mybet") {
+	$mybet=$_POST['mybet'];
 	if ($mybet > $playerinfo['credits']) {
 		echo "You do not have $mybet credits.<br>";
 		echo "<a href=roulette.php?op=placebet>Continue<br></a>";
@@ -57,16 +57,16 @@ if ($HTTP_GET_VARS['op'] == "mybet") {
 		echo "<a href=roulette.php?op=placebet>Continue<br></a>";
 	} elseif ($mybet > 500) {
 		echo "House limit is 500 gold, your bet is accepted as 500 credits.<br>";
-		$HTTP_POST_VARS['mybet']=500;
-		$HTTP_GET_VARS['op']="picknums";
+		$_POST['mybet']=500;
+		$_GET['op']="picknums";
 	} else {
-		$HTTP_GET_VARS['op']="picknums";
+		$_GET['op']="picknums";
 	}
 }
 
-if ($HTTP_GET_VARS['op']=="picknums") {
-	$bet=abs((int)$HTTP_GET_VARS['mybet']+(int)$HTTP_POST_VARS['mybet']);
-	if ($HTTP_GET_VARS['try']=="") {
+if ($_GET['op']=="picknums") {
+	$bet=abs((int)$_GET['mybet']+(int)$_POST['mybet']);
+	if ($_GET['try']=="") {
 		echo "<IMG SRC=\"./templates/default/images/casino/roulette/layout-2.gif\"><br><br>\n";
 		echo "You have bet $bet credits. Choose your -type- of bet...:<br><br>";
 		echo "Inside bets: (also called layout bets)<br><br>
@@ -98,7 +98,7 @@ if ($HTTP_GET_VARS['op']=="picknums") {
 		echo "<a href=roulette.php?op=picknums&mybet=$bet&try=Y>Y - red/black<br></a>";
 		echo "<a href=roulette.php?op=picknums&mybet=$bet&try=Z>Z - 1 to 18/19 to 36<br></a>";
 	} else {
-		$try=$HTTP_GET_VARS['try'];
+		$try=$_GET['try'];
 		$tbet=AAT_strtolower($try);
 		$layoutpic="layout-";
 				switch($tbet) {
@@ -112,13 +112,13 @@ if ($HTTP_GET_VARS['op']=="picknums") {
 				break;
 		}
 		$layoutpic .= ".gif";
-		if ($HTTP_POST_VARS['typea']=="B") { 
+		if ($_POST['typea']=="B") { 
 			$layoutpic="layout-clean.gif"; 
 		}
 		echo "<IMG SRC=\"./templates/default/images/casino/roulette/$layoutpic\"><br><br>\n";
-		if ($HTTP_GET_VARS['illegalbet']=="Y") {
+		if ($_GET['illegalbet']=="Y") {
 			echo "PAY ATTENTION AND CHOOSE A NUMBER THATS ON THE TABLE STUPID!<br><br>";
-			$HTTP_GET_VARS['illegalbet']="";
+			$_GET['illegalbet']="";
 		}
 		echo "You have selected to place a type-$try bet.<br><br>";
 		switch($try) {
@@ -137,7 +137,7 @@ if ($HTTP_GET_VARS['op']=="picknums") {
 				break;
 			case "B":
 				// B - 2 numbers, Split 17:1	 *** 57 choices to pick from ***
-				if ($HTTP_POST_VARS['typea']!="B") {
+				if ($_POST['typea']!="B") {
 					echo "Select your -FIRST- number, then we'll take you to the next screen. (Valid: 1-36)<br>";
 					echo "<form action='roulette.php?op=picknums&try=B' method='POST'>
 					  	<input name='mynum' id='mynum'>
@@ -149,7 +149,7 @@ if ($HTTP_GET_VARS['op']=="picknums") {
 							document.getElementById('mynum').focus();
 						</script>";
 				} else {
-					$mynum=$HTTP_POST_VARS['mynum'];
+					$mynum=$_POST['mynum'];
 					if ($mynum<1 || $mynum>36) { 
 						echo "<META HTTP-EQUIV=\"Refresh\" CONTENT=\"0;URL=roulette.php?op=picknums&mybet=$bet&try=B&illegalbet=Y\">";
 					}
@@ -348,14 +348,14 @@ if ($HTTP_GET_VARS['op']=="picknums") {
 	}
 }
 
-if ($HTTP_GET_VARS['op']=="spin") {
-	$mybet=abs((int)$HTTP_GET_VARS['mybet']+(int)$HTTP_POST_VARS['mybet']);
-		$mynum=$HTTP_POST_VARS['mynum']; 
+if ($_GET['op']=="spin") {
+	$mybet=abs((int)$_GET['mybet']+(int)$_POST['mybet']);
+		$mynum=$_POST['mynum']; 
 		if (!$mynum) { 
-			$mynum=$HTTP_GET_VARS['mynum']; 
+			$mynum=$_GET['mynum']; 
 		}
 	$mlen=AAT_strlen($mynum);
-	if ($HTTP_POST_VARS['typea']!="A") { 
+	if ($_POST['typea']!="A") { 
 		$bet=AAT_substr($mynum,0,1); 
 		$type=AAT_substr($mynum,1,$mlen-1);
 		switch($bet) {
@@ -625,26 +625,26 @@ if ($HTTP_GET_VARS['op']=="spin") {
 
 	// *** debug'n output - not needed for gameplay ***
 
-	// output("<br>`bDEBUG: op = ".$HTTP_GET_VARS[op]."`b<br>");
+	// output("<br>`bDEBUG: op = ".$_GET[op]."`b<br>");
 	// output("`bDEBUG: mynum = ".$mynum."`b<br>");
 	// output("`bDEBUG: mybet = ".$mybet."`b<br>");
-	// output("`bDEBUG: typea = ".$HTTP_POST_VARS[typea]."`b<br>");
-	// output("`bDEBUG: drop = ".$HTTP_POST_VARS[drop]."`b<br>");
+	// output("`bDEBUG: typea = ".$_POST[typea]."`b<br>");
+	// output("`bDEBUG: drop = ".$_POST[drop]."`b<br>");
 	// output("`bDEBUG: bet = ".$bet."`b<br>");
 	// output("`bDEBUG: type = ".$type."`b<br>");
 	// output("`bDEBUG: payout = ".$payout."`b<br><br>");
 
-	if ($HTTP_POST_VARS['drop']!="yes") {
+	if ($_POST['drop']!="yes") {
 		echo "AND THERE THE BALL SPINS! YES! OMG! SO MUCH FUN! LOOK AT IT GO...<br><br>";
 		echo "<IMG SRC=\"./templates/default/images/casino/roulette/wheel.gif\"><br><br>\n";
 		echo "<form action='roulette.php?op=spin' method='POST'>
 		  	<input type='hidden' name='mynum' value=$mynum>
 		  	<input type='hidden' name='mybet' value=$mybet>
-		  	<input type='hidden' name='typea' value=$HTTP_POST_VARS[typea]>
+		  	<input type='hidden' name='typea' value=$_POST[typea]>
 		  	<input type='hidden' name='drop' value='yes'>
 		  	<input type='submit' class='button' value='STOP THE WHEEL!'>
 			</form>";
-	} else if ($HTTP_POST_VARS['drop']=="yes") {
+	} else if ($_POST['drop']=="yes") {
 		$youwon=0; 
 		$win=e_rand(1,38); 
 		$winpic=$win;
@@ -657,7 +657,7 @@ if ($HTTP_GET_VARS['op']=="spin") {
 		$showwin = $winpic;
 		$winpic .= ".gif";
 		$red=array(1=>1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36);
-		while (list($key,$val)=each($red)){
+		foreach ($red as $key => $val) {
 			if ($win==$val) { 
 				$color="Red"; 
 			}
@@ -670,7 +670,7 @@ if ($HTTP_GET_VARS['op']=="spin") {
 		echo "<IMG SRC=\"./templates/default/images/casino/roulette/$winpic\" align=center>\n";
 		echo " [ ".$color." ".$showwin." ]<br><br>";
 		if ($payout!=38) {
-			while (list($key,$val)=each($betarray)){
+			foreach ($betarray as $key => $val) {
 				if ($win==$val) { 
 					$youwon=1; 
 				}
@@ -691,12 +691,12 @@ if ($HTTP_GET_VARS['op']=="spin") {
 			echo "You lost $mybet credits from the Roulette table.<br><br>";
 			//debuglog("lost $mybet credits from the Roulette table");
 		}
-		$HTTP_GET_VARS['op']="";
+		$_GET['op']="";
 	}
 }
 
-if ($HTTP_GET_VARS['op']!="spin") {
-	if ($HTTP_GET_VARS['op']!="picknums") { 
+if ($_GET['op']!="spin") {
+	if ($_GET['op']!="picknums") { 
 		echo "<a href=port.php>port.phpReturn to the Casino<br></a>";
 		echo "<a href=roulette.php>Play Again<br></a>";
 	}

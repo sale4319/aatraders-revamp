@@ -1,4 +1,4 @@
-<?
+<?php
 function log_parse($entry)
 {
   global $l_log_title;
@@ -745,19 +745,6 @@ case "LOG9_PROBE_SCAN_SHIP":
   }
 ?>
 <?php
-  if($entry['type'] == "LOG3_PLASMA_STORM")
-  {
-	list($name,$sector,$percentage) = AAT_split ("\|", $entry['data']);
-	$resx = $db->SelectLimit("SELECT sector_name from {$db_prefix}universe WHERE sector_id =" . $sector, 1);
-	db_op_result($resx,__LINE__,__FILE__);
-	$sector = $resx->fields['sector_name'];
-	$retvalue['text'] = str_replace("[name]", "<font color=white><b>$name</b></font>", $l_log_text[$entry['type']]);
-	$retvalue['text'] = str_replace("[sector]", "<font color=white><b><a href=main.php?move_method=real&engage=1&destination=$sector>$sector</a></b></font>", $retvalue['text']);
-	$retvalue['text'] = str_replace("[percentage]", "<font color=white><b>$percentage</b></font>", $retvalue['text']);
-	$retvalue['title'] = $l_log_title[$entry['type']];
-  }
-?>
-<?php
   if($entry['type'] == "LOG3_PLANET_REVOLT")
   {
 	list($name,$sector,$organics,$goods,$ore,$torps,$col,$credit,$fighter,$energy) = AAT_split ("\|", $entry['data']);
@@ -777,6 +764,19 @@ case "LOG9_PROBE_SCAN_SHIP":
 	$retvalue['title'] = $l_log_title[$entry['type']];
   }
 ?>
-<?  return $retvalue;
+<?php
+  if($entry['type'] == "LOG3_PLASMA_STORM")
+  {
+	list($name,$sector,$percentage) = AAT_split ("\|", $entry['data']);
+	$resx = $db->SelectLimit("SELECT sector_name from {$db_prefix}universe WHERE sector_id =" . $sector, 1);
+	db_op_result($resx,__LINE__,__FILE__);
+	$sector = $resx->fields['sector_name'];
+	$retvalue['text'] = str_replace("[name]", "<font color=white><b>$name</b></font>", $l_log_text[$entry['type']]);
+	$retvalue['text'] = str_replace("[sector]", "<font color=white><b><a href=main.php?move_method=real&engage=1&destination=$sector>$sector</a></b></font>", $retvalue['text']);
+	$retvalue['text'] = str_replace("[percentage]", "<font color=white><b>$percentage</b></font>", $retvalue['text']);
+	$retvalue['title'] = $l_log_title[$entry['type']];
+  }
+?>
+<?php  return $retvalue;
 }
 ?>

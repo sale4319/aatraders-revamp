@@ -173,7 +173,7 @@ else
 
 	$_game_name = stripslashes($_game_name);
 	$data = '';
-	$data .= "<?\n";
+	$data .= "<?php\n";
 	$data .= "// $_game_name\n\n";
 	$data .= "// Automatically created configuration file. Do not change!\n";
 	$data .= "\nif (basename(\$_SERVER['PHP_SELF']) == \"config_local" . $game_number . ".php\")";

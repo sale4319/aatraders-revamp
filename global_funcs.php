@@ -36,7 +36,7 @@ function checklogin()
 	global $start_fighters, $start_armor, $start_energy, $noreturn, $silent, $create_game, $refreshcount, $refresh_max, $idle_max;
 	global $server_closed, $player_online_timelimit, $l_global_limitreached;
 	global $l_login_closed_message, $onlinetime_left, $tournament_setup_access, $enable_mass_logging;
-//echo print_r($_SESSION) . "<br>";
+
 	if ($_SESSION['session_player_id'] == '' || empty($_SESSION['session_player_id']))
 	{
 		if($noreturn != 1)
@@ -50,9 +50,8 @@ function checklogin()
 	$debug_query = $db->SelectLimit("SELECT {$db_prefix}players.*, {$db_prefix}teams.team_name, {$db_prefix}teams.id
 								FROM {$db_prefix}players
 								LEFT JOIN {$db_prefix}teams ON {$db_prefix}players.team = {$db_prefix}teams.id
-								WHERE {$db_prefix}players.player_id=$_SESSION[session_player_id]", 1);
+								WHERE {$db_prefix}players.player_id={$_SESSION['session_player_id']}", 1);
 	db_op_result($debug_query,__LINE__,__FILE__);
-//	$debug_query = $db->SelectLimit("SELECT * FROM {$db_prefix}players WHERE player_id='$_SESSION[session_player_id]'", 1);
 	$playerinfo = $debug_query->fields;
 	$_SESSION['character_name'] = $playerinfo['character_name'];
 	$_SESSION['team_name'] = $playerinfo['team_name'];
@@ -94,7 +93,6 @@ function checklogin()
 
 	if($time_diff / 60 > $idle_max || $refreshcount >= $refresh_max)
 	{
-//		echo rawurldecode($_SERVER['PHP_SELF']) . "</br>";
 		$_SESSION['artifact'] = 0;
 		if (stristr($_SERVER['PHP_SELF'], "team_forum.php") || 
 		stristr($_SERVER['PHP_SELF'], "casino.php") || 
@@ -108,7 +106,7 @@ function checklogin()
 		else
 		{
 			$stamp = date("Y-m-d H:i:s", (TIME() - 360));
-			$debug_query = $db->Execute("UPDATE {$db_prefix}players SET last_login='$stamp', logged_out='Y', profile_cached='Y', player_total_online=player_total_online+$time_diff, player_online_time=player_online_time+$time_diff, sessionid='' WHERE player_id = $playerinfo[player_id]");
+			$debug_query = $db->Execute("UPDATE {$db_prefix}players SET last_login='$stamp', logged_out='Y', profile_cached='Y', player_total_online=player_total_online+$time_diff, player_online_time=player_online_time+$time_diff, sessionid='' WHERE player_id = {$playerinfo['player_id']}");
 
 			session_destroy();
 			if($noreturn != 1)
@@ -135,22 +133,22 @@ function checklogin()
 
 	$silent = $temp;
 
-	$debug_query = $db->SelectLimit("SELECT * FROM {$db_prefix}ships WHERE player_id=$playerinfo[player_id] AND ship_id=$playerinfo[currentship]", 1);
+	$debug_query = $db->SelectLimit("SELECT * FROM {$db_prefix}ships WHERE player_id={$playerinfo['player_id']} AND ship_id={$playerinfo['currentship']}", 1);
 	db_op_result($debug_query,__LINE__,__FILE__);
 	$shipinfo = $debug_query->fields;
 	$debug_query->close();
 
-	$shipdevice = $db->GetToFieldArray("SELECT * FROM {$db_prefix}ship_devices WHERE ship_id=$playerinfo[currentship]", '', 'class');
-	$shipcommodities = $db->GetToFieldArray("SELECT * FROM {$db_prefix}ship_holds WHERE ship_id=$playerinfo[currentship]", '', 'cargo_name');
+	$shipdevice = $db->GetToFieldArray("SELECT * FROM {$db_prefix}ship_devices WHERE ship_id={$playerinfo['currentship']}", '', 'class');
+	$shipcommodities = $db->GetToFieldArray("SELECT * FROM {$db_prefix}ship_holds WHERE ship_id={$playerinfo['currentship']}", '', 'cargo_name');
 
-	$result2 = $db->SelectLimit("SELECT * FROM {$db_prefix}universe WHERE sector_id='$shipinfo[sector_id]'", 1);
+	$result2 = $db->SelectLimit("SELECT * FROM {$db_prefix}universe WHERE sector_id='{$shipinfo['sector_id']}'", 1);
 	db_op_result($result2,__LINE__,__FILE__);
 	$sectorinfo = $result2->fields;
 	$result2->close();
 
 	if ($shipinfo['cleared_defenses'] > ' ')
 	{
-		header("location: $shipinfo[cleared_defenses]\n");
+		header("location: {$shipinfo['cleared_defenses']}\n");
 	}
 
 	if ($playerinfo['destroyed'] == "Y") // Check for destroyed ship
@@ -189,25 +187,22 @@ function checklogin()
 
 	if($flag != 1)
 	{
-		$debug_query = $db->Execute("UPDATE {$db_prefix}players SET last_login='$stamp', player_total_online=player_total_online+$time_diff, player_online_time=player_online_time+$time_diff WHERE player_id = $playerinfo[player_id]");
+		$debug_query = $db->Execute("UPDATE {$db_prefix}players SET last_login='$stamp', player_total_online=player_total_online+$time_diff, player_online_time=player_online_time+$time_diff WHERE player_id = {$playerinfo['player_id']}");
 	}
 
 	if($playerinfo['admin_extended_logging'] == 1 || $enable_mass_logging == 1)
 	{
+		$get_data = '';
+		$post_data = '';
 		if (!empty($_GET)) {
 			$get_data = print_r($_GET, true);
-		} else if (!empty($HTTP_GET_VARS)) {
-			$get_data = print_r($HTTP_GET_VARS, true);
 		}
 
 		if (!empty($_POST)) {
 			$post_data = print_r($_POST, true);
-		} else if (!empty($HTTP_POST_VARS)) {
-			$post_data = print_r($HTTP_POST_VARS, true);
 		}
-
 		$query = "INSERT INTO {$db_prefix}admin_extended_logging (player_id, time,  request_uri, get_data, post_data, score, ip_address, currentship, credits, turns, player_online_time) 
-		VALUES ($playerinfo[player_id], '$stamp', " . $db->qstr($_SERVER['REQUEST_URI']) . ", " . $db->qstr($get_data) . ", " . $db->qstr($post_data) . ", $playerinfo[score], '$playerinfo[ip_address]', $playerinfo[currentship], $playerinfo[credits], $playerinfo[turns], $player_onlinetime_left)"; 
+		VALUES ({$playerinfo['player_id']}, '$stamp', " . $db->qstr($_SERVER['REQUEST_URI']) . ", " . $db->qstr($get_data) . ", " . $db->qstr($post_data) . ", {$playerinfo['score']}, '{$playerinfo['ip_address']}', {$playerinfo['currentship']}, {$playerinfo['credits']}, {$playerinfo['turns']}, $player_onlinetime_left)"; 
 		$debug_query = $db->Execute($query);
 		db_op_result($debug_query,__LINE__,__FILE__);
 	}
@@ -279,7 +274,7 @@ function phpChangePlanetSDDelta($desiredvalue,$currentvalue)
 	return (mypw($planet_SD_upgrade_factor, $desiredvalue) - mypw($planet_SD_upgrade_factor, $currentvalue)) * $upgrade_cost;
 }
 
-function phpMaxCreditsDelta($desiredvalue,$currentvalue)
+function phpMaxCreditsDelta($desiredvalue)
 {
 	global $upgrade_cost, $planet_upgrade_factor;
 
@@ -340,22 +335,18 @@ function NUM_SHIELDS($level_shields)
 	return NUM_PER_LEVEL($level_shields);
 }
 
-function SCAN_SUCCESS($level_scan, $level_cloak, $hullsize = 0)
+// Shared core: compute a raw scan success ratio from scanner vs cloak levels.
+function calc_scan_ratio($level_scan, $level_cloak)
 {
-	if($hullsize > 0)
-	{
-		$level_cloak += ( 150 - $hullsize);
-	}
-
-	$level_scan = max(0.01, $level_scan);
+	$level_scan  = max(0.01, $level_scan);
 	$level_cloak = max(0.01, $level_cloak);
 	$success = $level_scan / $level_cloak;
-	if($success > 1)
+	if ($success > 1)
 	{
 		$success = -$level_cloak / $level_scan;
 		$success = 60 + (50 - (abs($success) * 50));
 	}
-	else if($success == 1)
+	elseif ($success == 1)
 	{
 		$success = 50;
 	}
@@ -363,43 +354,35 @@ function SCAN_SUCCESS($level_scan, $level_cloak, $hullsize = 0)
 	{
 		$success = ($success * 50) - 10;
 	}
+	return $success;
+}
+
+function SCAN_SUCCESS($level_scan, $level_cloak, $hullsize = 0)
+{
+	if ($hullsize > 0)
+	{
+		$level_cloak += (150 - $hullsize);
+	}
+	$success = calc_scan_ratio($level_scan, $level_cloak);
 	$success = min(max($success, 1), 90);
 	return floor($success);
 }
 
 function SCAN_ERROR($level_scan, $level_cloak, $correct_value)
 {
-	$level_scan = max(0.01, $level_scan);
-	$level_cloak = max(0.01, $level_cloak);
-	$success = $level_scan / $level_cloak;
-	if($success > 1)
-	{
-		$success = -$level_cloak / $level_scan;
-		$success = 60 + (50 - (abs($success) * 50));
-	}
-	else if($success == 1)
-	{
-		$success = 50;
-	}
-	else
-	{
-		$success = ($success * 50) - 10;
-	}
-	$success = min(max($success, 1), 100);
-
+	$success  = calc_scan_ratio($level_scan, $level_cloak);
+	$success  = min(max($success, 1), 100);
 	$sc_error = 100 - floor($success);
 
-	if(mt_rand(1, 100) <= $sc_error)
+	if (mt_rand(1, 100) <= $sc_error)
 	{
-		// scan errored and returned false info
+		// Scan failed — return a distorted value
 		$halfpercent = floor($sc_error / 2);
 		$sc_error = floor($correct_value * (mt_rand((100000 - ($halfpercent * 1000)), (100000 + ($halfpercent * 1000)))) / 100000);
 	}
 	else
 	{
-		// scan worked and returned almost correct info
-		// 99% to 101% of the correct value
-		$sc_error = floor($correct_value * (mt_rand(99999, 100999) / 100000));
+		// Scan succeeded — return exact value
 		$sc_error = $correct_value;
 	}
 	return $sc_error;
@@ -407,14 +390,9 @@ function SCAN_ERROR($level_scan, $level_cloak, $correct_value)
 
 function get_dirlist($dirPath)
 {
-	if ($handle = opendir($dirPath)) 
-	{
-		while (false !== ($file = readdir($handle))) 
-			if ($file != "." && $file != "..") 
-				$filesArr[] = trim($file);
-			closedir($handle);
-	}
-	return $filesArr; 
+	if (!is_dir($dirPath))
+		return [];
+	return array_values(array_map('trim', array_diff(scandir($dirPath), ['.', '..'])));
 }
 
 function update_player_experience($player_id, $experience){
@@ -422,7 +400,6 @@ function update_player_experience($player_id, $experience){
 
 	$debug_query = $db->Execute("UPDATE {$db_prefix}players SET experience=GREATEST(experience + $experience, 0) WHERE player_id=$player_id");
 	db_op_result($debug_query,__LINE__,__FILE__);
-//	adminlog("LOG0_RAW","UPDATE {$db_prefix}players SET experience=GREATEST(experience + $experience, 0) WHERE player_id=$player_id");
 }
 
 // remove all non-numerics but leave decimal point
@@ -442,9 +419,7 @@ function StripNonNum($str)
 }
 
 function close_database(){
-	global $db;
-
-//	$db->close();
+	// Intentionally left empty; connection cleanup is handled by ADOdb on shutdown.
 }
 
 function sign( $data )
@@ -465,7 +440,7 @@ function sign( $data )
 
 function db_op_result($query,$served_line,$served_page)
 {
-	global $db, $db_prefix, $silent, $_SERVER, $cumulative, $db_type;
+	global $db, $db_prefix, $silent, $cumulative, $db_type;
 
 	if ($db->ErrorNo() == 0)
 	{
@@ -477,7 +452,7 @@ function db_op_result($query,$served_line,$served_page)
 	else
 	{
 		$temp_error = $db->ErrorMsg();
-		$dberror = "A Database error occurred in " . $served_page . " on line " . ($served_line-1) . " (called from: $_SERVER[PHP_SELF]): " . $temp_error . " - Original SQL: " . $db->sql;
+		$dberror = "A Database error occurred in " . $served_page . " on line " . ($served_line-1) . " (called from: {$_SERVER['PHP_SELF']}): " . $temp_error . " - Original SQL: " . $db->sql;
 		$dberror = AAT_ereg_replace("'","&#039;",$dberror); // Allows the use of apostrophes.
 		adminlog("LOG0_ADMIN_DBERROR", $dberror);
 		$cumulative = 1; // For areas with multiple actions needing status - 0 is all good so far, 1 is at least one bad.
@@ -501,7 +476,7 @@ function db_op_result($query,$served_line,$served_page)
 
 function template_display($templatename, $templatefile)
 {
-	global $template_object, $default_template;
+	global $template_object, $default_template, $gameroot;
 
 	if(is_file($gameroot.$templatename.$templatefile)){
 		$template_object->display($templatename.$templatefile);

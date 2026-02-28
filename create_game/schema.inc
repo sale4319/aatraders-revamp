@@ -78,7 +78,7 @@ function create_schema()
 	global $float_type;
 	global $mbstring_supported;
 
-	if($db_type == "mysql" and $db_mysql_type == "InnoDB"){
+	if(in_array($db_type, ['mysql', 'mysqlt', 'mysqli']) and $db_mysql_type == "InnoDB"){
 		$database_type = 'InnoDB';
 	}
 	else
@@ -193,7 +193,7 @@ $db->debug=1;
 			}
 			else
 			{
-				if($db_type == "mysql" and $db_mysql_type == "InnoDB")
+				if(in_array($db_type, ['mysql', 'mysqlt', 'mysqli']) and $db_mysql_type == "InnoDB")
 				{
 					$db->Execute("ALTER TABLE " . $$db_prefix . str_replace(".xml", "", $filelist[$c]) . " Engine=INNODB");
 				}

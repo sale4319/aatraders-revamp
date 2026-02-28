@@ -1,4 +1,4 @@
-<?
+<?php
 // 2: Shoutbox
 // This tool will display all shouts in the game, most recent first.  You can edit or add new shouts.
 

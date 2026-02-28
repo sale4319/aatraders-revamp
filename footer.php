@@ -62,7 +62,7 @@ if($index_page != 1)
 	$mySEC = ($sched_ticks * 60) - ($unixstamp-strtotime($row));
 	if ($mySEC <= 0)
 	{
-		$mySEC = 1;
+		$mySEC = $sched_ticks * 60;
 	}
 
 	if ($online == 0)

@@ -323,7 +323,7 @@ else if (window.attachEvent)
 
 </script>
 <table id="Table_01" width="772" border="0" cellpadding="0" cellspacing="0" align="center">
-<?
+<?php
 if ($admin_password == '')
 {
 ?>
@@ -346,7 +346,7 @@ if ($admin_password == '')
 		<td>
 			<img src="images/admin/admin_03.gif" width="772" height="40" alt=""></td>
 	</tr>
-<?
+<?php
 }
 else
 {
@@ -355,7 +355,7 @@ else
 		<td>
 			<img src="images/admin/admin_01a.gif" width="772" height="30" alt=""></td>
 	</tr>
-<?
+<?php
 }
 ?>
 </table>
@@ -399,7 +399,7 @@ if ($admin_password != $adminpass || $admin_password == md5($adminpass))
 	}?>
 					</select><br><br>
 <?php
-	echo "Password: <input type=password name=admin_password size=20 maxlength=20>&nbsp;&nbsp;";
+	echo "Password: <input type=\"password\" name=\"admin_password\" size=\"30\" maxlength=\"50\">&nbsp;&nbsp;";
 	echo "<input type=submit value=Submit><input type=reset value=Reset>";
 	echo "</form></div></td></tr>";
 }
@@ -434,7 +434,7 @@ else
 <ul id="treemenu">
 	<li><a href="#">View</a>
 		<ul>
-			<?
+			<?php
 			for($i = 0; $i < $count; $i++)
 			{
 				if($menuselection[$i] == 1)
@@ -447,7 +447,7 @@ else
 	</li>
 	<li><a href="#">Edit</a>
 		<ul>
-			<?
+			<?php
 			for($i = 0; $i < $count; $i++)
 			{
 				if($menuselection[$i] == 2)
@@ -460,7 +460,7 @@ else
 	</li>
 	<li><a href="">Update</a>
 		<ul>
-			<?
+			<?php
 			for($i = 0; $i < $count; $i++)
 			{
 				if($menuselection[$i] == 8)
@@ -473,7 +473,7 @@ else
 	</li>
 	<li><a href="#">Message</a>
 		<ul>
-			<?
+			<?php
 			for($i = 0; $i < $count; $i++)
 			{
 				if($menuselection[$i] == 3)
@@ -486,7 +486,7 @@ else
 	</li>
 	<li><a href="#">Scheduler</a>
 		<ul>
-			<?
+			<?php
 			for($i = 0; $i < $count; $i++)
 			{
 				if($menuselection[$i] == 4)
@@ -499,7 +499,7 @@ else
 	</li>
 	<li><a href="#">Backup</a>
 		<ul>
-			<?
+			<?php
 			for($i = 0; $i < $count; $i++)
 			{
 				if($menuselection[$i] == 5)
@@ -512,7 +512,7 @@ else
 	</li>
 	<li><a href="#">Restore</a>
 		<ul>
-			<?
+			<?php
 			for($i = 0; $i < $count; $i++)
 			{
 				if($menuselection[$i] == 6)
@@ -525,7 +525,7 @@ else
 	</li>
 	<li><a href="">Reset</a>
 		<ul>
-			<?
+			<?php
 			for($i = 0; $i < $count; $i++)
 			{
 				if($menuselection[$i] == 7)
@@ -557,7 +557,7 @@ echo "The average CPU load is: ".$cpuload->load["cpu"]."%<br>\n";
 </div>
 </td>
 </tr>
-	<?
+	<?php
 	if (empty($menu))
 	{
 		adminlog("LOG0_RAW","Admin Login successful from $login_ip");

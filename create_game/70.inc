@@ -6,7 +6,7 @@ $fedsecs = intval($_POST['sektors'] * ($_POST['fedsecs_percentage'] / 100));
 if ($fedsecs > $_POST['sektors']) 
 {
 	echo "The number of Federation sectors must be smaller than the size of the universe!";
-	break;
+	return;
 }
 
 if ($_POST['linksper'] > $link_max)

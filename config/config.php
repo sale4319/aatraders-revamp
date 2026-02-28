@@ -1,4 +1,3 @@
-
 <?php
 // This program is free software; you can redistribute it and/or modify it   
 // under the terms of the GNU General Public License as published by the     
@@ -13,11 +12,11 @@ if (preg_match("/config.php/i", $_SERVER['PHP_SELF']))
   die();
 }
 
-ini_set ("session.use_trans_sid","0"); // Otherwise, on re-login, it will append a session id on the url - blech.
+@ini_set ("session.use_trans_sid","0"); // Otherwise, on re-login, it will append a session id on the url - blech.
 include ("globals/global_declare.inc");
 include ("globals/AAT_mbstring.inc");
 
-if (get_magic_quotes_gpc())
+if (PHP_VERSION_ID < 80000 && function_exists('get_magic_quotes_gpc') && @get_magic_quotes_gpc())
 {
 	function strip_gpc_slashes(&$array)
 	{
@@ -121,7 +120,11 @@ function connectdb()
 		die ("Unable to connect to the database");
 	}
 
-	$version = @mysql_get_server_info();
+	// Disable strict mode and zero-date rejection for MySQL 5.7+ compatibility
+	// (schema uses datetime NOT NULL default '0000-00-00 00:00:00')
+	$db->Execute("SET SESSION sql_mode = 'NO_ENGINE_SUBSTITUTION'");
+
+	$version = @mysqli_get_server_info($db->connectionId);
 	$versioncheck=preg_replace("/[^0-9.]/", "",$version); 
 	
 
@@ -144,7 +147,7 @@ if ((!isset($create_game)) || ($create_game == ''))
 }
 
 //echo $_SESSION['lag_delay_time'];
-if ($_SESSION['currentprogram'] == $_SERVER['PHP_SELF'] && ($_SESSION['lag_delay_time'] >= time() || $_SESSION['lag_delay_time'] == 0))
+if ($create_game != 1 && $_SESSION['currentprogram'] == $_SERVER['PHP_SELF'] && ($_SESSION['lag_delay_time'] >= time() || $_SESSION['lag_delay_time'] == 0))
 {
 	echo"<script language=\"javascript\" type=\"text/javascript\">{ alert('Please wait for the page to load!'); }</script>";
 	echo "<table border=0 cellspacing=0 cellpadding=2 width=\"100%\" align=center>
