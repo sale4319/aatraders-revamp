@@ -121,33 +121,58 @@
 {/if}
 
 {if $index_page != 1}
+<table width="100%" border=0 cellspacing=0 cellpadding=0>
+	<tr>		  
+	  <td align=center class="footer"><b><span id=myx class="footer"></span></b> {$footer_until_update} <br> 
+{$footer_players_online} - {$footer_players_open}<br>
+<a href="news.php" class="footer">{$l_footer_news}</a></td>
+	</tr>			   
+  </table>
 {literal}
 <script language="javascript" type="text/javascript">
  var myi = {/literal}{$seconds_until_update}{literal};
- var _stored_myi = parseInt(sessionStorage.getItem('aatimer') || '0');
- if (_stored_myi > 0 && _stored_myi < myi) { myi = _stored_myi; }
+ document.getElementById("myx").innerHTML = myi;
  setTimeout("rmyx();",1000);
 
-  function rmyx()
+ var _hbPending = false;
+ function _sendHeartbeat() {
+  if (_hbPending) return;
+  _hbPending = true;
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'ajax_processor.php?command=heartbeat', true);
+  xhr.onloadend = function() { _hbPending = false; };
+  xhr.send();
+ }
+
+ var _idleMaxMs = {/literal}{$idle_max}{literal} * 60 * 1000;
+ var _lastActivity = Date.now();
+ ['mousemove','mousedown','keydown','touchstart','scroll'].forEach(function(e) {
+  document.addEventListener(e, function() { _lastActivity = Date.now(); }, {passive: true});
+ });
+
+ function rmyx()
    {
 	myi = myi - 1;
 	if (myi <= 0)
 	 {
 		 myi = {/literal}{$scheduler_ticks}{literal} * 60;
+		 _sendHeartbeat();
 	 }
-	sessionStorage.setItem('aatimer', myi);
+	else
+	 {
+		 if (myi == 10) { _sendHeartbeat(); }
+	 }
 	document.getElementById("myx").innerHTML = myi;
 	setTimeout("rmyx();",1000);
    }
+ setInterval(function() {
+  if (Date.now() - _lastActivity < _idleMaxMs) { _sendHeartbeat(); }
+ }, 120000);
+ document.addEventListener('visibilitychange', function() {
+  if (!document.hidden) { _sendHeartbeat(); }
+ });
 </script>
 {/literal}
-<table width="100%" border=0 cellspacing=0 cellpadding=0>
-	<tr>		  
-	  <td align=center class="footer"><b><span id=myx class="footer">{$seconds_until_update}</span></b> {$footer_until_update} <br> 
-{$footer_players_online} - {$footer_players_open}<br>
-<a href="news.php" class="footer">{$l_footer_news}</a></td>
-	</tr>			   
-  </table>
 {/if}
 		{if $player_online_timelimit != 0}
 {literal}

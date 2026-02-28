@@ -117,6 +117,7 @@ if (isset($template_object))
 	$template_object->assign("footer_until_update", $l_footer_until_update);
 	$template_object->assign("footer_type", $footer_type);
 	$template_object->assign("scheduler_ticks", $sched_ticks);
+	$template_object->assign("idle_max", $idle_max);
 	$template_object->assign("l_footer_news", $l_footer_news);
 	$template_object->assign("l_footer_title", $l_footer_title);
 	$template_object->assign("l_here", $l_here);

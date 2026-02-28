@@ -14,6 +14,10 @@ if (preg_match("/config_sched.php/i", $_SERVER['PHP_SELF']))
 
 error_reporting (E_ALL ^ E_NOTICE);
 
+// Anchor PHP to UTC — keeps PHP's time() aligned with MySQL's UNIX_TIMESTAMP()
+// in the scheduler context as well.
+date_default_timezone_set('UTC');
+
 include ("globals/AAT_mbstring.inc");
 
 // get_magic_quotes_gpc() was deprecated in PHP 7.4 and removed in PHP 8.0.
@@ -114,6 +118,9 @@ if (!$result)
 
 // Disable strict mode for MySQL 5.7+ compatibility
 $db->Execute("SET SESSION sql_mode = 'NO_ENGINE_SUBSTITUTION'");
+
+// Pin MySQL session timezone to UTC — mirrors the setting in config.php.
+$db->Execute("SET time_zone='+00:00'");
 
 $version = ($db->connectionId instanceof mysqli) ? mysqli_get_server_info($db->connectionId) : '';
 $versioncheck = AAT_ereg_replace("[^0-9.]", "", $version);

@@ -13,6 +13,13 @@ if (preg_match("/config.php/i", $_SERVER['PHP_SELF']))
 }
 
 ini_set('session.use_trans_sid', '0'); // Otherwise, on re-login, it will append a session id on the url - blech.
+
+// Anchor PHP to UTC so that PHP's time() and MySQL's UNIX_TIMESTAMP() always
+// agree. Without this, a DST changeover or server migration can cause
+// strtotime($last_login) in checklogin() to miscompute the idle diff and
+// instantly log everyone out.
+date_default_timezone_set('UTC');
+
 include ("globals/global_declare.inc");
 include ("globals/AAT_mbstring.inc");
 
@@ -124,6 +131,10 @@ function connectdb()
 	// (schema uses datetime NOT NULL default '0000-00-00 00:00:00')
 	$db->Execute("SET SESSION sql_mode = 'NO_ENGINE_SUBSTITUTION'");
 
+	// Pin MySQL session timezone to UTC to match PHP (see date_default_timezone_set above).
+	// Prevents UNIX_TIMESTAMP(last_login) from drifting against PHP's time() during DST.
+	$db->Execute("SET time_zone='+00:00'");
+
 	$version = ($db->connectionId instanceof mysqli) ? mysqli_get_server_info($db->connectionId) : '';
 	$versioncheck = preg_replace('/[^0-9.]/', '', $version);
 
@@ -146,7 +157,15 @@ if ((!isset($create_game)) || ($create_game == ''))
 }
 
 //echo $_SESSION['lag_delay_time'];
-if ($create_game != 1 && $_SESSION['currentprogram'] == $_SERVER['PHP_SELF'] && ($_SESSION['lag_delay_time'] >= time() || $_SESSION['lag_delay_time'] == 0))
+// Compare both PHP_SELF *and* REQUEST_URI (includes query string) so that
+// navigating to the same script with different parameters (e.g. main.php →
+// main.php?lobby_mode=end) is NOT treated as a same-page reload and does NOT
+// incorrectly trigger the lag-delay block.
+if ($create_game != 1
+	&& $_SESSION['currentprogram'] == $_SERVER['PHP_SELF']
+	&& isset($_SESSION['currenturi']) && $_SESSION['currenturi'] == $_SERVER['REQUEST_URI']
+	&& ($_SESSION['lag_delay_time'] >= time() || $_SESSION['lag_delay_time'] == 0)
+	&& !stristr($_SERVER['PHP_SELF'], 'ajax_processor.php'))
 {
 	echo"<script language=\"javascript\" type=\"text/javascript\">{ alert('Please wait for the page to load!'); }</script>";
 	echo "<table border=0 cellspacing=0 cellpadding=2 width=\"100%\" align=center>
@@ -177,19 +196,28 @@ if ($create_game != 1 && $_SESSION['currentprogram'] == $_SERVER['PHP_SELF'] && 
 
 $_SESSION['lag_delay_time'] = 0;
 $_SESSION['currentprogram'] = $_SERVER['PHP_SELF'];
+$_SESSION['currenturi']     = $_SERVER['REQUEST_URI'];
 
-$_SESSION['refreshprogram'] = $_SESSION['loadprogram'];
-$_SESSION['refreshuri'] = $_SESSION['loaduri'];
-$_SESSION['loadprogram'] = $_SERVER['PHP_SELF'];
-$_SESSION['loaduri'] = $_SERVER['REQUEST_URI'];
+// Skip refresh-count tracking for AJAX/heartbeat requests.
+// The heartbeat pings the same URL (ajax_processor.php?command=heartbeat)
+// every 3 minutes; without this guard each ping increments refreshcount,
+// and after refresh_max pings checklogin() fires the idle-logout even though
+// the player is actively using the game.
+if (!stristr($_SERVER['PHP_SELF'], 'ajax_processor.php'))
+{
+	$_SESSION['refreshprogram'] = $_SESSION['loadprogram'];
+	$_SESSION['refreshuri'] = $_SESSION['loaduri'];
+	$_SESSION['loadprogram'] = $_SERVER['PHP_SELF'];
+	$_SESSION['loaduri'] = $_SERVER['REQUEST_URI'];
 
-if($_SESSION['refreshprogram'] == $_SESSION['loadprogram'] && $_SESSION['refreshuri'] == $_SESSION['loaduri'])
-{
-	$_SESSION['refreshcount']++;
-}
-else
-{
-	$_SESSION['refreshcount'] = 0;
+	if($_SESSION['refreshprogram'] == $_SESSION['loadprogram'] && $_SESSION['refreshuri'] == $_SESSION['loaduri'])
+	{
+		$_SESSION['refreshcount']++;
+	}
+	else
+	{
+		$_SESSION['refreshcount'] = 0;
+	}
 }
 
 $refreshcount = $_SESSION['refreshcount'];
