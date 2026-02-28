@@ -1,7 +1,7 @@
-<?
+<?php
 	/** Libchart - PHP chart library
 	*	
-	* Copyright (C) 2005-2006 Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
+	* Copyright (C) 2005-2006 Jean-Marc Trmeaux (jm.tremeaux at gmail.com)
 	* 	
 	* This library is free software; you can redistribute it and/or
 	* modify it under the terms of the GNU Lesser General Public
@@ -29,7 +29,7 @@
 	/**
 	* Base chart class
 	*
-	* @author   Jean-Marc Trémeaux (jm.tremeaux at gmail.com)
+	* @author   Jean-Marc Trmeaux (jm.tremeaux at gmail.com)
 	* @abstract
 	*/
 

@@ -28,11 +28,11 @@ class mysqlt_extend_ADOConnection extends mysqlt_extend_EXTENDER
 	 * @return		0 if not supported, otherwise a sequence id
 	 */
 
- 	var $_genIDSQL = "update %s set id=LAST_INSERT_ID(id+1);";
-	var $_genSeqSQL = "create table %s (id int not null)";
-	var $_genSeq2SQL = "insert into %s values (%s)";
-	var $_dropSeqSQL = "drop table %s";
-	var $genID = 0;
+ 	public $_genIDSQL = "update %s set id=LAST_INSERT_ID(id+1);";
+	public $_genSeqSQL = "create table %s (id int not null)";
+	public $_genSeq2SQL = "insert into %s values (%s)";
+	public $_dropSeqSQL = "drop table %s";
+	public $genID = 0;
 
 	function GenID($seqname='adodbseq', $startID=1)
 	{

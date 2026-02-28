@@ -169,33 +169,33 @@ function &NewDataDictionary(&$connection, $dbtype=false)
 
 class ADOConnection
 {
-	var $connectionId = false;
-	var $record_set = false;
-	var $database;
-	var $dbtype;
-	var $host;
-	var $open;
-	var $password;
-	var $username;
-	var $persistent;
-	var $debug = false;
-	var $debug_echo = true;
-	var $debug_output;
-	var $forcenewconnection = false;
-	var $createdatabase = false;
-	var $last_module_name;
-	var $socket = false;
-	var $port = false;
-	var $clientFlags = 0;
-	var $nameQuote = '"';
-	var $sysDate = false; /// name of function that returns the current date
-	var $sysTimeStamp = false; /// name of function that returns the current timestamp
-	var $sql;
-	var $raiseErrorFn = false;
-	var $query_count = 0;
-	var $query_time_total = 0;
+	public $connectionId = false;
+	public $record_set = false;
+	public $database;
+	public $dbtype;
+	public $host;
+	public $open;
+	public $password;
+	public $username;
+	public $persistent;
+	public $debug = false;
+	public $debug_echo = true;
+	public $debug_output;
+	public $forcenewconnection = false;
+	public $createdatabase = false;
+	public $last_module_name;
+	public $socket = false;
+	public $port = false;
+	public $clientFlags = 0;
+	public $nameQuote = '"';
+	public $sysDate = false; /// name of function that returns the current date
+	public $sysTimeStamp = false; /// name of function that returns the current timestamp
+	public $sql;
+	public $raiseErrorFn = false;
+	public $query_count = 0;
+	public $query_time_total = 0;
 
-	function ADOConnection()
+	function __construct()
 	{
 	}
 
@@ -347,8 +347,8 @@ class ADOConnection
 
 class ADORecordSet_empty
 {
-	var $fields = false;
-	var $EOF = true;
+	public $fields = false;
+	public $EOF = true;
 	function MoveNext() {return;}
 	function RecordCount() {return 0;}
 	function FieldCount() {return 0;}
@@ -357,9 +357,9 @@ class ADORecordSet_empty
 }
 
 class ADOFieldObject { 
-	var $name = '';
-	var $max_length=0;
-	var $type="";
+	public $name = '';
+	public $max_length=0;
+	public $type="";
 }
 
 ?>

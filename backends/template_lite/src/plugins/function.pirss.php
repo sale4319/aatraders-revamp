@@ -1,4 +1,4 @@
-<?
+<?php
 #Powerweb
 #Powerweb (c)2006 by Jan Czarnowski	(piratos@coftware.de)
 #This project's homepage is: http://piratos.byethost33.com

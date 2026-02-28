@@ -43,13 +43,13 @@ eval('class mssql_date_EXTENDER extends '. $last_module . '_ADOConnection { }');
 
 class mssql_date_ADOConnection extends mssql_date_EXTENDER
 {
-	var $fmtDate = "'Y-m-d'";
-	var $fmtTimeStamp = "'Y-m-d H:i:s'";
-	var $emptyDate = '&nbsp;';
-	var $emptyTimeStamp = '&nbsp;';
-	var $sysDate = 'convert(datetime,convert(char,GetDate(),102),102)';
-	var $sysTimeStamp = 'GetDate()';
-	var $isoDates = false; /// accepts dates in ISO format
+	public $fmtDate = "'Y-m-d'";
+	public $fmtTimeStamp = "'Y-m-d H:i:s'";
+	public $emptyDate = '&nbsp;';
+	public $emptyTimeStamp = '&nbsp;';
+	public $sysDate = 'convert(datetime,convert(char,GetDate(),102),102)';
+	public $sysTimeStamp = 'GetDate()';
+	public $isoDates = false; /// accepts dates in ISO format
 
 	function Time()
 	{
@@ -321,9 +321,9 @@ eval('class mssql_date_resultset_EXTENDER extends '. $last_module . '_ResultSet 
 
 class mssql_date_ResultSet extends mssql_date_resultset_EXTENDER
 {
-	var $emptyTimeStamp = '&nbsp;'; /// what to display when $time==0
-	var $emptyDate = '&nbsp;'; /// what to display when $time==0
-	var $datetime = false;
+	public $emptyTimeStamp = '&nbsp;'; /// what to display when $time==0
+	public $emptyDate = '&nbsp;'; /// what to display when $time==0
+	public $datetime = false;
 
 	function UserTimeStamp($v, $fmt='Y-m-d H:i:s')
 	{

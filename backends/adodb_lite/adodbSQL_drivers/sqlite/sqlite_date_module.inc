@@ -12,13 +12,13 @@ eval('class sqlite_date_EXTENDER extends '. $last_module . '_ADOConnection { }')
 
 class sqlite_date_ADOConnection extends sqlite_date_EXTENDER
 {
-	var $fmtDate = "'Y-m-d'";	/// used by DBDate() as the default date format used by the database
-	var $fmtTimeStamp = "'Y-m-d H:i:s'";
-	var $emptyDate = '&nbsp;';
-	var $emptyTimeStamp = '&nbsp;';
-	var $sysDate = "adodb_date('Y-m-d')";
-	var $sysTimeStamp = "adodb_date('Y-m-d H:i:s')";
-	var $isoDates = false; /// accepts dates in ISO format
+	public $fmtDate = "'Y-m-d'";	/// used by DBDate() as the default date format used by the database
+	public $fmtTimeStamp = "'Y-m-d H:i:s'";
+	public $emptyDate = '&nbsp;';
+	public $emptyTimeStamp = '&nbsp;';
+	public $sysDate = "adodb_date('Y-m-d')";
+	public $sysTimeStamp = "adodb_date('Y-m-d H:i:s')";
+	public $isoDates = false; /// accepts dates in ISO format
 
 	function Time()
 	{
@@ -195,9 +195,9 @@ eval('class sqlite_date_resultset_EXTENDER extends '. $last_module . '_ResultSet
 
 class sqlite_date_ResultSet extends sqlite_date_resultset_EXTENDER
 {
-	var $emptyTimeStamp = '&nbsp;'; /// what to display when $time==0
-	var $emptyDate = '&nbsp;'; /// what to display when $time==0
-	var $datetime = false;
+	public $emptyTimeStamp = '&nbsp;'; /// what to display when $time==0
+	public $emptyDate = '&nbsp;'; /// what to display when $time==0
+	public $datetime = false;
 
 	function UserTimeStamp($v, $fmt='Y-m-d H:i:s')
 	{

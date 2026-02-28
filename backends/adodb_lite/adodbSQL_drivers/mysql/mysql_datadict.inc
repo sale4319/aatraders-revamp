@@ -15,15 +15,15 @@
 if (!defined('ADODB_DIR')) die();
 
 class ADODB2_mysql extends ADODB_DataDict {
-	var $dbtype = 'mysql';
-	var $alterCol = ' MODIFY COLUMN';
-	var $alterTableAddIndex = true;
-	var $dropTable = 'DROP TABLE IF EXISTS %s'; // requires mysql 3.22 or later
+	public $dbtype = 'mysql';
+	public $alterCol = ' MODIFY COLUMN';
+	public $alterTableAddIndex = true;
+	public $dropTable = 'DROP TABLE IF EXISTS %s'; // requires mysql 3.22 or later
 	
-	var $dropIndex = 'DROP INDEX %s ON %s';
-	var $renameColumn = 'ALTER TABLE %s CHANGE COLUMN %s %s %s';	// needs column-definition!
-	var $metaTablesSQL = "SHOW TABLES";	
-	var $metaColumnsSQL = "SHOW COLUMNS FROM %s";
+	public $dropIndex = 'DROP INDEX %s ON %s';
+	public $renameColumn = 'ALTER TABLE %s CHANGE COLUMN %s %s %s';	// needs column-definition!
+	public $metaTablesSQL = "SHOW TABLES";	
+	public $metaColumnsSQL = "SHOW COLUMNS FROM %s";
 	
 	function MetaType($t,$len=-1,$fieldobj=false)
 	{

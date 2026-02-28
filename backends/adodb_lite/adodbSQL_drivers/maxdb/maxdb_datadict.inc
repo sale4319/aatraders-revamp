@@ -16,8 +16,8 @@ if (!defined('ADODB_DIR')) die();
 
 class ADODB2_maxdb extends ADODB_DataDict {
 
-	var $dbtype = 'maxdb';
-	var $seqField = false;
+	public $dbtype = 'maxdb';
+	public $seqField = false;
 
  	function ActualType($meta)
 	{

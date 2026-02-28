@@ -9,11 +9,11 @@
 
 class gladius_driver_ADOConnection extends ADOConnection
 {
-	var $nameQuote = '';		// identifier delimiters not supported!
-	var $sysDate = 'DATE()';	// function not yet available! (v0.3)
-	var $sysTimeStamp = 'NOW()';// function not yet available! (v0.3)
+	public $nameQuote = '';		// identifier delimiters not supported!
+	public $sysDate = 'DATE()';	// function not yet available! (v0.3)
+	public $sysTimeStamp = 'NOW()';// function not yet available! (v0.3)
 
-	var $g;	// instance of Gladius engine
+	public $g;	// instance of Gladius engine
 
 	function gladius_driver_ADOConnection()
 	{

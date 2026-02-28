@@ -16,9 +16,9 @@ if (!defined('ADODB_DIR')) die();
 
 class ADODB2_sybase_ase extends ADODB_DataDict {
 
-	var $dbtype = 'sybase_ase';
-	var $dropIndex = 'DROP INDEX %2$s.%1$s';
-	var $seqField = false;
+	public $dbtype = 'sybase_ase';
+	public $dropIndex = 'DROP INDEX %2$s.%1$s';
+	public $seqField = false;
 
  	function ActualType($meta)
 	{

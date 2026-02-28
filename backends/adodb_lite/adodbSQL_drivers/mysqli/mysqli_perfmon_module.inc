@@ -31,12 +31,12 @@ eval('class mysqli_perfmon_EXTENDER extends perfmon_parent_ADOConnection { }');
 
 class mysqli_perfmon_ADOConnection extends mysqli_perfmon_EXTENDER
 {	
-	var $upperCase = 'upper';
-	var $substr = "substring";
+	public $upperCase = 'upper';
+	public $substr = "substring";
 	
-	var $tablesSQL = 'show table status';
+	public $tablesSQL = 'show table status';
 	
-	var $createTableSQL = "CREATE TABLE adodb_logsql (
+	public $createTableSQL = "CREATE TABLE adodb_logsql (
 		  created datetime NOT NULL,
 		  sql0 varchar(250) NOT NULL,
 		  sql1 text NOT NULL,
@@ -45,7 +45,7 @@ class mysqli_perfmon_ADOConnection extends mysqli_perfmon_EXTENDER
 		  timer decimal(16,6) NOT NULL
 		)";
 		
-	var $settings = array(
+	public $settings = array(
 	'Ratios',
 		'MyISAM cache hit ratio' => array('RATIO',
 			'=GetKeyHitRatio',
@@ -328,8 +328,8 @@ class mysqli_perfmon_ADOConnection extends mysqli_perfmon_EXTENDER
 	}
 	
     // start hack 
-    var $optimizeTableLow = 'CHECK TABLE %s FAST QUICK';
-    var $optimizeTableHigh = 'OPTIMIZE TABLE %s';
+    public $optimizeTableLow = 'CHECK TABLE %s FAST QUICK';
+    public $optimizeTableHigh = 'OPTIMIZE TABLE %s';
     
     /** 
      * @see adodb_perf#optimizeTable

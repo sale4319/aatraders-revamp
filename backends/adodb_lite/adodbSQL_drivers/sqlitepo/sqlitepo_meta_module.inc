@@ -16,9 +16,9 @@ eval('class sqlitepo_meta_EXTENDER extends '. $last_module . '_ADOConnection { }
 
 class sqlitepo_meta_ADOConnection extends sqlitepo_meta_EXTENDER
 {
-	var $metaTablesSQL = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name";
-	var $metaColumnsSQL = "SHOW COLUMNS FROM %s";
-	var $fetchMode=false;
+	public $metaTablesSQL = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name";
+	public $metaColumnsSQL = "SHOW COLUMNS FROM %s";
+	public $fetchMode=false;
 
 	function MetaError($err=false)
 	{

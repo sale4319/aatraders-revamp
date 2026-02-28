@@ -28,7 +28,7 @@ class maxdb_extend_ADOConnection extends maxdb_extend_EXTENDER
 	 * @return		0 if not supported, otherwise a sequence id
 	 */
 
-	var $genID = 0;
+	public $genID = 0;
 
 	function GenID($seqname='adodbseq', $startID=1)
 	{

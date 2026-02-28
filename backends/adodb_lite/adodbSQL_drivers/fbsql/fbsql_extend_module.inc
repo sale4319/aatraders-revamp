@@ -27,7 +27,7 @@ class fbsql_extend_ADOConnection extends fbsql_extend_EXTENDER
 	 * @param startID		if sequence does not exist, start at this ID
 	 * @return		0 if not supported, otherwise a sequence id
 	 */
-	var $genID = 0;
+	public $genID = 0;
 
 	function GenID($seqname='adodbseq', $startID=1)
 	{

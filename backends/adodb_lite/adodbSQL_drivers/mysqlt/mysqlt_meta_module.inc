@@ -16,9 +16,9 @@ eval('class mysqlt_meta_EXTENDER extends '. $last_module . '_ADOConnection { }')
 
 class mysqlt_meta_ADOConnection extends mysqlt_meta_EXTENDER
 {
-	var $metaTablesSQL = "SHOW TABLES";	
-	var $metaColumnsSQL = "SHOW COLUMNS FROM %s";
-	var $fetchMode=false;
+	public $metaTablesSQL = "SHOW TABLES";	
+	public $metaColumnsSQL = "SHOW COLUMNS FROM %s";
+	public $fetchMode=false;
 
 	function MetaError($err=false)
 	{

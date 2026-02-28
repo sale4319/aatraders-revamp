@@ -12,13 +12,13 @@ eval('class msql_date_EXTENDER extends '. $last_module . '_ADOConnection { }');
 
 class msql_date_ADOConnection extends msql_date_EXTENDER
 {
-	var $fmtDate = "'Y-m-d'";	/// used by DBDate() as the default date format used by the database
-	var $fmtTimeStamp = "'Y-m-d, h:i:s A'"; /// used by DBTimeStamp as the default timestamp fmt.
-	var $emptyDate = '&nbsp;';
-	var $emptyTimeStamp = '&nbsp;';
-	var $sysDate = false; /// name of function that returns the current date
-	var $sysTimeStamp = false; /// name of function that returns the current timestamp
-	var $isoDates = false; /// accepts dates in ISO format
+	public $fmtDate = "'Y-m-d'";	/// used by DBDate() as the default date format used by the database
+	public $fmtTimeStamp = "'Y-m-d, h:i:s A'"; /// used by DBTimeStamp as the default timestamp fmt.
+	public $emptyDate = '&nbsp;';
+	public $emptyTimeStamp = '&nbsp;';
+	public $sysDate = false; /// name of function that returns the current date
+	public $sysTimeStamp = false; /// name of function that returns the current timestamp
+	public $isoDates = false; /// accepts dates in ISO format
 
 	function Time()
 	{
@@ -197,9 +197,9 @@ eval('class msql_date_resultset_EXTENDER extends '. $last_module . '_ResultSet {
 
 class msql_date_ResultSet extends msql_date_resultset_EXTENDER
 {
-	var $emptyTimeStamp = '&nbsp;'; /// what to display when $time==0
-	var $emptyDate = '&nbsp;'; /// what to display when $time==0
-	var $datetime = false;
+	public $emptyTimeStamp = '&nbsp;'; /// what to display when $time==0
+	public $emptyDate = '&nbsp;'; /// what to display when $time==0
+	public $datetime = false;
 
 	function UserTimeStamp($v, $fmt='Y-m-d H:i:s')
 	{

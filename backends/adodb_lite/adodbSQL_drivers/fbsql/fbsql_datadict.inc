@@ -16,8 +16,8 @@ if (!defined('ADODB_DIR')) die();
 
 class ADODB2_fbsql extends ADODB_DataDict {
 
-	var $dbtype = 'fbsql';
-	var $seqField = false;
+	public $dbtype = 'fbsql';
+	public $seqField = false;
 
  	function ActualType($meta)
 	{

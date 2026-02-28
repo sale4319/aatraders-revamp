@@ -16,10 +16,10 @@ if (!defined('ADODB_DIR')) die();
 
 class ADODB2_sqlitepo extends ADODB_DataDict {
 
-	var $dbtype = 'sqlitepo';
-	var $seqField = false;
+	public $dbtype = 'sqlitepo';
+	public $seqField = false;
 
-	var $metaTablesSQL = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name";
+	public $metaTablesSQL = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name";
 
  	function ActualType($meta)
 	{

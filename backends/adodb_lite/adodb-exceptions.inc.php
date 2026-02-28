@@ -19,12 +19,12 @@ if (!defined('ADODB_ERROR_HANDLER_TYPE'))
 define('ADODB_ERROR_HANDLER','adodb_throw');
 
 class ADODB_Exception extends Exception {
-	var $dbms;
-	var $fn;
-	var $sql = '';
-	var $params = '';
-	var $host = '';
-	var $database = '';
+	public $dbms;
+	public $fn;
+	public $sql = '';
+	public $params = '';
+	public $host = '';
+	public $database = '';
 	
 	function __construct($dbms, $fn, $errno, $errmsg, $p1, $p2, $thisConnection)
 	{

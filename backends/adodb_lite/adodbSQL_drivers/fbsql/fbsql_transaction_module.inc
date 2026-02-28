@@ -8,10 +8,10 @@ eval('class fbsql_transaction_EXTENDER extends '. $last_module . '_ADOConnection
 
 class fbsql_transaction_ADOConnection extends fbsql_transaction_EXTENDER
 {
-	var $autoCommit = true;
-	var $transOff = 0;
-	var $transCnt = 0;
-	var $transaction_status = true;
+	public $autoCommit = true;
+	public $transOff = 0;
+	public $transCnt = 0;
+	public $transaction_status = true;
 
 	function StartTrans($errfn = 'ADODB_TransMonitor')
 	{

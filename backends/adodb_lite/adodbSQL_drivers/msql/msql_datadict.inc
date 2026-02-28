@@ -16,8 +16,8 @@ if (!defined('ADODB_DIR')) die();
 
 class ADODB2_msql extends ADODB_DataDict {
 
-	var $dbtype = 'msql';
-	var $seqField = false;
+	public $dbtype = 'msql';
+	public $seqField = false;
 
  	function ActualType($meta)
 	{

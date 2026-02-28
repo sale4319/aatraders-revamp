@@ -25,10 +25,10 @@ eval('class mysql_cache_EXTENDER extends '. $last_module . '_ADOConnection { }')
 
 class mysql_cache_ADOConnection extends mysql_cache_EXTENDER
 {
-	var $cacheSecs = 3600; /// cache for 1 hour
-	var $numCacheHits = 0; 
-	var $numCacheMisses = 0;
-	var $fnCacheExecute = false;
+	public $cacheSecs = 3600; /// cache for 1 hour
+	public $numCacheHits = 0; 
+	public $numCacheMisses = 0;
+	public $fnCacheExecute = false;
 
 	function &CacheGetAssoc($secs2cache, $sql=false, $inputarr=false,$force_array = false, $first2cols = false)
 	{
@@ -628,7 +628,7 @@ eval('class mysql_cache_resultset_EXTENDER extends '. $last_module . '_ResultSet
 
 class mysql_cache_ResultSet extends mysql_cache_resultset_EXTENDER
 {
-	var $timeCreated=0; 	/// datetime in Unix format rs created -- for cached recordsets
+	public $timeCreated=0; 	/// datetime in Unix format rs created -- for cached recordsets
 }
 
 
@@ -645,24 +645,24 @@ class mysql_cache_ResultSet extends mysql_cache_resultset_EXTENDER
 
 class ADORecordSet_array
 {
-	var $databaseType = 'array';
+	public $databaseType = 'array';
 
-	var $_array; 	// holds the 2-dimensional data array
-	var $_types;	// the array of types of each column (C B I L M)
-	var $_colnames;	// names of each column in array
-	var $_skiprow1;	// skip 1st row because it holds column names
-	var $_fieldarr; // holds array of field objects
-	var $affectedrows = false;
-	var $insertid = false;
-	var $_inited = '';
-	var $connectionId;
-	var $fields;
-	var $resultId;
-	var $_currentRow = 0;
-	var $_numOfRows = -1;
-	var $_numOfFields = -1;
-	var $fetchMode;
-	var $EOF;
+	public $_array; 	// holds the 2-dimensional data array
+	public $_types;	// the array of types of each column (C B I L M)
+	public $_colnames;	// names of each column in array
+	public $_skiprow1;	// skip 1st row because it holds column names
+	public $_fieldarr; // holds array of field objects
+	public $affectedrows = false;
+	public $insertid = false;
+	public $_inited = '';
+	public $connectionId;
+	public $fields;
+	public $resultId;
+	public $_currentRow = 0;
+	public $_numOfRows = -1;
+	public $_numOfFields = -1;
+	public $fetchMode;
+	public $EOF;
 	/**
 	 * Constructor
 	 *
@@ -835,9 +835,9 @@ class ADORecordSet_array
 if(!class_exists('ADOFieldObject'))
 {
 	class ADOFieldObject { 
-		var $name = '';
-		var $max_length=0;
-		var $type="";
+		public $name = '';
+		public $max_length=0;
+		public $type="";
 	}
 }
 

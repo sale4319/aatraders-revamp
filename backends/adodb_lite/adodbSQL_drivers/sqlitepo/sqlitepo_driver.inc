@@ -10,8 +10,8 @@
 
 class sqlitepo_driver_ADOConnection extends ADOConnection
 {
-	var $sysDate = "date('Y-m-d')";
-	var $sysTimeStamp = "date('Y-m-d H:i:s')";
+	public $sysDate = "date('Y-m-d')";
+	public $sysTimeStamp = "date('Y-m-d H:i:s')";
 
 	function sqlitepo_driver_ADOConnection()
 	{
@@ -375,14 +375,14 @@ class sqlitepo_driver_ADOConnection extends ADOConnection
 
 class sqlitepo_driver_ResultSet
 {
-	var $connectionId;
-	var $fields;
-	var $resultId;
-	var $_currentRow = 0;
-	var $_numOfRows = -1;
-	var $_numOfFields = -1;
-	var $fetchMode;
-	var $EOF;
+	public $connectionId;
+	public $fields;
+	public $resultId;
+	public $_currentRow = 0;
+	public $_numOfRows = -1;
+	public $_numOfFields = -1;
+	public $fetchMode;
+	public $EOF;
 
 	/**
 	 * sqliteResultSet Constructor

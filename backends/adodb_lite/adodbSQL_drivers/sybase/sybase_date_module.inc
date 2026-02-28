@@ -17,14 +17,14 @@ eval('class sybase_date_EXTENDER extends '. $last_module . '_ADOConnection { }')
 
 class sybase_date_ADOConnection extends sybase_date_EXTENDER
 {
-	var $fmtDate = "'Y-m-d'";
-	var $fmtTimeStamp = "'Y-m-d H:i:s'";
-	var $emptyDate = '&nbsp;';
-	var $emptyTimeStamp = '&nbsp;';
-	var $sysDate = 'GetDate()';
-	var $sysTimeStamp = false; /// name of function that returns the current timestamp
-	var $isoDates = false; /// accepts dates in ISO format
-	var $_mths = array('JAN'=>1,'FEB'=>2,'MAR'=>3,'APR'=>4,'MAY'=>5,'JUN'=>6,'JUL'=>7,'AUG'=>8,'SEP'=>9,'OCT'=>10,'NOV'=>11,'DEC'=>12);	
+	public $fmtDate = "'Y-m-d'";
+	public $fmtTimeStamp = "'Y-m-d H:i:s'";
+	public $emptyDate = '&nbsp;';
+	public $emptyTimeStamp = '&nbsp;';
+	public $sysDate = 'GetDate()';
+	public $sysTimeStamp = false; /// name of function that returns the current timestamp
+	public $isoDates = false; /// accepts dates in ISO format
+	public $_mths = array('JAN'=>1,'FEB'=>2,'MAR'=>3,'APR'=>4,'MAY'=>5,'JUN'=>6,'JUL'=>7,'AUG'=>8,'SEP'=>9,'OCT'=>10,'NOV'=>11,'DEC'=>12);	
 
 	function Time()
 	{
@@ -276,10 +276,10 @@ eval('class sybase_date_resultset_EXTENDER extends '. $last_module . '_ResultSet
 
 class sybase_date_ResultSet extends sybase_date_resultset_EXTENDER
 {
-	var $emptyTimeStamp = '&nbsp;'; /// what to display when $time==0
-	var $emptyDate = '&nbsp;'; /// what to display when $time==0
-	var $datetime = false;
-	var $_mths = array('JAN'=>1,'FEB'=>2,'MAR'=>3,'APR'=>4,'MAY'=>5,'JUN'=>6,'JUL'=>7,'AUG'=>8,'SEP'=>9,'OCT'=>10,'NOV'=>11,'DEC'=>12);	
+	public $emptyTimeStamp = '&nbsp;'; /// what to display when $time==0
+	public $emptyDate = '&nbsp;'; /// what to display when $time==0
+	public $datetime = false;
+	public $_mths = array('JAN'=>1,'FEB'=>2,'MAR'=>3,'APR'=>4,'MAY'=>5,'JUN'=>6,'JUL'=>7,'AUG'=>8,'SEP'=>9,'OCT'=>10,'NOV'=>11,'DEC'=>12);	
 
 	function UserTimeStamp($v, $fmt='Y-m-d H:i:s')
 	{

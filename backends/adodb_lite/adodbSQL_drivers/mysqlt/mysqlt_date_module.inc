@@ -12,12 +12,12 @@ eval('class mysqlt_date_EXTENDER extends '. $last_module . '_ADOConnection { }')
 
 class mysqlt_date_ADOConnection extends mysqlt_date_EXTENDER
 {
-	var $fmtDate = "'Y-m-d'";	/// used by DBDate() as the default date format used by the database
-	var $fmtTimeStamp = "'Y-m-d H:i:s'";
-	var $emptyDate = '&nbsp;';
-	var $emptyTimeStamp = '&nbsp;';
-	var $sysDate = 'CURDATE()';
-	var $sysTimeStamp = 'NOW()';
+	public $fmtDate = "'Y-m-d'";	/// used by DBDate() as the default date format used by the database
+	public $fmtTimeStamp = "'Y-m-d H:i:s'";
+	public $emptyDate = '&nbsp;';
+	public $emptyTimeStamp = '&nbsp;';
+	public $sysDate = 'CURDATE()';
+	public $sysTimeStamp = 'NOW()';
 
 	function Time()
 	{
@@ -275,9 +275,9 @@ eval('class mysqlt_date_resultset_EXTENDER extends '. $last_module . '_ResultSet
 
 class mysqlt_date_ResultSet extends mysqlt_date_resultset_EXTENDER
 {
-	var $emptyTimeStamp = '&nbsp;'; /// what to display when $time==0
-	var $emptyDate = '&nbsp;'; /// what to display when $time==0
-	var $datetime = false;
+	public $emptyTimeStamp = '&nbsp;'; /// what to display when $time==0
+	public $emptyDate = '&nbsp;'; /// what to display when $time==0
+	public $datetime = false;
 
 	function UserTimeStamp($v, $fmt='Y-m-d H:i:s')
 	{

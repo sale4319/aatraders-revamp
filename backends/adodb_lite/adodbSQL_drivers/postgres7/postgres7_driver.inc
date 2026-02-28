@@ -10,11 +10,11 @@
 
 class postgres7_driver_ADOConnection extends ADOConnection
 {
-	var $connect_string;
-	var $sysDate = "CURRENT_DATE";
-	var $sysTimeStamp = "CURRENT_TIMESTAMP";
-	var $pg_escape_enable = false;
-	var $result_id;
+	public $connect_string;
+	public $sysDate = "CURRENT_DATE";
+	public $sysTimeStamp = "CURRENT_TIMESTAMP";
+	public $pg_escape_enable = false;
+	public $result_id;
 
 	function postgres7_driver_ADOConnection()
 	{
@@ -436,14 +436,14 @@ class postgres7_driver_ADOConnection extends ADOConnection
 
 class postgres7_driver_ResultSet
 {
-	var $connectionId;
-	var $fields;
-	var $resultId;
-	var $_currentRow = 0;
-	var $_numOfRows = -1;
-	var $_numOfFields = -1;
-	var $fetchMode;
-	var $EOF;
+	public $connectionId;
+	public $fields;
+	public $resultId;
+	public $_currentRow = 0;
+	public $_numOfRows = -1;
+	public $_numOfFields = -1;
+	public $fetchMode;
+	public $EOF;
 
 	/**
 	 * pgsqlResultSet Constructor

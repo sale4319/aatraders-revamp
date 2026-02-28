@@ -16,8 +16,8 @@ if (!defined('ADODB_DIR')) die();
 
 class ADODB2_odbc extends ADODB_DataDict {
 
-	var $dbtype = 'odbc';
-	var $seqField = false;
+	public $dbtype = 'odbc';
+	public $seqField = false;
 
  	function ActualType($meta)
 	{

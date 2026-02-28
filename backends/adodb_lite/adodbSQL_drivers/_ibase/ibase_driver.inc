@@ -10,10 +10,10 @@
 
 class ibase_driver_ADOConnection extends ADOConnection
 {
-	var $buffers = 0;
-	var $dialect = 1;
-	var $role = false;
-	var $charSet = false;
+	public $buffers = 0;
+	public $dialect = 1;
+	public $role = false;
+	public $charSet = false;
 
 	function ibase_driver_ADOConnection()
 	{
@@ -387,14 +387,14 @@ class ibase_driver_ADOConnection extends ADOConnection
 
 class ibase_driver_ResultSet
 {
-	var $connectionId;
-	var $fields;
-	var $resultId;
-	var $_currentRow = 0;
-	var $_numOfRows = -1;
-	var $_numOfFields = -1;
-	var $fetchMode;
-	var $EOF;
+	public $connectionId;
+	public $fields;
+	public $resultId;
+	public $_currentRow = 0;
+	public $_numOfRows = -1;
+	public $_numOfFields = -1;
+	public $fetchMode;
+	public $EOF;
 
 	/**
 	 * ibaseResultSet Constructor

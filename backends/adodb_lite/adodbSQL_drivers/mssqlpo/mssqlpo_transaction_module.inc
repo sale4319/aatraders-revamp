@@ -8,10 +8,10 @@ eval('class mssqlpo_transaction_EXTENDER extends '. $last_module . '_ADOConnecti
 
 class mssqlpo_transaction_ADOConnection extends mssqlpo_transaction_EXTENDER
 {
-	var $autoCommit = true;
-	var $transOff = 0;
-	var $transCnt = 0;
-	var $transaction_status = true;
+	public $autoCommit = true;
+	public $transOff = 0;
+	public $transCnt = 0;
+	public $transaction_status = true;
 
 	function transaction_ADOConnection( $dbtype )
 	{

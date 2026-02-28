@@ -12,13 +12,13 @@
 if (!defined('ADODB_DIR')) die();
 
 class ADODB2_gladius extends ADODB_DataDict {
-	var $dbtype = 'gladius';
-	var $alterCol = ' MODIFY COLUMN';	// not yet supported on Gladius
-	var $alterTableAddIndex = true;
-	var $dropTable = 'DROP TABLE %s';
+	public $dbtype = 'gladius';
+	public $alterCol = ' MODIFY COLUMN';	// not yet supported on Gladius
+	public $alterTableAddIndex = true;
+	public $dropTable = 'DROP TABLE %s';
 
-	var $dropIndex = 'DROP INDEX %s ON %s';	// not yet supported on Gladius
-	var $renameColumn = 'ALTER TABLE %s CHANGE COLUMN %s %s %s';	// needs column-definition!
+	public $dropIndex = 'DROP INDEX %s ON %s';	// not yet supported on Gladius
+	public $renameColumn = 'ALTER TABLE %s CHANGE COLUMN %s %s %s';	// needs column-definition!
 
  	function ActualType($meta)
 	{

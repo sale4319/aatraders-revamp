@@ -28,9 +28,9 @@ class odbc_extend_ADOConnection extends odbc_extend_EXTENDER
 	 * @return		0 if not supported, otherwise a sequence id
 	 */
 
-	var $_genSeqSQL = "create table %s (id integer)";
-	var $_dropSeqSQL = 'drop table %s';
-	var $genID = 0;
+	public $_genSeqSQL = "create table %s (id integer)";
+	public $_dropSeqSQL = 'drop table %s';
+	public $genID = 0;
 
 	function GenID($seqname='adodbseq', $startID=1)
 	{

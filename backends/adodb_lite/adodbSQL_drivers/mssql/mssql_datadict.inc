@@ -16,13 +16,13 @@ if (!defined('ADODB_DIR')) die();
 
 class ADODB2_mssql extends ADODB_DataDict {
 
-	var $dbtype = 'mssql';
-	var $dropIndex = 'DROP INDEX %2$s.%1$s';
-	var $renameTable = "EXEC sp_rename '%s','%s'";
-	var $renameColumn = "EXEC sp_rename '%s.%s','%s'";
+	public $dbtype = 'mssql';
+	public $dropIndex = 'DROP INDEX %2$s.%1$s';
+	public $renameTable = "EXEC sp_rename '%s','%s'";
+	public $renameColumn = "EXEC sp_rename '%s.%s','%s'";
 
-	var $typeX = 'TEXT';  ## Alternatively, set it to VARCHAR(4000)
-	var $typeXL = 'TEXT';
+	public $typeX = 'TEXT';  ## Alternatively, set it to VARCHAR(4000)
+	public $typeXL = 'TEXT';
 
  	function ActualType($meta)
 	{

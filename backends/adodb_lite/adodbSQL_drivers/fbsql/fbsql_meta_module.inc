@@ -16,10 +16,10 @@ eval('class fbsql_meta_EXTENDER extends '. $last_module . '_ADOConnection { }');
 
 class fbsql_meta_ADOConnection extends fbsql_meta_EXTENDER
 {
-	var $metaDatabasesSQL = '';
-	var $metaTablesSQL = "SHOW TABLES";	
-	var $metaColumnsSQL = "SHOW COLUMNS FROM %s";
-	var $fetchMode=false;
+	public $metaDatabasesSQL = '';
+	public $metaTablesSQL = "SHOW TABLES";	
+	public $metaColumnsSQL = "SHOW COLUMNS FROM %s";
+	public $fetchMode=false;
 
 	function MetaError($err=false)
 	{

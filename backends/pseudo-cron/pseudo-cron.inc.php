@@ -1,4 +1,4 @@
-<?
+<?php
 /***************************************************************************
 
 pseudo-cron v1.3.1
@@ -32,7 +32,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA	02111-1307, USA.
 Usually regular tasks like backup up the site's database are run using cron
 jobs. With cron jobs, you can exactly plan when a certain command is to be 
 executed. But most homepage owners can't create cron jobs on their web 
-server – providers demand some extra money for that.
+server  providers demand some extra money for that.
 The only thing that's certain to happen quite regularly on a web page are 
 page requests. This is where pseudo-cron comes into play: With every page 
 request it checks if any cron jobs should have been run since the previous 
@@ -231,6 +231,37 @@ define("PC_CRONLINE", 20);
 
 $resultsSummary = "";
 
+/**
+ * Send a fire-and-forget HTTP GET to the scheduler URL.
+ * We write the full HTTP request synchronously (so the kernel TCP stack
+ * actually buffers it), then immediately close WITHOUT reading the response.
+ * On PHP's single-threaded built-in dev server the scheduler request sits in
+ * the kernel backlog and is processed after the current page request finishes.
+ */
+function nonBlockingGet($url) {
+	$parts = parse_url($url);
+	$host  = isset($parts['host']) ? $parts['host'] : 'localhost';
+	$port  = isset($parts['port']) ? (int)$parts['port'] : 80;
+	$path  = isset($parts['path']) ? $parts['path'] : '/';
+	if (isset($parts['query'])) {
+		$path .= '?' . $parts['query'];
+	}
+
+	// Use a short connect timeout; keep blocking mode so fwrite fully sends.
+	$fp = @fsockopen($host, $port, $errno, $errstr, 2);
+	if ($fp) {
+		$out  = "GET {$path} HTTP/1.0\r\n";
+		$out .= "Host: {$host}:{$port}\r\n";
+		$out .= "Connection: Close\r\n\r\n";
+		// Blocking write ensures data reaches the kernel TCP buffer.
+		@fwrite($fp, $out);
+		// Close without reading â€” the server processes this after our request.
+		@fclose($fp);
+		return true;
+	}
+	return false;
+}
+
 function logMessage($msg) {
 	GLOBAL $writeDir, $useLog, $debug, $resultsSummary;
 	if ($msg[strlen($msg)-1]!="\n") {
@@ -327,30 +358,9 @@ function runJob($job)
 			$e = @error_reporting(0);
 			if($call_url_job)
 			{
-				if(@ini_get("allow_url_fopen") == 1)
-				{
-					logMessage($job[PC_CMD] . "&scheduler_passes=" . round(($lastScheduled - $lastActual) / 60 / 5));
-					$fp = @fopen ($job[PC_CMD] . "&scheduler_passes=" . round(($lastScheduled - $lastActual) / 60 / 5),"r");
-					if($fp)
-					{
-						while(!@feof($fp)){
-							$getreturn = trim(@fgets($fp)) . "<br>\n";
-							echo($getreturn);
-						}
-						fclose ($fp);
-					}
-				}
-				else
-				if(function_exists('curl_init'))
-				{
-					$ch=curl_init();
-					logMessage($job[PC_CMD] . "&scheduler_passes=" . round(($lastScheduled - $lastActual) / 60 / 5));
-					curl_setopt($ch, CURLOPT_URL, $job[PC_CMD] . "&scheduler_passes=" . round(($lastScheduled - $lastActual) / 60 / 5));
-					curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-					$var = curl_exec ($ch);
-					curl_close ($ch);
-					echo(trim($var) . "<br>\n");
-				}
+				$schedUrl = $job[PC_CMD] . "&scheduler_passes=" . max(1, round(($lastScheduled - $lastActual) / 60 / 5));
+				logMessage($schedUrl);
+				nonBlockingGet($schedUrl);
 			}
 			else
 			{
@@ -361,26 +371,8 @@ function runJob($job)
 			$e = @error_reporting(0);
 			if($call_url_job)
 			{
-				if(@ini_get("allow_url_fopen") == 1)
-				{
-					$fp = @fopen ($job[PC_CMD] . "&scheduler_passes=" . round(($lastScheduled - $lastActual) / 60 / 5),"r");
-					if($fp)
-					{
-						while(!@feof($fp)){
-							@fgets($fp);
-						}
-						fclose ($fp);
-					}
-				}
-				else
-				if(function_exists('curl_init'))
-				{
-					$ch=curl_init();
-					curl_setopt($ch, CURLOPT_URL, $job[PC_CMD] . "&scheduler_passes=" . round(($lastScheduled - $lastActual) / 60 / 5));
-					curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-					$var = curl_exec ($ch);
-					curl_close ($ch);
-				}
+				$schedUrl = $job[PC_CMD] . "&scheduler_passes=" . max(1, round(($lastScheduled - $lastActual) / 60 / 5));
+				nonBlockingGet($schedUrl);
 			}
 			else
 			{

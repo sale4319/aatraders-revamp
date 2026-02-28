@@ -10,9 +10,9 @@
 
 class mysql_driver_ADOConnection extends ADOConnection
 {
-	var $nameQuote = '`';
-	var $sysDate = 'CURDATE()';
-	var $sysTimeStamp = 'NOW()';
+	public $nameQuote = '`';
+	public $sysDate = 'CURDATE()';
+	public $sysTimeStamp = 'NOW()';
 
 	function mysql_driver_ADOConnection()
 	{
@@ -364,14 +364,14 @@ class mysql_driver_ADOConnection extends ADOConnection
 
 class mysql_driver_ResultSet
 {
-	var $connectionId;
-	var $fields;
-	var $resultId;
-	var $_currentRow = 0;
-	var $_numOfRows = -1;
-	var $_numOfFields = -1;
-	var $fetchMode;
-	var $EOF;
+	public $connectionId;
+	public $fields;
+	public $resultId;
+	public $_currentRow = 0;
+	public $_numOfRows = -1;
+	public $_numOfFields = -1;
+	public $fetchMode;
+	public $EOF;
 
 	/**
 	 * mysqlResultSet Constructor

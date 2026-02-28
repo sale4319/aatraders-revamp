@@ -16,13 +16,13 @@ if (!defined('ADODB_DIR')) die();
 
 class ADODB2_mysqli extends ADODB_DataDict {
 
-	var $dbtype = 'mysqli';
-	var $alterCol = ' MODIFY COLUMN';
-	var $alterTableAddIndex = true;
-	var $dropTable = 'DROP TABLE IF EXISTS %s'; // requires mysql 3.22 or later
+	public $dbtype = 'mysqli';
+	public $alterCol = ' MODIFY COLUMN';
+	public $alterTableAddIndex = true;
+	public $dropTable = 'DROP TABLE IF EXISTS %s'; // requires mysql 3.22 or later
 	
-	var $dropIndex = 'DROP INDEX %s ON %s';
-	var $renameColumn = 'ALTER TABLE %s CHANGE COLUMN %s %s %s';	// needs column-definition!
+	public $dropIndex = 'DROP INDEX %s ON %s';
+	public $renameColumn = 'ALTER TABLE %s CHANGE COLUMN %s %s %s';	// needs column-definition!
 
 	function ActualType($meta)
 	{

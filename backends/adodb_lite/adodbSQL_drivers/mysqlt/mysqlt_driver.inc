@@ -10,14 +10,14 @@
 
 class mysqlt_driver_ADOConnection extends ADOConnection
 {
-	var $autoCommit = true;
-	var $transOff = 0;
-	var $transCnt = 0;
-	var $transaction_status = true;
-	var $nameQuote = '`';
-	var $sysDate = 'CURDATE()';
-	var $sysTimeStamp = 'NOW()';
-	var $isoDates = true; // accepts dates in ISO format
+	public $autoCommit = true;
+	public $transOff = 0;
+	public $transCnt = 0;
+	public $transaction_status = true;
+	public $nameQuote = '`';
+	public $sysDate = 'CURDATE()';
+	public $sysTimeStamp = 'NOW()';
+	public $isoDates = true; // accepts dates in ISO format
 
 	function mysqlt_driver_ADOConnection()
 	{
@@ -544,14 +544,14 @@ class mysqlt_driver_ADOConnection extends ADOConnection
 
 class mysqlt_driver_ResultSet
 {
-	var $connectionId;
-	var $fields;
-	var $resultId;
-	var $_currentRow = 0;
-	var $_numOfRows = -1;
-	var $_numOfFields = -1;
-	var $fetchMode;
-	var $EOF;
+	public $connectionId;
+	public $fields;
+	public $resultId;
+	public $_currentRow = 0;
+	public $_numOfRows = -1;
+	public $_numOfFields = -1;
+	public $fetchMode;
+	public $EOF;
 
 	/**
 	 * mysqlResultSet Constructor

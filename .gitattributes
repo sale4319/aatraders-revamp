@@ -1,0 +1,15 @@
+# Normalize all text files to LF on checkout
+* text=auto eol=lf
+
+# Explicitly mark binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.phar binary
+*.zip binary
+*.gz binary
+*.data binary
+*.index binary
+*.job binary

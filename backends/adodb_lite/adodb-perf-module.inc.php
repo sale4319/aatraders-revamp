@@ -22,20 +22,20 @@ eval('class perfmon_parent_EXTENDER extends ' . $last_module . '_ADOConnection {
 class perfmon_parent_ADOConnection extends perfmon_parent_EXTENDER
 {
 
-	var $color = '#F0F0F0';
-	var $table = '<table style="border: 2px groove #000000; background-color: #FFFFFF;">';
-	var $titles = '<tr><td><strong>Parameter</strong></td><td><strong>Value</strong></td><td><strong>Description</strong></td></tr>';
-	var $warnRatio = 90;
-	var $tablesSQL = false;
-	var $cliFormat = "%32s => %s \r\n";
-	var $sql1 = 'sql1';  // used for casting sql1 to text for mssql
-	var $explain = true;
-	var $helpurl = '<a href="javascript:void();">LogSQL help</a>';
-	var $createTableSQL = false;
-	var $maxLength = 2000;
-	var $settings = false;
-	var $_logsql = false;
-	var $_lastload;
+	public $color = '#F0F0F0';
+	public $table = '<table style="border: 2px groove #000000; background-color: #FFFFFF;">';
+	public $titles = '<tr><td><strong>Parameter</strong></td><td><strong>Value</strong></td><td><strong>Description</strong></td></tr>';
+	public $warnRatio = 90;
+	public $tablesSQL = false;
+	public $cliFormat = "%32s => %s \r\n";
+	public $sql1 = 'sql1';  // used for casting sql1 to text for mssql
+	public $explain = true;
+	public $helpurl = '<a href="javascript:void();">LogSQL help</a>';
+	public $createTableSQL = false;
+	public $maxLength = 2000;
+	public $settings = false;
+	public $_logsql = false;
+	public $_lastload;
 	
 	/**
 	 * Sets the table name to use for SQL logging. Returns value of current table when called.

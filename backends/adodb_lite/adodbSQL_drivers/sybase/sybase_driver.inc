@@ -10,7 +10,7 @@
 
 class sybase_driver_ADOConnection extends ADOConnection
 {
-	var $sysDate = 'GetDate()';
+	public $sysDate = 'GetDate()';
 
 	function sybase_driver_ADOConnection()
 	{
@@ -411,14 +411,14 @@ class sybase_driver_ADOConnection extends ADOConnection
 
 class sybase_driver_ResultSet
 {
-	var $connectionId;
-	var $fields;
-	var $resultId;
-	var $_currentRow = 0;
-	var $_numOfRows = -1;
-	var $_numOfFields = -1;
-	var $fetchMode;
-	var $EOF;
+	public $connectionId;
+	public $fields;
+	public $resultId;
+	public $_currentRow = 0;
+	public $_numOfRows = -1;
+	public $_numOfFields = -1;
+	public $fetchMode;
+	public $EOF;
 
 	/**
 	 * sybaseResultSet Constructor

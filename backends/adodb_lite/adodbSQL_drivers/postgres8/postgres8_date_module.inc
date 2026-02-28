@@ -12,13 +12,13 @@ eval('class postgres8_date_EXTENDER extends '. $last_module . '_ADOConnection { 
 
 class postgres8_date_ADOConnection extends postgres8_date_EXTENDER
 {
-	var $fmtDate = "'Y-m-d'";	// used by DBDate() as the default date format used by the database
-	var $fmtTimeStamp = "'Y-m-d H:i:s'"; // used by DBTimeStamp as the default timestamp fmt.
-	var $emptyDate = '&nbsp;';
-	var $emptyTimeStamp = '&nbsp;';
-	var $sysDate = "CURRENT_DATE";
-	var $sysTimeStamp = "CURRENT_TIMESTAMP";
-	var $isoDates = true; /// accepts dates in ISO format
+	public $fmtDate = "'Y-m-d'";	// used by DBDate() as the default date format used by the database
+	public $fmtTimeStamp = "'Y-m-d H:i:s'"; // used by DBTimeStamp as the default timestamp fmt.
+	public $emptyDate = '&nbsp;';
+	public $emptyTimeStamp = '&nbsp;';
+	public $sysDate = "CURRENT_DATE";
+	public $sysTimeStamp = "CURRENT_TIMESTAMP";
+	public $isoDates = true; /// accepts dates in ISO format
 
 	function Time()
 	{
@@ -270,9 +270,9 @@ eval('class postgres8_date_resultset_EXTENDER extends '. $last_module . '_Result
 
 class postgres8_date_ResultSet extends postgres8_date_resultset_EXTENDER
 {
-	var $emptyTimeStamp = '&nbsp;'; /// what to display when $time==0
-	var $emptyDate = '&nbsp;'; /// what to display when $time==0
-	var $datetime = false;
+	public $emptyTimeStamp = '&nbsp;'; /// what to display when $time==0
+	public $emptyDate = '&nbsp;'; /// what to display when $time==0
+	public $datetime = false;
 
 	function UserTimeStamp($v, $fmt='Y-m-d H:i:s')
 	{

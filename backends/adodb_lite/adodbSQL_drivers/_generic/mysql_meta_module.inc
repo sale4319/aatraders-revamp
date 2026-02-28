@@ -16,9 +16,9 @@ eval('class mysql_meta_EXTENDER extends '. $last_module . '_ADOConnection { }');
 
 class mysql_meta_ADOConnection extends mysql_meta_EXTENDER
 {
-	var $metaDatabasesSQL = '';
-	var $metaTablesSQL = '';
-	var $fetchMode=false;
+	public $metaDatabasesSQL = '';
+	public $metaTablesSQL = '';
+	public $fetchMode=false;
 
 	function MetaError($err=false)
 	{

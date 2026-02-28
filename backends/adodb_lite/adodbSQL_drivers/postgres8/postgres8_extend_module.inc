@@ -28,10 +28,10 @@ class postgres8_extend_ADOConnection extends postgres8_extend_EXTENDER
 	 * @return		0 if not supported, otherwise a sequence id
 	 */
 
-	var $_genIDSQL = "SELECT NEXTVAL('%s')";
-	var $_genSeqSQL = "CREATE SEQUENCE %s START %s";
-	var $_dropSeqSQL = "DROP SEQUENCE %s";
-	var $genID = 0;
+	public $_genIDSQL = "SELECT NEXTVAL('%s')";
+	public $_genSeqSQL = "CREATE SEQUENCE %s START %s";
+	public $_dropSeqSQL = "DROP SEQUENCE %s";
+	public $genID = 0;
 
 	function GenID($seqname='adodbseq', $startID=1)
 	{
