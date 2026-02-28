@@ -115,12 +115,12 @@ if (!$result)
 // Disable strict mode for MySQL 5.7+ compatibility
 $db->Execute("SET SESSION sql_mode = 'NO_ENGINE_SUBSTITUTION'");
 
-$version = @mysqli_get_server_info($db->connectionId);
-$versioncheck = AAT_ereg_replace("[^0-9.]","", $version);
+$version = ($db->connectionId instanceof mysqli) ? mysqli_get_server_info($db->connectionId) : '';
+$versioncheck = AAT_ereg_replace("[^0-9.]", "", $version);
 
 $mbstring_supported = 0;
 
-if (@extension_loaded('mbstring'))
+if (extension_loaded('mbstring'))
 {
 	if (strnatcmp($versioncheck, '4.2.3') != 1)
 	{

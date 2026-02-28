@@ -12,11 +12,11 @@ if (preg_match("/config.php/i", $_SERVER['PHP_SELF']))
   die();
 }
 
-@ini_set ("session.use_trans_sid","0"); // Otherwise, on re-login, it will append a session id on the url - blech.
+ini_set('session.use_trans_sid', '0'); // Otherwise, on re-login, it will append a session id on the url - blech.
 include ("globals/global_declare.inc");
 include ("globals/AAT_mbstring.inc");
 
-if (PHP_VERSION_ID < 80000 && function_exists('get_magic_quotes_gpc') && @get_magic_quotes_gpc())
+if (PHP_VERSION_ID < 80000 && function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc())
 {
 	function strip_gpc_slashes(&$array)
 	{
@@ -124,11 +124,10 @@ function connectdb()
 	// (schema uses datetime NOT NULL default '0000-00-00 00:00:00')
 	$db->Execute("SET SESSION sql_mode = 'NO_ENGINE_SUBSTITUTION'");
 
-	$version = @mysqli_get_server_info($db->connectionId);
-	$versioncheck=preg_replace("/[^0-9.]/", "",$version); 
-	
+	$version = ($db->connectionId instanceof mysqli) ? mysqli_get_server_info($db->connectionId) : '';
+	$versioncheck = preg_replace('/[^0-9.]/', '', $version);
 
-	if (@extension_loaded('mbstring'))
+	if (extension_loaded('mbstring'))
 	{
 		if (strnatcmp($versioncheck, '4.2.3') == 1)
 		{

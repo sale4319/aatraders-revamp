@@ -126,8 +126,8 @@ function check_mysql_version () {
 		if (!$link) {
 			die('Could not connect: ' . mysqli_connect_error());
 		}
-		$version = @mysqli_get_server_info($link);
-		$versioncheck = AAT_ereg_replace("[^0-9.]","", $version);
+		$version = mysqli_get_server_info($link);
+		$versioncheck = AAT_ereg_replace("[^0-9.]", "", $version);
 		$currentSplit = explode ('.', $versioncheck);
 	}
 
@@ -289,7 +289,7 @@ else
 
 	$mbstring_supported = 0;
 
-	if (@extension_loaded('mbstring'))
+	if (extension_loaded('mbstring'))
 	{
 		$mbstring_supported = 1;
 	}
