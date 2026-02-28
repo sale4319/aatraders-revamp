@@ -2,4 +2,10 @@ files.txt
 config/config_master.php
 config/config_local*.php
 replace.sh
-templates_c/*.php
+
+# Composer-managed dependencies and binary — regenerated via `composer install`
+vendor/
+composer.phar
+
+# Smarty compiled template cache — runtime-generated, never commit
+templates_c/
