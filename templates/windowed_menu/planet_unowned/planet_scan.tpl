@@ -194,7 +194,7 @@
 	  <tr>
 		<td>
 		<font size=2><b>
-		&nbsp;{insert name="img" src="images/ports/ore.png" alt="" width="12" height="12" border="0"}&nbsp;{$l_ore}&nbsp;&nbsp;&nbsp;
+		&nbsp;{insert name="img" src="images/ore.png" alt="" width="12" height="12" border="0"}&nbsp;{$l_ore}&nbsp;&nbsp;&nbsp;
 		</b></font>
 		<td>
 		<font color=white><b>
@@ -206,7 +206,7 @@
 	  <tr>
 		<td>
 		<font size=2><b>
-		&nbsp;{insert name="img" src="images/ports/organics.png" alt="" width="12" height="12" border="0"}&nbsp;{$l_organics}&nbsp;&nbsp;&nbsp;
+		&nbsp;{insert name="img" src="images/organics.png" alt="" width="12" height="12" border="0"}&nbsp;{$l_organics}&nbsp;&nbsp;&nbsp;
 		</b></font>
 		<td>
 		<font color=white><b>
@@ -218,7 +218,7 @@
 	  <tr>
 		<td>
 		<font size=2><b>
-		&nbsp;{insert name="img" src="images/ports/goods.png" alt="" width="12" height="12" border="0"}&nbsp;{$l_goods}&nbsp;&nbsp;&nbsp;
+		&nbsp;{insert name="img" src="images/goods.png" alt="" width="12" height="12" border="0"}&nbsp;{$l_goods}&nbsp;&nbsp;&nbsp;
 		</b></font>
 		<td>
 		<font color=white><b>
@@ -230,7 +230,7 @@
 	  <tr>
 		<td>
 		<font size=2><b>
-		&nbsp;{insert name="img" src="images/ports/colonists.png" alt="" width="12" height="12" border="0"}&nbsp;{$l_colonists}&nbsp;&nbsp;&nbsp;
+		&nbsp;{insert name="img" src="images/colonists.png" alt="" width="12" height="12" border="0"}&nbsp;{$l_colonists}&nbsp;&nbsp;&nbsp;
 		</b></font>
 		<td>
 		<font color=white><b>
@@ -243,7 +243,7 @@
 	  <tr>
 		<td>
 		<font size=2><b>
-		&nbsp;{insert name="img" src="images/ports/`$l_special_image`.png" alt="" width="12" height="12" border="0"}&nbsp;{$l_specialname}&nbsp;&nbsp;&nbsp;
+		&nbsp;{insert name="img" src="images/`$l_special_image`.png" alt="" width="12" height="12" border="0"}&nbsp;{$l_specialname}&nbsp;&nbsp;&nbsp;
 		</b></font>
 		<td>
 		<font color=white><b>
@@ -261,7 +261,7 @@
 	  <tr>
 		<td>
 		<font size=2><b>
-		&nbsp;{insert name="img" src="images/ports/energy.png" alt="" width="12" height="12" border="0"}&nbsp;{$l_energy}&nbsp;&nbsp;&nbsp;
+		&nbsp;{insert name="img" src="images/energy.png" alt="" width="12" height="12" border="0"}&nbsp;{$l_energy}&nbsp;&nbsp;&nbsp;
 		</b></font>
 		<td>
 		<font color=white><b>

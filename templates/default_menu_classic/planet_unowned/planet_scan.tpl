@@ -8,7 +8,7 @@
 <table border=0 cellspacing=0 cellpadding=0 width=90% align="center">
   <tr>
 		<td align="center" valign=top>
-			<img src="templates/{$templatename}images/planet{planettype}.png" alt="" width="100" height="100">
+			<img src="templates/{$templatename}images/planet{$planettype}.png" alt="" width="100" height="100">
 		 
 
 		</td></tr><tr>
@@ -196,7 +196,7 @@
 	  <tr>
 		<td>
 		<font size=2><b>
-		&nbsp;<img src="templates/{$templatename}images/ports/ore.png" alt="" width="12" height="12">&nbsp;{$l_ore}&nbsp;&nbsp;&nbsp;
+		&nbsp;<img src="templates/{$templatename}images/ore.png" alt="" width="12" height="12">&nbsp;{$l_ore}&nbsp;&nbsp;&nbsp;
 		</b></font>
 		<td>
 		<font color=white><b>
@@ -208,7 +208,7 @@
 	  <tr>
 		<td>
 		<font size=2><b>
-		&nbsp;<img src="templates/{$templatename}images/ports/organics.png" alt="" width="12" height="12">&nbsp;{$l_organics}&nbsp;&nbsp;&nbsp;
+		&nbsp;<img src="templates/{$templatename}images/organics.png" alt="" width="12" height="12">&nbsp;{$l_organics}&nbsp;&nbsp;&nbsp;
 		</b></font>
 		<td>
 		<font color=white><b>
@@ -220,7 +220,7 @@
 	  <tr>
 		<td>
 		<font size=2><b>
-			&nbsp;<img src="templates/{$templatename}images/ports/goods.png" alt="" width="12" height="12">&nbsp;{$l_goods}&nbsp;&nbsp;&nbsp;
+			&nbsp;<img src="templates/{$templatename}images/goods.png" alt="" width="12" height="12">&nbsp;{$l_goods}&nbsp;&nbsp;&nbsp;
 		</b></font>
 		<td>
 		<font color=white><b>
@@ -232,7 +232,7 @@
 	  <tr>
 		<td>
 		<font size=2><b>
-		&nbsp;<img src="templates/{$templatename}images/ports/colonists.png" alt="" width="12" height="12">&nbsp;{$l_colonists}&nbsp;&nbsp;&nbsp;
+		&nbsp;<img src="templates/{$templatename}images/colonists.png" alt="" width="12" height="12">&nbsp;{$l_colonists}&nbsp;&nbsp;&nbsp;
 		</b></font>
 		<td>
 		<font color=white><b>
@@ -245,7 +245,7 @@
 	  <tr>
 		<td>
 		<font size=2><b>
-		&nbsp;<img src="templates/{$templatename}images/ports/{$l_special_image}.png" alt="" width="12" height="12">&nbsp;{$l_specialname}&nbsp;&nbsp;&nbsp;
+		&nbsp;<img src="templates/{$templatename}images/{$l_special_image}.png" alt="" width="12" height="12">&nbsp;{$l_specialname}&nbsp;&nbsp;&nbsp;
 		</b></font>
 		<td>
 		<font color=white><b>
@@ -263,7 +263,7 @@
 	  <tr>
 		<td>
 		<font size=2><b>
-			&nbsp;<img src="templates/{$templatename}images/ports/energy.png" alt="" width="12" height="12">&nbsp;{$l_energy}&nbsp;&nbsp;&nbsp;
+			&nbsp;<img src="templates/{$templatename}images/energy.png" alt="" width="12" height="12">&nbsp;{$l_energy}&nbsp;&nbsp;&nbsp;
 		</b></font>
 		<td>
 		<font color=white><b>

@@ -105,7 +105,7 @@ if ($username == '' || $character == '' || $shipname == '' )
 	die();
 }
 
-$debug_query = $db->SelectLimit("SELECT * FROM {$db_prefix}ip_bans WHERE '$ip' LIKE ban_mask or email=" . $db->qstr($username) . "", 1);
+$debug_query = $db->SelectLimit("SELECT * FROM {$db_prefix}ip_bans WHERE (ban_mask != '' AND '$ip' LIKE ban_mask) or (email != '' AND email=" . $db->qstr($username) . ")", 1);
 db_op_result($debug_query,__LINE__,__FILE__);
 
 if ($debug_query->RecordCount() != 0)

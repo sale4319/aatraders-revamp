@@ -24,7 +24,7 @@ filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);
 <script type="text/javascript">
 
 /***********************************************
-* Cool DHTML tooltip script- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* Cool DHTML tooltip script- ï¿½ Dynamic Drive DHTML code library (www.dynamicdrive.com)
 * This notice MUST stay intact for legal use
 * Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
 ***********************************************/
@@ -188,7 +188,7 @@ for($i = 1; $i < $mapsectorcount; $i++){
 	if($sectorid[$i] >= $startsector and $sectorid[$i] < $endsector){
 	   	if ($break == 1)
 		{
-			echo "<TR><TD align=\"left\">$sectorname[$i]</TD>\n";
+			echo "<TR>\n";
 		}
 	}
 
@@ -200,14 +200,17 @@ for($i = 1; $i < $mapsectorcount; $i++){
 
 		if ($break == 0)
 		{
-			echo "<TD align=\"right\">$sectorname[$i]</TD></TR>\n";
+			echo "</TR>\n";
 		}
 
 	}
 }
 if($break != 0)
 {
-	echo"<TD align=\"right\">" . $sectorname[($i-1)] . "</TD>";
+	for($j = $break; $j < $map_width; $j++) {
+		echo "<TD></TD>\n";
+	}
+	echo "</TR>\n";
 }
 {/php}
 				</td>

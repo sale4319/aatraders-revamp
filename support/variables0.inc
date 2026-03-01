@@ -1,6 +1,6 @@
 <?php
 $server_closed="0";
-$account_creation_closed="1";
+$account_creation_closed="0";
 $tournament_setup_access="0";
 $tournament_mode="0";
 $profile_only_server="0";
@@ -17,7 +17,7 @@ $SMTP_User_Name="";
 $SMTP_User_Password="";
 $enable_schedule_log="0";
 $enable_scheduler="1";
-$enable_pseudo_cron="1";
+$enable_pseudo_cron="0";
 $turn_rate="10";
 $allow_expanding_universe="1";
 $universe_expansion_rate="100";

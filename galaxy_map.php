@@ -54,7 +54,7 @@ if($startsector == "-1"){
 	$allselected = "selected";
 }
 
-$result = $db->Execute ("SELECT sector_name, spiral_arm, sector_id, port_type, x, y, z, zone_id FROM {$db_prefix}universe where sector_id >= $startsector and sector_id <= $endsector and sg_sector = 0 ORDER BY sector_id ASC");
+$result = $db->Execute ("SELECT sector_name, spiral_arm, sector_id, port_type, x, y, z, zone_id FROM {$db_prefix}universe where sector_id >= $startsector and sector_id < $endsector and sg_sector = 0 ORDER BY sector_id ASC");
 
 $porttypes[0] = 'unknown';
 $porttypes[1] = 'none';
