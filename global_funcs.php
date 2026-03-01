@@ -382,8 +382,8 @@ function SCAN_ERROR($level_scan, $level_cloak, $correct_value)
 	}
 	else
 	{
-		// Scan succeeded — return exact value
-		$sc_error = $correct_value;
+		// Scan succeeded — return almost correct info (99% to 101% of correct value)
+		$sc_error = floor($correct_value * (mt_rand(99999999, 100999999) / 100000000));
 	}
 	return $sc_error;
 }
