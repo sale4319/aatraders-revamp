@@ -30,16 +30,17 @@ $debug_query = $db->Execute("UPDATE {$db_prefix}players SET sessionid='', last_l
 WHERE ($unixstamp - UNIX_TIMESTAMP(last_login)) / 60 > ($idle_max + 2) and email NOT LIKE '%@npc' and logged_out != 'Y'"); 
 db_op_result($debug_query,__LINE__,__FILE__);
 
-$debug_query = $db->Execute("UPDATE {$db_prefix}players SET turns=LEAST(turns+$turn_rate, $max_turns), team_cash_countdown=GREATEST(0,
-team_cash_countdown - 1)"); db_op_result($debug_query, __LINE__, __FILE__);
+$debug_query = $db->Execute("UPDATE {$db_prefix}players SET turns=LEAST(turns+$turn_rate, $max_turns), 
+team_cash_countdown=GREATEST(0, team_cash_countdown - 1)"); 
+db_op_result($debug_query,__LINE__,__FILE__);
 
-while (!$debug_query->EOF && $debug_query != '') 
+while (!$debug_query->EOF && $debug_query !='')
 {
-    $turns_results1 = $debug_query;
+	$turns_results1 = $debug_query;
 }
 
 if ($adminexecuted == 1) {
-    TextFlush("<b>TURNS</b><br /><br />");
+    TextFlush("<b>TURNS</b><br/><br/>");
     
     if ($turns_results1 != '') 
     {
@@ -47,7 +48,7 @@ if ($adminexecuted == 1) {
     } else {
         TextFlush("Completed successfully!");
     }
-    TextFlush("<br /><br />");
+    TextFlush("<br/><br/>");
 }
 
 $multiplier = 0;
